@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notitia Corp â Nous construisons le logiciel que votre mÃ©tier mÃ©rite</title>
-<meta name="description" content="Notitia Corp conÃ§oit des logiciels sur-mesure dopÃ©s Ã  l'IA. Solution BE Pilot et outils personnalisÃ©s livrÃ©s en 2 semaines. Audit gratuit.">
+<title>Notitia Corp &#8212; Nous construisons le logiciel que votre m&#233;tier m&#233;rite</title>
+<meta name="description" content="Notitia Corp con&#231;oit des logiciels sur-mesure dop&#233;s &#224; l&#39;IA. Solution BE Pilot et outils personnalis&#233;s livr&#233;s en 2 semaines. Audit gratuit.">
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
 
@@ -35,7 +35,6 @@ cursor:none;
 
 ::selection{background:var(--blue);color:#fff}
 
-/* Noise grain overlay */
 body::before{
 content:'';
 position:fixed;
@@ -61,7 +60,6 @@ animation:grain 0.5s steps(6) infinite;
 90%{transform:translate(-10%,10%)}
 }
 
-/* Custom cursor */
 .cursor-dot{
 position:fixed;
 width:8px;height:8px;
@@ -86,7 +84,6 @@ width:60px;height:60px;
 border-color:var(--green);
 }
 
-/* Navigation */
 nav{
 position:fixed;
 top:0;left:0;right:0;
@@ -151,7 +148,6 @@ transform:translateY(-1px);
 box-shadow:0 4px 20px rgba(0,170,255,0.4);
 }
 
-/* Sections common */
 section{
 position:relative;
 padding:120px 40px;
@@ -181,7 +177,6 @@ max-width:600px;
 line-height:1.7;
 }
 
-/* Hero section */
 #hero{
 min-height:100vh;
 display:flex;
@@ -246,30 +241,28 @@ animation:gradient-shift 6s ease infinite;
 100%{background-position:0% 50%}
 }
 
-/* Glitch effect */
-.glitch{
-position:relative;
-display:inline-block;
-}
+.glitch{position:relative;display:inline-block}
 .glitch::before,.glitch::after{
 content:attr(data-text);
 position:absolute;
 top:0;left:0;
 width:100%;height:100%;
-background:var(--bg);
 overflow:hidden;
+background:linear-gradient(90deg,var(--blue),var(--green),var(--purple),var(--blue));
+background-size:300% 100%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
 }
 .glitch::before{
 left:2px;
-text-shadow:-2px 0 var(--blue);
-clip-path:inset(0 0 65% 0);
-animation:glitch-top 3s infinite linear alternate-reverse;
+clip-path:inset(0 0 85% 0);
+animation:gradient-shift 6s ease infinite, glitch-top 3s infinite linear alternate-reverse;
 }
 .glitch::after{
 left:-2px;
-text-shadow:2px 0 var(--green);
-clip-path:inset(65% 0 0 0);
-animation:glitch-bottom 2.5s infinite linear alternate-reverse;
+clip-path:inset(85% 0 0 0);
+animation:gradient-shift 6s ease infinite, glitch-bottom 2.5s infinite linear alternate-reverse;
 }
 @keyframes glitch-top{
 0%{clip-path:inset(0 0 85% 0);transform:translate(0)}
@@ -283,7 +276,6 @@ animation:glitch-bottom 2.5s infinite linear alternate-reverse;
 10%{clip-path:inset(85% 0 0 0);transform:translate(0)}
 100%{clip-path:inset(85% 0 0 0);transform:translate(0)}
 }
-
 .hero-sub{
 font-size:clamp(16px,2vw,20px);
 color:var(--text-dim);
@@ -364,7 +356,6 @@ animation:float-down 2s ease-in-out infinite;
 @keyframes float-down{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
 .scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--blue),transparent)}
 
-/* Manifeste */
 #manifeste{
 min-height:80vh;
 display:flex;
@@ -385,7 +376,6 @@ background:linear-gradient(135deg,var(--blue),var(--green));
 background-clip:text;
 }
 
-/* Approach cards */
 .cards-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
@@ -435,7 +425,6 @@ font-size:15px;
 line-height:1.6;
 }
 
-/* BE Pilot showcase */
 #bepilot{padding:120px 40px}
 .bepilot-wrapper{
 max-width:1200px;
@@ -468,7 +457,6 @@ transition:gap 0.3s;
 }
 .bepilot-link:hover{gap:14px}
 
-/* Dashboard mockup */
 .dashboard-mock{
 background:var(--surface);
 border:1px solid var(--border);
@@ -477,10 +465,7 @@ padding:24px;
 position:relative;
 overflow:hidden;
 }
-.dash-top{
-display:flex;gap:6px;
-margin-bottom:20px;
-}
+.dash-top{display:flex;gap:6px;margin-bottom:20px}
 .dash-dot{width:10px;height:10px;border-radius:50%;background:#333}
 .dash-dot:nth-child(1){background:#ff5f57}
 .dash-dot:nth-child(2){background:#febc2e}
@@ -519,7 +504,6 @@ transform-origin:bottom;
 .chart-bar:nth-child(7){height:60%}
 .chart-bar:nth-child(8){height:85%}
 
-/* Stats */
 .stats-section{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
@@ -551,7 +535,6 @@ color:var(--text-dim);
 font-weight:500;
 }
 
-/* Timeline */
 .timeline{
 position:relative;
 margin-top:60px;
@@ -619,7 +602,6 @@ font-size:15px;
 max-width:500px;
 }
 
-/* Why us grid */
 .why-grid{
 display:grid;
 grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
@@ -653,7 +635,6 @@ font-size:14px;
 line-height:1.6;
 }
 
-/* CTA */
 #cta{
 text-align:center;
 position:relative;
@@ -704,7 +685,6 @@ font-weight:600;
 color:var(--text);
 }
 
-/* Footer */
 footer{
 position:relative;
 padding:60px 40px;
@@ -734,7 +714,6 @@ position:relative;
 z-index:1;
 }
 
-/* Mobile hamburger */
 .hamburger{
 display:none;
 flex-direction:column;
@@ -750,7 +729,14 @@ background:var(--text);
 transition:all 0.3s;
 }
 
-/* Responsive */
+.clip-reveal{
+clip-path:inset(100% 0 0 0);
+transition:clip-path 0.8s cubic-bezier(0.16,1,0.3,1);
+}
+.clip-reveal.visible{
+clip-path:inset(0 0 0 0);
+}
+
 @media(max-width:768px){
 nav{padding:12px 20px}
 .nav-links{
@@ -775,24 +761,13 @@ section{padding:80px 20px}
 body{cursor:auto}
 .cursor-dot,.cursor-ring{display:none}
 }
-
-/* Clip path transitions */
-.clip-reveal{
-clip-path:inset(100% 0 0 0);
-transition:clip-path 0.8s cubic-bezier(0.16,1,0.3,1);
-}
-.clip-reveal.visible{
-clip-path:inset(0 0 0 0);
-}
 </style>
 </head>
 <body>
 
-<!-- Custom Cursor -->
 <div class="cursor-dot" id="cursorDot"></div>
 <div class="cursor-ring" id="cursorRing"></div>
 
-<!-- Navigation -->
 <nav id="navbar">
 <div class="nav-logo">Notitia Corp</div>
 <button class="hamburger" id="hamburger" aria-label="Menu">
@@ -808,19 +783,18 @@ clip-path:inset(0 0 0 0);
 </div>
 </nav>
 
-<!-- Hero -->
 <section id="hero">
 <canvas id="three-canvas"></canvas>
 <div class="hero-content">
 <div class="hero-badge">
 <span class="dot"></span>
-Logiciels sur-mesure propulsÃ©s par l'IA
+Logiciels sur-mesure propuls&#233;s par l'IA
 </div>
-<h1 class="hero-title glitch" data-text="Nous construisons le logiciel que votre mÃ©tier mÃ©rite">Nous construisons le logiciel que votre mÃ©tier mÃ©rite</h1>
+<h1 class="hero-title glitch" data-text="Nous construisons le logiciel que votre m&#233;tier m&#233;rite">Nous construisons le logiciel que votre m&#233;tier m&#233;rite</h1>
 <p class="hero-sub" id="typewriter"></p>
 <div class="hero-buttons">
 <a href="#cta" class="btn-primary" id="heroCta">Demander un audit gratuit</a>
-<a href="#approche" class="btn-secondary">DÃ©couvrir notre approche</a>
+<a href="#approche" class="btn-secondary">D&#233;couvrir notre approche</a>
 </div>
 </div>
 <div class="scroll-indicator">
@@ -829,56 +803,53 @@ Logiciels sur-mesure propulsÃ©s par l'IA
 </div>
 </section>
 
-<!-- Manifeste -->
 <section id="manifeste">
 <span class="section-tag">Manifeste</span>
 <div class="manifeste-text clip-reveal">
-Les logiciels gÃ©nÃ©riques coÃ»tent cher et ne rÃ©solvent rien. Ils imposent des compromis Ã  votre mÃ©tier, pas l'inverse. <span class="highlight">Nous faisons exactement l'inverse.</span> Nous crÃ©ons des outils taillÃ©s pour votre rÃ©alitÃ©, livrÃ©s en un temps record, Ã  un coÃ»t qui a du sens.
+Les logiciels g&#233;n&#233;riques co&#251;tent cher et ne r&#233;solvent rien. Ils imposent des compromis &#224; votre m&#233;tier, pas l'inverse. <span class="highlight">Nous faisons exactement l'inverse.</span> Nous cr&#233;ons des outils taill&#233;s pour votre r&#233;alit&#233;, livr&#233;s en un temps record, &#224; un co&#251;t qui a du sens.
 </div>
 </section>
 
-<!-- Approche -->
 <section id="approche">
 <span class="section-tag">Notre approche</span>
-<h2 class="section-title">Trois piliers.<br>ZÃ©ro compromis.</h2>
-<p class="section-desc">Chaque projet suit une mÃ©thodologie Ã©prouvÃ©e qui garantit pertinence, rapiditÃ© et qualitÃ©.</p>
+<h2 class="section-title">Trois piliers.<br>Z&#233;ro compromis.</h2>
+<p class="section-desc">Chaque projet suit une m&#233;thodologie &#233;prouv&#233;e qui garantit pertinence, rapidit&#233; et qualit&#233;.</p>
 <div class="cards-grid">
 <div class="holo-card">
 <div class="holo-shine"></div>
 <div class="card-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
 </div>
-<h3>Analyse mÃ©tier profonde</h3>
-<p>Nous plongeons dans votre quotidien pour comprendre chaque friction, chaque besoin cachÃ©, chaque opportunitÃ© d'automatisation.</p>
+<h3>Analyse m&#233;tier profonde</h3>
+<p>Nous plongeons dans votre quotidien pour comprendre chaque friction, chaque besoin cach&#233;, chaque opportunit&#233; d'automatisation.</p>
 </div>
 <div class="holo-card">
 <div class="holo-shine"></div>
 <div class="card-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
 </div>
-<h3>DÃ©veloppement sur-mesure</h3>
-<p>Code propre, architecture moderne, IA intÃ©grÃ©e nativement. Chaque fonctionnalitÃ© est pensÃ©e pour votre usage exact.</p>
+<h3>D&#233;veloppement sur-mesure</h3>
+<p>Code propre, architecture moderne, IA int&#233;gr&#233;e nativement. Chaque fonctionnalit&#233; est pens&#233;e pour votre usage exact.</p>
 </div>
 <div class="holo-card">
 <div class="holo-shine"></div>
 <div class="card-icon">
 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
 </div>
-<h3>DÃ©ployÃ© en 2 semaines</h3>
-<p>Pas de mois d'attente. Prototype fonctionnel en jours, solution complÃ¨te en deux semaines. Vous utilisez, on itÃ¨re.</p>
+<h3>D&#233;ploy&#233; en 2 semaines</h3>
+<p>Pas de mois d'attente. Prototype fonctionnel en jours, solution compl&#232;te en deux semaines. Vous utilisez, on it&#232;re.</p>
 </div>
 </div>
 </section>
 
-<!-- BE Pilot -->
 <section id="bepilot">
 <div class="bepilot-wrapper">
 <div class="bepilot-text">
 <span class="section-tag">Solution phare</span>
 <h2>BE Pilot</h2>
-<p>Notre plateforme de gestion intelligente pour bureaux d'Ã©tudes. Suivi de projets, gestion documentaire, tableaux de bord en temps rÃ©el â le tout dopÃ© Ã  l'IA pour anticiper les dÃ©rapages avant qu'ils n'arrivent.</p>
+<p>Notre plateforme de gestion intelligente pour bureaux d'&#233;tudes. Suivi de projets, gestion documentaire, tableaux de bord en temps r&#233;el &#8212; le tout dop&#233; &#224; l'IA pour anticiper les d&#233;rapages avant qu'ils n'arrivent.</p>
 <a href="https://notitiacorp-design.github.io/be-pilot" class="bepilot-link" target="_blank" rel="noopener">
-DÃ©couvrir BE Pilot
+D&#233;couvrir BE Pilot
 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
 </a>
 </div>
@@ -908,14 +879,13 @@ DÃ©couvrir BE Pilot
 </div>
 </section>
 
-<!-- Stats -->
 <section id="stats">
 <span class="section-tag">En chiffres</span>
-<h2 class="section-title">Des rÃ©sultats, pas des promesses.</h2>
+<h2 class="section-title">Des r&#233;sultats, pas des promesses.</h2>
 <div class="stats-section">
 <div class="stat-item">
 <div class="stat-number" data-target="2" data-suffix=" sem.">0</div>
-<div class="stat-label">DÃ©lai de livraison</div>
+<div class="stat-label">D&#233;lai de livraison</div>
 </div>
 <div class="stat-item">
 <div class="stat-number" data-target="5" data-suffix="x moins cher">0</div>
@@ -923,7 +893,7 @@ DÃ©couvrir BE Pilot
 </div>
 <div class="stat-item">
 <div class="stat-number" data-target="100" data-suffix="%">0</div>
-<div class="stat-label">PersonnalisÃ© Ã  votre mÃ©tier</div>
+<div class="stat-label">Personnalis&#233; &#224; votre m&#233;tier</div>
 </div>
 <div class="stat-item">
 <div class="stat-number" data-target="0" data-suffix=" compromis" data-is-zero="true">0</div>
@@ -932,412 +902,328 @@ DÃ©couvrir BE Pilot
 </div>
 </section>
 
-<!-- Process Timeline -->
 <section id="process">
 <span class="section-tag">Notre process</span>
-<h2 class="section-title">De l'idÃ©e au dÃ©ploiement.</h2>
-<p class="section-desc">Un process clair, rapide, sans zone d'ombre. Vous savez exactement oÃ¹ vous en Ãªtes Ã  chaque Ã©tape.</p>
+<h2 class="section-title">De l'id&#233;e au d&#233;ploiement.</h2>
+<p class="section-desc">Un process clair, rapide, sans zone d'ombre. Vous savez exactement o&#249; vous en &#234;tes &#224; chaque &#233;tape.</p>
 <div class="timeline">
 <div class="timeline-line-fill" id="timelineFill"></div>
 <div class="timeline-item">
-<div class="timeline-step">Ãtape 01</div>
-<h3>Audit gratuit â 48h</h3>
-<p>Nous analysons votre mÃ©tier, vos outils actuels, vos points de friction. Vous recevez un diagnostic complet avec des recommandations concrÃ¨tes. Sans engagement.</p>
+<div class="timeline-step">&#201;tape 01</div>
+<h3>Audit gratuit &#8212; 48h</h3>
+<p>Nous analysons votre m&#233;tier, vos outils actuels, vos points de friction. Vous recevez un diagnostic complet avec des recommandations concr&#232;tes. Sans engagement.</p>
 </div>
 <div class="timeline-item">
-<div class="timeline-step">Ãtape 02</div>
+<div class="timeline-step">&#201;tape 02</div>
 <h3>Prototype rapide</h3>
-<p>En quelques jours, vous visualisez une premiÃ¨re version fonctionnelle. On valide ensemble l'ergonomie, les flux, les prioritÃ©s.</p>
+<p>En quelques jours, vous visualisez une premi&#232;re version fonctionnelle. On valide ensemble l'ergonomie, les flux, les priorit&#233;s.</p>
 </div>
 <div class="timeline-item">
-<div class="timeline-step">Ãtape 03</div>
-<h3>DÃ©veloppement intensif</h3>
-<p>Notre Ã©quipe construit votre solution avec les technologies les plus modernes. Vous suivez l'avancement en temps rÃ©el.</p>
+<div class="timeline-step">&#201;tape 03</div>
+<h3>D&#233;veloppement intensif</h3>
+<p>Notre &#233;quipe construit votre solution avec les technologies les plus modernes. Vous suivez l'avancement en temps r&#233;el.</p>
 </div>
 <div class="timeline-item">
-<div class="timeline-step">Ãtape 04</div>
-<h3>DÃ©ploiement et suivi continu</h3>
-<p>Mise en production, formation de vos Ã©quipes, et suivi continu. Nous restons Ã  vos cÃ´tÃ©s pour faire Ã©voluer l'outil avec votre activitÃ©.</p>
+<div class="timeline-step">&#201;tape 04</div>
+<h3>D&#233;ploiement et suivi continu</h3>
+<p>Mise en production, formation de vos &#233;quipes, et suivi continu. Nous restons &#224; vos c&#244;t&#233;s pour faire &#233;voluer l'outil avec votre activit&#233;.</p>
 </div>
 </div>
 </section>
-
-<!-- Pourquoi nous -->
 <section id="pourquoi">
 <span class="section-tag">Pourquoi nous</span>
-<h2 class="section-title">Ce qui nous rend diffÃ©rents.</h2>
+<h2 class="section-title">Ce qui nous rend diff&#233;rents.</h2>
 <div class="why-grid">
 <div class="why-item">
 <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
-<h4>RapiditÃ© extrÃªme</h4>
+<h4>Rapidit&#233; extr&#234;me</h4>
 <p>2 semaines, pas 6 mois. Nous livrons vite parce que nous comprenons vite.</p>
 </div>
 <div class="why-item">
 <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-<h4>Sur-mesure intÃ©gral</h4>
-<p>Aucun template, aucun compromis. Chaque ligne de code est Ã©crite pour vous.</p>
+<h4>Sur-mesure int&#233;gral</h4>
+<p>Aucun template, aucun compromis. Chaque ligne de code est &#233;crite pour vous.</p>
 </div>
 <div class="why-item">
 <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
 <h4>IA native</h4>
-<p>L'intelligence artificielle n'est pas un gadget. Elle est intÃ©grÃ©e au cÅur de chaque solution.</p>
+<p>L'intelligence artificielle n'est pas un gadget. Elle est int&#233;gr&#233;e au coeur de chaque solution.</p>
 </div>
 <div class="why-item">
 <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
-<h4>Ãcoute rÃ©elle</h4>
-<p>Nous ne vendons pas une solution toute faite. Nous Ã©coutons, puis nous construisons.</p>
+<h4>&#201;coute r&#233;elle</h4>
+<p>Nous ne vendons pas une solution toute faite. Nous &#233;coutons, puis nous construisons.</p>
 </div>
 <div class="why-item">
 <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-<h4>CoÃ»t maÃ®trisÃ©</h4>
-<p>5 fois moins cher qu'un ERP. Pas de licence, pas de coÃ»ts cachÃ©s, pas de mauvaise surprise.</p>
+<h4>Co&#251;t ma&#238;tris&#233;</h4>
+<p>5 fois moins cher qu'un ERP. Pas de licence, pas de co&#251;ts cach&#233;s, pas de mauvaise surprise.</p>
 </div>
 <div class="why-item">
 <svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
 <h4>Accompagnement continu</h4>
-<p>Le dÃ©ploiement n'est pas la fin. Nous Ã©voluons avec vous, chaque semaine.</p>
+<p>Le d&#233;ploiement n'est pas la fin. Nous &#233;voluons avec vous, chaque semaine.</p>
 </div>
 </div>
 </section>
 
-<!-- CTA -->
 <section id="cta">
 <div class="cta-glow"></div>
 <div class="cta-content">
-<span class="section-tag">Passez Ã  l'action</span>
+<span class="section-tag">Passez &#224; l'action</span>
 <h2 class="cta-title">Demandez votre<br>audit gratuit</h2>
-<p class="cta-desc">48 heures pour comprendre votre mÃ©tier et vous proposer une solution concrÃ¨te. Sans engagement, sans bullshit.</p>
+<p class="cta-desc">48 heures pour comprendre votre m&#233;tier et vous proposer une solution concr&#232;te. Sans engagement, sans bullshit.</p>
 <a href="mailto:notitiacorp@gmail.com?subject=Demande d'audit gratuit" class="btn-primary" id="ctaBtn">Demander mon audit gratuit</a>
 <div class="cta-contact">
 <span class="name">Quentin CONVERT</span>
 <a href="mailto:notitiacorp@gmail.com">notitiacorp@gmail.com</a>
 <a href="tel:+33671902513">06 71 90 25 13</a>
-<span>BÃ©ziers, France</span>
+<span>B&#233;ziers, France</span>
 </div>
 </div>
 </section>
 
-<!-- Footer -->
 <footer>
-<p>&copy; 2025 Notitia Corp. Tous droits rÃ©servÃ©s.</p>
+<p>&#169; 2025 Notitia Corp. Tous droits r&#233;serv&#233;s.</p>
 </footer>
 
-<!-- Three.js & GSAP CDN -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
 <script>
 (function(){
-'use strict';
+"use strict";
 
-// ====== CUSTOM CURSOR ======
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mouseX = 0, mouseY = 0;
-let ringX = 0, ringY = 0;
+var dot=document.getElementById("cursorDot");
+var ring=document.getElementById("cursorRing");
+var mouseX=0,mouseY=0,ringX=0,ringY=0;
 
-document.addEventListener('mousemove', e => {
-mouseX = e.clientX;
-mouseY = e.clientY;
-dot.style.left = mouseX - 4 + 'px';
-dot.style.top = mouseY - 4 + 'px';
+document.addEventListener("mousemove",function(e){
+mouseX=e.clientX;mouseY=e.clientY;
+dot.style.left=mouseX-4+"px";
+dot.style.top=mouseY-4+"px";
 });
 
-function animateCursor() {
-ringX += (mouseX - ringX) * 0.15;
-ringY += (mouseY - ringY) * 0.15;
-ring.style.left = ringX - 20 + 'px';
-ring.style.top = ringY - 20 + 'px';
+function animateCursor(){
+ringX+=(mouseX-ringX)*0.15;
+ringY+=(mouseY-ringY)*0.15;
+ring.style.left=ringX-20+"px";
+ring.style.top=ringY-20+"px";
 requestAnimationFrame(animateCursor);
 }
 animateCursor();
 
-document.querySelectorAll('a, button, .holo-card, .why-item, .stat-item').forEach(el => {
-el.addEventListener('mouseenter', () => ring.classList.add('hover'));
-el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+document.querySelectorAll("a,button,.holo-card,.why-item,.stat-item").forEach(function(el){
+el.addEventListener("mouseenter",function(){ring.classList.add("hover");});
+el.addEventListener("mouseleave",function(){ring.classList.remove("hover");});
 });
 
-// ====== HAMBURGER ======
-const hamburger = document.getElementById('hamburger');
-const navLinks = document.getElementById('navLinks');
-hamburger.addEventListener('click', () => {
-navLinks.classList.toggle('open');
-});
-navLinks.querySelectorAll('a').forEach(a => {
-a.addEventListener('click', () => navLinks.classList.remove('open'));
-});
+var hamburger=document.getElementById("hamburger");
+var navLinks=document.getElementById("navLinks");
+hamburger.addEventListener("click",function(){navLinks.classList.toggle("open");});
+navLinks.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){navLinks.classList.remove("open");});});
 
-// ====== NAV SCROLL ======
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-navbar.classList.toggle('scrolled', window.scrollY > 50);
-});
+var navbar=document.getElementById("navbar");
+window.addEventListener("scroll",function(){navbar.classList.toggle("scrolled",window.scrollY>50);});
 
-// ====== THREE.JS SCENE ======
-const canvas = document.getElementById('three-canvas');
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+var canvas=document.getElementById("three-canvas");
+var renderer=new THREE.WebGLRenderer({canvas:canvas,alpha:true,antialias:true});
+renderer.setSize(window.innerWidth,window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio,2));
 
-const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.z = 5;
+var scene=new THREE.Scene();
+var camera=new THREE.PerspectiveCamera(60,window.innerWidth/window.innerHeight,0.1,1000);
+camera.position.z=5;
 
-// Wireframe sphere
-const sphereGeo = new THREE.IcosahedronGeometry(1.8, 2);
-const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00aaff, wireframe: true, transparent: true, opacity: 0.15 });
-const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+var sphereGeo=new THREE.IcosahedronGeometry(1.8,2);
+var sphereMat=new THREE.MeshBasicMaterial({color:0x00aaff,wireframe:true,transparent:true,opacity:0.15});
+var sphere=new THREE.Mesh(sphereGeo,sphereMat);
 scene.add(sphere);
 
-// Inner sphere
-const innerGeo = new THREE.IcosahedronGeometry(1.2, 1);
-const innerMat = new THREE.MeshBasicMaterial({ color: 0x00e88a, wireframe: true, transparent: true, opacity: 0.08 });
-const innerSphere = new THREE.Mesh(innerGeo, innerMat);
+var innerGeo=new THREE.IcosahedronGeometry(1.2,1);
+var innerMat=new THREE.MeshBasicMaterial({color:0x00e88a,wireframe:true,transparent:true,opacity:0.08});
+var innerSphere=new THREE.Mesh(innerGeo,innerMat);
 scene.add(innerSphere);
 
-// Particles
-const particlesCount = 200;
-const particlesGeo = new THREE.BufferGeometry();
-const positions = new Float32Array(particlesCount * 3);
-for (let i = 0; i < particlesCount; i++) {
-const theta = Math.random() * Math.PI * 2;
-const phi = Math.acos(2 * Math.random() - 1);
-const r = 2.2 + Math.random() * 1.5;
-positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
-positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
-positions[i * 3 + 2] = r * Math.cos(phi);
+var pCount=200;
+var pGeo=new THREE.BufferGeometry();
+var pos=new Float32Array(pCount*3);
+for(var i=0;i<pCount;i++){
+var th=Math.random()*Math.PI*2;
+var ph=Math.acos(2*Math.random()-1);
+var r=2.2+Math.random()*1.5;
+pos[i*3]=r*Math.sin(ph)*Math.cos(th);
+pos[i*3+1]=r*Math.sin(ph)*Math.sin(th);
+pos[i*3+2]=r*Math.cos(ph);
 }
-particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
-const particlesMat = new THREE.PointsMaterial({ color: 0x00aaff, size: 0.02, transparent: true, opacity: 0.6 });
-const particles = new THREE.Points(particlesGeo, particlesMat);
+pGeo.setAttribute("position",new THREE.BufferAttribute(pos,3));
+var pMat=new THREE.PointsMaterial({color:0x00aaff,size:0.02,transparent:true,opacity:0.6});
+var particles=new THREE.Points(pGeo,pMat);
 scene.add(particles);
 
-// Lights
-const light1 = new THREE.PointLight(0x00aaff, 2, 10);
-light1.position.set(3, 2, 3);
-scene.add(light1);
-const light2 = new THREE.PointLight(0x00e88a, 2, 10);
-light2.position.set(-3, -2, 2);
-scene.add(light2);
+var l1=new THREE.PointLight(0x00aaff,2,10);
+l1.position.set(3,2,3);scene.add(l1);
+var l2=new THREE.PointLight(0x00e88a,2,10);
+l2.position.set(-3,-2,2);scene.add(l2);
 
-let scrollY = 0;
-window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+var sY=0;
+window.addEventListener("scroll",function(){sY=window.scrollY;});
 
-function animateThree() {
+function animateThree(){
 requestAnimationFrame(animateThree);
-const t = Date.now() * 0.001;
-sphere.rotation.x = t * 0.1 + scrollY * 0.0002;
-sphere.rotation.y = t * 0.15;
-innerSphere.rotation.x = -t * 0.12;
-innerSphere.rotation.y = t * 0.08;
-particles.rotation.y = t * 0.05;
-particles.rotation.x = t * 0.02;
-light1.position.x = Math.sin(t * 0.5) * 4;
-light1.position.y = Math.cos(t * 0.3) * 3;
-light2.position.x = Math.cos(t * 0.4) * 4;
-light2.position.y = Math.sin(t * 0.6) * 3;
-// Fade out on scroll
-const heroH = window.innerHeight;
-const opacity = Math.max(0, 1 - scrollY / heroH);
-sphere.material.opacity = 0.15 * opacity;
-innerSphere.material.opacity = 0.08 * opacity;
-particles.material.opacity = 0.6 * opacity;
-renderer.render(scene, camera);
+var t=Date.now()*0.001;
+sphere.rotation.x=t*0.1+sY*0.0002;
+sphere.rotation.y=t*0.15;
+innerSphere.rotation.x=-t*0.12;
+innerSphere.rotation.y=t*0.08;
+particles.rotation.y=t*0.05;
+particles.rotation.x=t*0.02;
+l1.position.x=Math.sin(t*0.5)*4;
+l1.position.y=Math.cos(t*0.3)*3;
+l2.position.x=Math.cos(t*0.4)*4;
+l2.position.y=Math.sin(t*0.6)*3;
+var hH=window.innerHeight;
+var op=Math.max(0,1-sY/hH);
+sphere.material.opacity=0.15*op;
+innerSphere.material.opacity=0.08*op;
+particles.material.opacity=0.6*op;
+renderer.render(scene,camera);
 }
 animateThree();
 
-window.addEventListener('resize', () => {
-camera.aspect = window.innerWidth / window.innerHeight;
+window.addEventListener("resize",function(){
+camera.aspect=window.innerWidth/window.innerHeight;
 camera.updateProjectionMatrix();
-renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setSize(window.innerWidth,window.innerHeight);
 });
 
-// ====== TYPEWRITER ======
-const phrases = [
-"Intelligence artificielle intÃ©grÃ©e Ã  chaque solution.",
-"Personnalisation totale, zÃ©ro compromis.",
-"LivrÃ© en 2 semaines, pas en 6 mois.",
-"Votre mÃ©tier, notre obsession."
+var phrases=[
+"Intelligence artificielle int\u00e9gr\u00e9e \u00e0 chaque solution.",
+"Personnalisation totale, z\u00e9ro compromis.",
+"Livr\u00e9 en 2 semaines, pas en 6 mois.",
+"Votre m\u00e9tier, notre obsession."
 ];
-const typewriterEl = document.getElementById('typewriter');
-let phraseIndex = 0, charIndex = 0, isDeleting = false;
+var twEl=document.getElementById("typewriter");
+var pI=0,cI=0,isDel=false;
 
-function typewriter() {
-const currentPhrase = phrases[phraseIndex];
-if (!isDeleting) {
-typewriterEl.innerHTML = currentPhrase.substring(0, charIndex) + '<span class="typewriter-cursor"></span>';
-charIndex++;
-if (charIndex > currentPhrase.length) {
-isDeleting = true;
-setTimeout(typewriter, 2000);
-return;
-}
-setTimeout(typewriter, 40 + Math.random() * 30);
-} else {
-typewriterEl.innerHTML = currentPhrase.substring(0, charIndex) + '<span class="typewriter-cursor"></span>';
-charIndex--;
-if (charIndex < 0) {
-isDeleting = false;
-phraseIndex = (phraseIndex + 1) % phrases.length;
-setTimeout(typewriter, 500);
-return;
-}
-setTimeout(typewriter, 20);
+function tw(){
+var cp=phrases[pI];
+if(!isDel){
+twEl.innerHTML=cp.substring(0,cI)+'<span class="typewriter-cursor"></span>';
+cI++;
+if(cI>cp.length){isDel=true;setTimeout(tw,2000);return;}
+setTimeout(tw,40+Math.random()*30);
+}else{
+twEl.innerHTML=cp.substring(0,cI)+'<span class="typewriter-cursor"></span>';
+cI--;
+if(cI<0){isDel=false;pI=(pI+1)%phrases.length;setTimeout(tw,500);return;}
+setTimeout(tw,20);
 }
 }
-typewriter();
+tw();
 
-// ====== GSAP SCROLL ANIMATIONS ======
 gsap.registerPlugin(ScrollTrigger);
 
-// Manifeste clip reveal
-gsap.utils.toArray('.clip-reveal').forEach(el => {
-ScrollTrigger.create({
-trigger: el,
-start: 'top 80%',
-onEnter: () => el.classList.add('visible'),
-once: true
+gsap.utils.toArray(".clip-reveal").forEach(function(el){
+ScrollTrigger.create({trigger:el,start:"top 80%",onEnter:function(){el.classList.add("visible");},once:true});
+});
+
+gsap.utils.toArray(".section-tag,.section-title,.section-desc").forEach(function(el){
+gsap.from(el,{scrollTrigger:{trigger:el,start:"top 85%",once:true},y:30,opacity:0,duration:0.8,ease:"power3.out"});
+});
+
+gsap.utils.toArray(".holo-card").forEach(function(card,i){
+gsap.from(card,{scrollTrigger:{trigger:card,start:"top 85%",once:true},y:40,opacity:0,duration:0.7,delay:i*0.15,ease:"power3.out"});
+});
+
+gsap.utils.toArray(".stat-item").forEach(function(item,i){
+gsap.from(item,{scrollTrigger:{trigger:item,start:"top 85%",once:true},y:30,opacity:0,duration:0.6,delay:i*0.1,ease:"power3.out"});
+});
+
+gsap.utils.toArray(".why-item").forEach(function(item,i){
+gsap.from(item,{scrollTrigger:{trigger:item,start:"top 85%",once:true},y:30,opacity:0,duration:0.6,delay:i*0.08,ease:"power3.out"});
+});
+
+gsap.from(".bepilot-text",{scrollTrigger:{trigger:".bepilot-wrapper",start:"top 75%",once:true},x:-40,opacity:0,duration:0.8,ease:"power3.out"});
+gsap.from(".dashboard-mock",{scrollTrigger:{trigger:".bepilot-wrapper",start:"top 75%",once:true},x:40,opacity:0,duration:0.8,delay:0.2,ease:"power3.out"});
+gsap.from(".cta-content",{scrollTrigger:{trigger:"#cta",start:"top 75%",once:true},y:40,opacity:0,duration:0.8,ease:"power3.out"});
+
+document.querySelectorAll(".holo-card").forEach(function(card){
+card.addEventListener("mousemove",function(e){
+var rect=card.getBoundingClientRect();
+var x=((e.clientX-rect.left)/rect.width*100).toFixed(1);
+var y=((e.clientY-rect.top)/rect.height*100).toFixed(1);
+card.style.setProperty("--mx",x+"%");
+card.style.setProperty("--my",y+"%");
 });
 });
 
-// Section tags and titles
-gsap.utils.toArray('.section-tag, .section-title, .section-desc').forEach(el => {
-gsap.from(el, {
-scrollTrigger: { trigger: el, start: 'top 85%', once: true },
-y: 30, opacity: 0, duration: 0.8, ease: 'power3.out'
-});
-});
-
-// Holo cards
-gsap.utils.toArray('.holo-card').forEach((card, i) => {
-gsap.from(card, {
-scrollTrigger: { trigger: card, start: 'top 85%', once: true },
-y: 40, opacity: 0, duration: 0.7, delay: i * 0.15, ease: 'power3.out'
-});
-});
-
-// Stats
-gsap.utils.toArray('.stat-item').forEach((item, i) => {
-gsap.from(item, {
-scrollTrigger: { trigger: item, start: 'top 85%', once: true },
-y: 30, opacity: 0, duration: 0.6, delay: i * 0.1, ease: 'power3.out'
-});
-});
-
-// Why items
-gsap.utils.toArray('.why-item').forEach((item, i) => {
-gsap.from(item, {
-scrollTrigger: { trigger: item, start: 'top 85%', once: true },
-y: 30, opacity: 0, duration: 0.6, delay: i * 0.08, ease: 'power3.out'
-});
-});
-
-// BE Pilot
-gsap.from('.bepilot-text', {
-scrollTrigger: { trigger: '.bepilot-wrapper', start: 'top 75%', once: true },
-x: -40, opacity: 0, duration: 0.8, ease: 'power3.out'
-});
-gsap.from('.dashboard-mock', {
-scrollTrigger: { trigger: '.bepilot-wrapper', start: 'top 75%', once: true },
-x: 40, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out'
-});
-
-// CTA
-gsap.from('.cta-content', {
-scrollTrigger: { trigger: '#cta', start: 'top 75%', once: true },
-y: 40, opacity: 0, duration: 0.8, ease: 'power3.out'
-});
-
-// ====== HOLOGRAPHIC CARD EFFECT ======
-document.querySelectorAll('.holo-card').forEach(card => {
-card.addEventListener('mousemove', e => {
-const rect = card.getBoundingClientRect();
-const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
-const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
-card.style.setProperty('--mx', x + '%');
-card.style.setProperty('--my', y + '%');
-});
-});
-
-// ====== STAT COUNTERS ======
-const statNumbers = document.querySelectorAll('.stat-number');
-const observerStats = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-const el = entry.target;
-const target = parseInt(el.dataset.target);
-const suffix = el.dataset.suffix || '';
-const isZero = el.dataset.isZero === 'true';
-if (isZero) {
-el.textContent = '0' + suffix;
-observerStats.unobserve(el);
-return;
-}
-let current = 0;
-const increment = target / 60;
-const timer = setInterval(() => {
-current += increment;
-if (current >= target) {
-current = target;
-clearInterval(timer);
-}
-el.textContent = Math.floor(current) + suffix;
-}, 16);
-observerStats.unobserve(el);
+var statNums=document.querySelectorAll(".stat-number");
+var obsS=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){
+var el=entry.target;
+var target=parseInt(el.dataset.target);
+var suffix=el.dataset.suffix||"";
+var isZ=el.dataset.isZero==="true";
+if(isZ){el.textContent="0"+suffix;obsS.unobserve(el);return;}
+var cur=0;
+var inc=target/60;
+var timer=setInterval(function(){
+cur+=inc;
+if(cur>=target){cur=target;clearInterval(timer);}
+el.textContent=Math.floor(cur)+suffix;
+},16);
+obsS.unobserve(el);
 }
 });
-}, { threshold: 0.5 });
-statNumbers.forEach(el => observerStats.observe(el));
+},{threshold:0.5});
+statNums.forEach(function(el){obsS.observe(el);});
 
-// ====== TIMELINE ANIMATION ======
-const timelineItems = document.querySelectorAll('.timeline-item');
-const timelineFill = document.getElementById('timelineFill');
-const timeline = document.querySelector('.timeline');
+var tlItems=document.querySelectorAll(".timeline-item");
+var tlFill=document.getElementById("timelineFill");
+var tl=document.querySelector(".timeline");
 
-const observerTimeline = new IntersectionObserver(entries => {
-entries.forEach(entry => {
-if (entry.isIntersecting) {
-entry.target.classList.add('visible');
-}
+var obsT=new IntersectionObserver(function(entries){
+entries.forEach(function(entry){
+if(entry.isIntersecting){entry.target.classList.add("visible");}
 });
-}, { threshold: 0.3 });
-timelineItems.forEach(item => observerTimeline.observe(item));
+},{threshold:0.3});
+tlItems.forEach(function(item){obsT.observe(item);});
 
-window.addEventListener('scroll', () => {
-if (!timeline) return;
-const rect = timeline.getBoundingClientRect();
-const timelineTop = rect.top;
-const timelineHeight = rect.height;
-const windowHeight = window.innerHeight;
-if (timelineTop < windowHeight && timelineTop + timelineHeight > 0) {
-const progress = Math.min(1, Math.max(0, (windowHeight - timelineTop) / (windowHeight + timelineHeight)));
-timelineFill.style.height = (progress * 100) + '%';
+window.addEventListener("scroll",function(){
+if(!tl)return;
+var rect=tl.getBoundingClientRect();
+var tTop=rect.top;
+var tH=rect.height;
+var wH=window.innerHeight;
+if(tTop<wH&&tTop+tH>0){
+var prog=Math.min(1,Math.max(0,(wH-tTop)/(wH+tH)));
+tlFill.style.height=(prog*100)+"%";
 }
 });
 
-// ====== BUTTON RIPPLE ======
-document.querySelectorAll('.btn-primary').forEach(btn => {
-btn.addEventListener('click', function(e) {
-const ripple = document.createElement('span');
-ripple.classList.add('ripple');
-const rect = this.getBoundingClientRect();
-const size = Math.max(rect.width, rect.height);
-ripple.style.width = ripple.style.height = size + 'px';
-ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
-ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+document.querySelectorAll(".btn-primary").forEach(function(btn){
+btn.addEventListener("click",function(e){
+var ripple=document.createElement("span");
+ripple.classList.add("ripple");
+var rect=this.getBoundingClientRect();
+var size=Math.max(rect.width,rect.height);
+ripple.style.width=ripple.style.height=size+"px";
+ripple.style.left=(e.clientX-rect.left-size/2)+"px";
+ripple.style.top=(e.clientY-rect.top-size/2)+"px";
 this.appendChild(ripple);
-setTimeout(() => ripple.remove(), 600);
+setTimeout(function(){ripple.remove();},600);
 });
 });
 
-// ====== HERO PARALLAX ======
-window.addEventListener('scroll', () => {
-const heroContent = document.querySelector('.hero-content');
-if (heroContent) {
-const scroll = window.scrollY;
-heroContent.style.transform = 'translateY(' + scroll * 0.3 + 'px)';
-heroContent.style.opacity = Math.max(0, 1 - scroll / 600);
+window.addEventListener("scroll",function(){
+var hc=document.querySelector(".hero-content");
+if(hc){
+var s=window.scrollY;
+hc.style.transform="translateY("+s*0.3+"px)";
+hc.style.opacity=Math.max(0,1-s/600);
 }
 });
 
