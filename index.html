@@ -88,9 +88,9 @@ img{max-width:100%;display:block}
 .acces-btn{margin-bottom:36px}
 .acces-info{font-family:var(--font-mono);font-size:12px;color:var(--text-sec);line-height:2.1;letter-spacing:.08em;text-transform:uppercase}
 .footer{background:#080B0F;padding:42px 0;border-top:1px solid var(--sep)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
 .footer-logo{font-family:var(--font-title);font-size:18px;letter-spacing:.24em;color:rgba(229,237,244,.42)}
-.footer-copy{font-family:var(--font-mono);font-size:10px;color:rgba(229,237,244,.26);letter-spacing:.09em;text-transform:uppercase}
+.footer-copy{font-family:var(--font-mono);font-size:10px;color:rgba(229,237,244,.26);letter-spacing:.09em;text-transform:uppercase}.footer-copy a{color:rgba(229,237,244,.7)}.footer-copy a:hover{color:var(--accent)}
 .reveal{opacity:1;transform:none}
 .reveal.is-visible{opacity:1;transform:none}
 @media(max-width:1024px){
@@ -140,9 +140,10 @@ img{max-width:100%;display:block}
 <a href="#systemes">SYSTÈMES</a>
 <a href="#projets">PROJETS</a>
 <a href="#approche">APPROCHE</a>
+<a href="cas.html">CAS</a>
 <a href="#contact">CONTACT</a>
 </div>
-<a href="#contact" class="nav-cta">ACCÈS</a>
+<a href="https://calendly.com/notitia-corp/audit-gratuit" class="nav-cta" target="_blank" rel="noopener">RÉSERVER UN AUDIT GRATUIT</a>
 <button class="nav-mobile" id="navToggle" aria-label="Menu">
 <span></span><span></span><span></span>
 </button>
@@ -157,19 +158,19 @@ img{max-width:100%;display:block}
 <p class="hero-eyebrow">CABINET DE SOLUTIONS OPÉRATIONNELLES // BÉZIERS, FRANCE</p>
 <h1 class="hero-title">L'INTELLIGENCE<br>EST UN LEVIER.</h1>
 <p class="hero-sub">Notitia conçoit et déploie des systèmes opérationnels sur-mesure pour les entreprises qui refusent les compromis.</p>
-<a href="#contact" class="btn-primary">DEMANDER UN AUDIT</a>
+<a href="https://calendly.com/notitia-corp/audit-gratuit" class="btn-primary" target="_blank" rel="noopener">RÉSERVER UN AUDIT GRATUIT</a>
 <div class="hero-metrics">
 <div class="hero-metric">
-<span class="num counter" data-target="6">0</span>
+<span class="num">06</span>
 <span class="label">SYSTÈMES DÉPLOYÉS</span>
 </div>
 <div class="hero-metric">
-<span class="num counter" data-target="2">0</span>
-<span class="label">SEMAINES DE LIVRAISON</span>
+<span class="num">02</span>
+<span class="label">SEMAINES (EN MOYENNE)</span>
 </div>
 <div class="hero-metric">
 <span class="num">5×</span>
-<span class="label">MOINS CHER QU'UN ERP</span>
+<span class="label">JUSQU'À 5× PLUS EFFICIENT</span>
 </div>
 </div>
 </div>
@@ -185,7 +186,7 @@ img{max-width:100%;display:block}
 <div>
 <h2 class="manifeste-title">NOUS NE VENDONS PAS DE LOGICIELS.</h2>
 <div class="manifeste-line"></div>
-<p class="manifeste-text">Nous analysons vos processus, identifions ce qui vous coûte du temps et de l'argent, et construisons exactement ce qu'il faut. Pas plus. Pas moins. En deux semaines.</p>
+<p class="manifeste-text">Nous analysons vos processus, identifions ce qui vous coûte du temps et de l'argent, et construisons exactement ce qu'il faut. Pas plus. Pas moins. En 2 semaines en moyenne.</p>
 </div>
 </div>
 </div>
@@ -224,9 +225,9 @@ img{max-width:100%;display:block}
 <p class="project-tag">COLLECTIVITÉS // MAIRIES</p>
 <p class="project-num">SYS-003</p>
 <h3 class="project-title">SITES CONFORMES</h3>
-<p class="project-problem">Sites obsolètes, non-conformes RGAA, risque amende 50k€/an</p>
+<p class="project-problem">Sites obsolètes, non-conformes RGAA, risque amende jusqu'à 50k€/an</p>
 <hr class="project-sep">
-<p class="project-solution">Sites modernes, accessibles, livrés en 2 semaines</p>
+<p class="project-solution">Sites modernes, accessibles, livrés en 2 semaines en moyenne</p>
 <span class="project-badge">WEB & CONFORMITÉ</span>
 </div>
 
@@ -260,6 +261,36 @@ img{max-width:100%;display:block}
 <span class="project-badge">OUTIL SUR-MESURE</span>
 </div>
 
+</div>
+</div>
+</section>
+
+<hr class="section-sep">
+
+<!-- PREUVES -->
+<section class="section" id="preuves">
+<div class="container">
+<h2 class="section-title reveal">PREUVES TERRAIN</h2>
+<p class="section-subtitle reveal">// 02 RÉSULTATS CLIENTS (ANONYMISÉS)</p>
+<div class="projects-grid">
+<div class="project-card reveal">
+<p class="project-tag">CAS A // ARTISANAT</p>
+<p class="project-num">RÉSULTAT</p>
+<h3 class="project-title">DEVIS ACCÉLÉRÉS</h3>
+<p class="project-problem">Avant : devis en 20 minutes, relances manuelles, visibilité faible.</p>
+<hr class="project-sep">
+<p class="project-solution">Après déploiement Notitia : devis en 3 minutes, suivi pipeline centralisé, relances automatiques.</p>
+<span class="project-badge">-17 MIN / DEVIS</span>
+</div>
+<div class="project-card reveal">
+<p class="project-tag">CAS B // DIRECTION OPÉRATIONNELLE</p>
+<p class="project-num">RÉSULTAT</p>
+<h3 class="project-title">PILOTAGE UNIFIÉ</h3>
+<p class="project-problem">Avant : reporting éclaté sur 4 fichiers, consolidation hebdomadaire lente.</p>
+<hr class="project-sep">
+<p class="project-solution">Après déploiement Notitia : reporting unifié, alertes automatiques, arbitrage quotidien.</p>
+<span class="project-badge">-6H / SEMAINE</span>
+</div>
 </div>
 </div>
 </section>
@@ -314,11 +345,11 @@ img{max-width:100%;display:block}
 <div class="advantages-list">
 <div class="advantage-item reveal">
 <div class="advantage-bar"></div>
-<p class="advantage-text">5× moins cher qu'un ERP ou une agence traditionnelle</p>
+<p class="advantage-text">Jusqu'à 5× plus efficient qu'un ERP ou une agence traditionnelle</p>
 </div>
 <div class="advantage-item reveal">
 <div class="advantage-bar"></div>
-<p class="advantage-text">Déploiement en 2 semaines — pas 6 mois</p>
+<p class="advantage-text">Déploiement en 2 semaines en moyenne — pas 6 mois</p>
 </div>
 <div class="advantage-item reveal">
 <div class="advantage-bar"></div>
@@ -330,7 +361,7 @@ img{max-width:100%;display:block}
 </div>
 <div class="advantage-item reveal">
 <div class="advantage-bar"></div>
-<p class="advantage-text">Support local, réactif, humain</p>
+<p class="advantage-text">Support local, réactif, humain avec suivi continu</p>
 </div>
 </div>
 </div>
@@ -342,9 +373,9 @@ img{max-width:100%;display:block}
 <section class="acces" id="contact">
 <div class="container">
 <h2 class="acces-title reveal">UN PROBLÈME À RÉSOUDRE ?</h2>
-<p class="acces-sub reveal">L'audit initial est gratuit. Réponse sous 48h.</p>
+<p class="acces-sub reveal">Audit gratuit de 30 minutes. Créneau confirmé sous 48h ouvrées.</p>
 <div class="acces-btn reveal">
-<a href="mailto:notitiacorp@gmail.com?subject=Demande%20d'audit" class="btn-primary">DEMANDER L'ACCÈS</a>
+<a href="https://calendly.com/notitia-corp/audit-gratuit" class="btn-primary" target="_blank" rel="noopener">RÉSERVER UN AUDIT GRATUIT</a>
 </div>
 <div class="acces-info reveal">
 QUENTIN CONVERT // NOTITIA CORP<br>
@@ -360,6 +391,7 @@ BÉZIERS, OCCITANIE, FRANCE
 <div class="footer-inner">
 <span class="footer-logo">NOTITIA</span>
 <span class="footer-copy">© 2026 NOTITIA CORP — TOUS DROITS RÉSERVÉS</span>
+<span class="footer-copy"><a href="cas.html">CAS</a> // <a href="https://calendly.com/notitia-corp/audit-gratuit" target="_blank" rel="noopener">PRENDRE RDV</a> // <a href="mentions-legales.html">MENTIONS LÉGALES</a> // <a href="politique-confidentialite.html">POLITIQUE DE CONFIDENTIALITÉ</a></span>
 </div>
 </div>
 </footer>
