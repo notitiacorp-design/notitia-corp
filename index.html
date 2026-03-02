@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Notitia Corp â Nous construisons le logiciel que votre mÃ©tier mÃ©rite</title>
+<meta name="description" content="Notitia Corp conÃ§oit des logiciels sur-mesure dopÃ©s Ã  l'IA. Solution BE Pilot et outils personnalisÃ©s livrÃ©s en 2 semaines. Audit gratuit.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#fafafa;--black:#0a0a0a;--accent:#10b981;--accent-dark:#059669;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-600:#4b5563;--gray-700:#374151;--gray-800:#1f2937;--radius:16px;--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+html{scroll-behavior:smooth;font-size:16px}
+body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--black);overflow-x:hidden;line-height:1.6}
+::selection{background:var(--accent);color:#fff}
+a{color:inherit;text-decoration:none}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+
+/* Utility */
+.container{max-width:1200px;margin:0 auto;padding:0 2rem}
+.section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.section-label::before{content:'';display:block;width:2rem;height:2px;background:var(--accent)}
+.section-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;color:var(--black);margin-bottom:1.5rem}
+.section-desc{font-size:1.125rem;line-height:1.7;color:var(--gray-600);max-width:600px}
+.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;transition:all var(--transition);cursor:pointer;border:none;font-family:inherit}
+.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 24px rgba(16,185,129,0.3)}
+.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(16,185,129,0.4)}
+.btn-dark{background:var(--black);color:#fff}
+.btn-dark:hover{background:#1a1a1a;transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--black);border:2px solid var(--gray-200)}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+/* Animations */
+.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal.active{opacity:1;transform:translateY(0)}
+.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-left.active{opacity:1;transform:translateX(0)}
+.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s ease,transform 0.8s ease}
+.reveal-right.active{opacity:1;transform:translateX(0)}
+.stagger-1{transition-delay:0.1s}
+.stagger-2{transition-delay:0.2s}
+.stagger-3{transition-delay:0.3s}
+.stagger-4{transition-delay:0.4s}
+
+/* =========== NAV =========== */
+nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.25rem 0;transition:all var(--transition)}
+nav.scrolled{background:rgba(250,250,250,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-200);padding:0.75rem 0}
+.nav-inner{display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-size:1.25rem;font-weight:900;letter-spacing:-0.03em;display:flex;align-items:center;gap:0.5rem}
+.nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{font-size:0.875rem;font-weight:500;color:var(--gray-600);transition:color var(--transition)}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{display:inline-flex}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hamburger span{display:block;width:24px;height:2px;background:var(--black);transition:all 0.3s}
+
+/* Mobile nav */
+@media(max-width:768px){
+.nav-links{position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100vh;background:var(--bg);flex-direction:column;justify-content:center;align-items:flex-start;padding:3rem;gap:1.5rem;transition:right 0.4s ease;box-shadow:-4px 0 40px rgba(0,0,0,0.1)}
+.nav-links.open{right:0}
+.nav-links a{font-size:1.25rem}
+.hamburger{display:flex;z-index:1001}
+}
+
+/* =========== HERO =========== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 6rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.08) 0%,transparent 70%);pointer-events:none}
+.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.05) 0%,transparent 70%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center}
+.hero-content{position:relative;z-index:2}
+.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:100px;padding:0.5rem 1rem;font-size:0.8rem;font-weight:600;color:var(--accent);margin-bottom:2rem}
+.hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
+.hero h1{font-size:clamp(2.5rem,5.5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;margin-bottom:1.5rem}
+.hero h1 .highlight{color:var(--accent);position:relative}
+.hero p{font-size:1.2rem;line-height:1.7;color:var(--gray-600);max-width:520px;margin-bottom:2.5rem}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
+.hero-visual{position:relative;z-index:1}
+.hero-card{background:#fff;border-radius:24px;padding:2.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.06);border:1px solid var(--gray-200);position:relative;overflow:hidden}
+.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#34d399)}
+.hero-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
+.hero-card-title{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400)}
+.hero-card-status{display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;color:var(--accent)}
+.hero-card-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.metric{text-align:center;padding:1.5rem;background:var(--gray-100);border-radius:16px}
+.metric-value{font-size:2rem;font-weight:900;color:var(--black);letter-spacing:-0.03em}
+.metric-value .accent{color:var(--accent)}
+.metric-label{font-size:0.75rem;font-weight:500;color:var(--gray-500);margin-top:0.25rem}
+.floating-tag{position:absolute;background:#fff;border-radius:12px;padding:0.75rem 1.25rem;box-shadow:0 8px 32px rgba(0,0,0,0.08);font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;animation:float 4s ease-in-out infinite}
+.floating-tag.tag-1{top:-20px;right:-10px;animation-delay:0s}
+.floating-tag.tag-2{bottom:30px;left:-30px;animation-delay:1s}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+.tag-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem}
+.tag-icon.green{background:rgba(16,185,129,0.1);color:var(--accent)}
+.tag-icon.dark{background:rgba(10,10,10,0.08);color:var(--black)}
+
+@media(max-width:968px){
+.hero-grid{grid-template-columns:1fr;text-align:center}
+.hero p{margin-left:auto;margin-right:auto}
+.hero-buttons{justify-content:center}
+.hero-visual{max-width:480px;margin:0 auto}
+.floating-tag.tag-2{left:0}
+}
+
+/* =========== ABOUT =========== */
+.about{padding:8rem 0;position:relative}
+.about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:5rem;align-items:center}
+.about-image{position:relative}
+.about-card{background:var(--black);border-radius:24px;padding:3rem;color:#fff;position:relative;overflow:hidden}
+.about-card::after{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.15),transparent);pointer-events:none}
+.about-card .initials{font-size:4rem;font-weight:900;letter-spacing:-0.05em;color:var(--accent);margin-bottom:1rem;line-height:1}
+.about-card .name{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem}
+.about-card .role{font-size:0.9rem;color:var(--gray-400);margin-bottom:1.5rem}
+.about-card .location{display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray-400)}
+.about-card .location svg{width:16px;height:16px;stroke:var(--accent)}
+.about-detail{display:flex;gap:1rem;margin-top:2rem}
+.about-detail-item{flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:1rem;text-align:center}
+.about-detail-item .num{font-size:1.5rem;font-weight:800;color:var(--accent)}
+.about-detail-item .label{font-size:0.7rem;color:var(--gray-400);margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
+.about-text p{margin-bottom:1.25rem}
+.about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem}
+.about-tag{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);color:var(--accent);padding:0.4rem 1rem;border-radius:100px;font-size:0.8rem;font-weight:600}
+
+@media(max-width:968px){
+.about-grid{grid-template-columns:1fr;gap:3rem}
+.about-image{max-width:400px;margin:0 auto}
+}
+
+/* =========== DIFFERENCE =========== */
+.difference{padding:8rem 0;background:var(--black);color:#fff;position:relative;overflow:hidden}
+.difference::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 60%);pointer-events:none}
+.diff-header{text-align:center;max-width:800px;margin:0 auto 5rem}
+.diff-header .section-title{color:#fff}
+.diff-header .section-desc{color:var(--gray-400);margin:0 auto}
+.diff-quote{font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:400;line-height:1.8;color:var(--gray-400);text-align:center;max-width:750px;margin:0 auto 4rem;font-style:italic;position:relative;padding:0 2rem}
+.diff-quote::before,.diff-quote::after{content:'\201C';position:absolute;font-size:4rem;color:var(--accent);font-style:normal;font-weight:900;line-height:1;opacity:0.3}
+.diff-quote::before{top:-1rem;left:0}
+.diff-quote::after{content:'\201D';bottom:-2rem;right:0}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
+.pillar{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:2.5rem;transition:all var(--transition);position:relative;overflow:hidden}
+.pillar:hover{background:rgba(255,255,255,0.06);border-color:rgba(16,185,129,0.3);transform:translateY(-4px)}
+.pillar-icon{width:56px;height:56px;border-radius:16px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.5rem}
+.pillar h3{font-size:1.25rem;font-weight:800;margin-bottom:0.75rem}
+.pillar p{font-size:0.95rem;line-height:1.7;color:var(--gray-400)}
+
+@media(max-width:768px){
+.pillars{grid-template-columns:1fr}
+}
+
+/* =========== BE PILOT =========== */
+.bepilot{padding:8rem 0;position:relative;overflow:hidden}
+.bepilot-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.bepilot-visual{background:linear-gradient(135deg,var(--black) 0%,#1a1a2e 100%);border-radius:24px;padding:3rem;position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:center}
+.bepilot-visual::before{content:'';position:absolute;top:-30%;right:-30%;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.2),transparent);pointer-events:none}
+.bepilot-visual .logo-text{font-size:3rem;font-weight:900;color:#fff;letter-spacing:-0.04em;margin-bottom:0.5rem;position:relative;z-index:1}
+.bepilot-visual .logo-text span{color:var(--accent)}
+.bepilot-visual .tagline{font-size:1rem;color:var(--gray-400);position:relative;z-index:1;margin-bottom:2rem}
+.bepilot-features{display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1}
+.bepilot-feature{display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.8);font-size:0.9rem}
+.bepilot-feature .check{width:24px;height:24px;border-radius:50%;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.bepilot-feature .check svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2.5}
+.bepilot-content .section-desc{margin-bottom:2rem}
+.bepilot-link{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent);font-weight:700;font-size:1rem;transition:gap var(--transition)}
+.bepilot-link:hover{gap:1rem}
+.bepilot-link svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
+
+@media(max-width:968px){
+.bepilot-grid{grid-template-columns:1fr}
+}
+
+/* =========== WHY US =========== */
+.whyus{padding:8rem 0;background:var(--gray-100)}
+.whyus-header{text-align:center;max-width:600px;margin:0 auto 4rem}
+.whyus-header .section-desc{margin:0 auto}
+.advantages{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
+.advantage{background:#fff;border-radius:20px;padding:2rem;display:flex;align-items:flex-start;gap:1.25rem;transition:all var(--transition);border:1px solid transparent}
+.advantage:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(16,185,129,0.08);transform:translateY(-2px)}
+.advantage-icon{width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
+.advantage h4{font-size:1rem;font-weight:800;margin-bottom:0.35rem}
+.advantage p{font-size:0.9rem;color:var(--gray-500);line-height:1.6}
+
+/* =========== PROCESS =========== */
+.process{padding:8rem 0}
+.process-header{text-align:center;max-width:600px;margin:0 auto 5rem}
+.process-header .section-desc{margin:0 auto}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
+.steps::before{content:'';position:absolute;top:44px;left:calc(12.5% + 1rem);right:calc(12.5% + 1rem);height:2px;background:linear-gradient(90deg,var(--accent),var(--gray-200),var(--gray-200),var(--accent));z-index:0}
+.step{text-align:center;position:relative;z-index:1}
+.step-number{width:88px;height:88px;border-radius:50%;background:#fff;border:2px solid var(--gray-200);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.5rem;font-weight:900;color:var(--accent);transition:all var(--transition);box-shadow:0 4px 20px rgba(0,0,0,0.04)}
+.step:hover .step-number{border-color:var(--accent);background:var(--accent);color:#fff;transform:scale(1.1);box-shadow:0 8px 32px rgba(16,185,129,0.3)}
+.step h4{font-size:1.05rem;font-weight:800;margin-bottom:0.5rem}
+.step p{font-size:0.85rem;color:var(--gray-500);line-height:1.6;max-width:200px;margin:0 auto}
+.step-badge{display:inline-block;margin-top:0.75rem;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);background:rgba(16,185,129,0.08);padding:0.3rem 0.8rem;border-radius:100px}
+
+@media(max-width:768px){
+.steps{grid-template-columns:1fr 1fr;gap:3rem 2rem}
+.steps::before{display:none}
+}
+@media(max-width:480px){
+.steps{grid-template-columns:1fr}
+}
+
+/* =========== CTA =========== */
+.cta-section{padding:8rem 0;background:var(--black);color:#fff;text-align:center;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.08) 0%,transparent 60%);pointer-events:none}
+.cta-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
+.cta-content .section-title{color:#fff;margin-bottom:1rem}
+.cta-content .section-desc{color:var(--gray-400);margin:0 auto 3rem;text-align:center}
+.cta-buttons{display:flex;justify-content:center;gap:1rem;margin-bottom:4rem;flex-wrap:wrap}
+.cta-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:700px;margin:0 auto;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.08)}
+.cta-contact-item{display:flex;flex-direction:column;align-items:center;gap:0.75rem}
+.cta-contact-icon{width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center}
+.cta-contact-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5}
+.cta-contact-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);font-weight:600}
+.cta-contact-value{font-size:0.95rem;font-weight:600}
+.cta-contact-value a{color:#fff;transition:color var(--transition)}
+.cta-contact-value a:hover{color:var(--accent)}
+
+@media(max-width:600px){
+.cta-contact{grid-template-columns:1fr;gap:2rem}
+}
+
+/* =========== FOOTER =========== */
+footer{padding:2rem 0;background:var(--black);border-top:1px solid rgba(255,255,255,0.05)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:var(--gray-500)}
+.footer-inner .nav-logo{color:#fff;font-size:1rem}
+
+@media(max-width:600px){
+.footer-inner{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+<div class="container nav-inner">
+  <a href="#" class="nav-logo"><span class="dot"></span> Notitia Corp</a>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">Qui sommes-nous</a>
+    <a href="#difference">Notre diffÃ©rence</a>
+    <a href="#bepilot">BE Pilot</a>
+    <a href="#process">Process</a>
+    <a href="#contact" class="btn btn-primary btn-sm nav-cta">Audit gratuit</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+<div class="container hero-grid">
+  <div class="hero-content">
+    <div class="hero-badge reveal"><span class="pulse"></span> Logiciels sur-mesure dopÃ©s Ã  l'IA</div>
+    <h1 class="reveal stagger-1">Notitia Corp â<br>Nous construisons <span class="highlight">le logiciel</span> que votre mÃ©tier mÃ©rite</h1>
+    <p class="reveal stagger-2">Intelligence artificielle, automatisation et personnalisation totale. Nous crÃ©ons des outils qui s'adaptent Ã  vos processus â pas l'inverse.</p>
+    <div class="hero-buttons reveal stagger-3">
+      <a href="#contact" class="btn btn-primary">Demander un audit gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+      <a href="#difference" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.15)">DÃ©couvrir notre approche</a>
+    </div>
+  </div>
+  <div class="hero-visual reveal-right">
+    <div class="hero-card">
+      <div class="hero-card-header">
+        <span class="hero-card-title">Dashboard client</span>
+        <span class="hero-card-status">En production</span>
+      </div>
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-value"><span class="accent">2</span> sem</div>
+          <div class="metric-label">DÃ©lai de livraison</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value"><span class="accent">5</span>x</div>
+          <div class="metric-label">Moins cher qu'un ERP</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value"><span class="accent">100</span>%</div>
+          <div class="metric-label">Personnalisable</div>
+        </div>
+        <div class="metric">
+          <div class="metric-value"><span class="accent">48</span>h</div>
+          <div class="metric-label">Prototype livrÃ©</div>
+        </div>
+      </div>
+      <div class="floating-tag tag-1">
+        <span class="tag-icon green">&#9889;</span> IA intÃ©grÃ©e
+      </div>
+      <div class="floating-tag tag-2">
+        <span class="tag-icon dark">&#9881;</span> Sur-mesure
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+<div class="container about-grid">
+  <div class="about-image reveal-left">
+    <div class="about-card">
+      <div class="initials">QC</div>
+      <div class="name">Quentin CONVERT</div>
+      <div class="role">Fondateur &amp; DÃ©veloppeur IA</div>
+      <div class="location">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        BÃ©ziers, France
+      </div>
+      <div class="about-detail">
+        <div class="about-detail-item">
+          <div class="num">IA</div>
+          <div class="label">Expertise</div>
+        </div>
+        <div class="about-detail-item">
+          <div class="num">Auto</div>
+          <div class="label">Automation</div>
+        </div>
+        <div class="about-detail-item">
+          <div class="num">100%</div>
+          <div class="label">Sur-mesure</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="about-text reveal-right">
+    <span class="section-label">Qui sommes-nous</span>
+    <h2 class="section-title">Un dÃ©veloppeur,<br>une obsession : <span style="color:var(--accent)">votre mÃ©tier</span></h2>
+    <p class="section-desc">Notitia Corp est nÃ©e d'un constat simple : les logiciels du marchÃ© ne comprennent pas votre mÃ©tier. Ils vous imposent leur logique au lieu de s'adapter Ã  la vÃ´tre.</p>
+    <p class="section-desc">FondÃ©e par Quentin CONVERT Ã  BÃ©ziers, Notitia Corp combine expertise en intelligence artificielle, automatisation avancÃ©e et une approche 100% personnalisÃ©e pour concevoir des outils logiciels qui Ã©pousent parfaitement vos processus.</p>
+    <p class="section-desc">Chaque solution est pensÃ©e, dÃ©veloppÃ©e et dÃ©ployÃ©e sur-mesure. Pas de template. Pas de compromis. Votre logiciel, pour votre mÃ©tier.</p>
+    <div class="about-tags">
+      <span class="about-tag">Intelligence Artificielle</span>
+      <span class="about-tag">Automatisation</span>
+      <span class="about-tag">Sur-mesure</span>
+      <span class="about-tag">Accompagnement local</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- DIFFERENCE -->
+<section class="difference" id="difference">
+<div class="container">
+  <div class="diff-header reveal">
+    <span class="section-label">Notre diffÃ©rence</span>
+    <h2 class="section-title">Pas un logiciel de plus.<br>Le <span style="color:var(--accent)">vÃ´tre.</span></h2>
+  </div>
+  <div class="diff-quote reveal stagger-1">
+    Contrairement aux logiciels gÃ©nÃ©riques, nous analysons votre mÃ©tier en profondeur et livrons une solution taillÃ©e sur-mesure en 2 semaines.
+  </div>
+  <div class="pillars">
+    <div class="pillar reveal stagger-1">
+      <div class="pillar-icon">&#128269;</div>
+      <h3>Analyse mÃ©tier</h3>
+      <p>Nous plongeons dans vos processus, vos contraintes et vos objectifs. Chaque dÃ©tail compte pour construire l'outil idÃ©al.</p>
+    </div>
+    <div class="pillar reveal stagger-2">
+      <div class="pillar-icon">&#128187;</div>
+      <h3>DÃ©veloppement sur-mesure</h3>
+      <p>ZÃ©ro template, zÃ©ro compromis. Chaque ligne de code est Ã©crite pour rÃ©pondre Ã  votre rÃ©alitÃ© terrain, avec l'IA au coeur du systÃ¨me.</p>
+    </div>
+    <div class="pillar reveal stagger-3">
+      <div class="pillar-icon">&#129309;</div>
+      <h3>Accompagnement local</h3>
+      <p>BasÃ©s Ã  BÃ©ziers, nous restons Ã  vos cÃ´tÃ©s aprÃ¨s la livraison. Un interlocuteur unique, rÃ©actif, qui connaÃ®t votre mÃ©tier.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BE PILOT -->
+<section class="bepilot" id="bepilot">
+<div class="container bepilot-grid">
+  <div class="bepilot-visual reveal-left">
+    <div class="logo-text">BE <span>Pilot</span></div>
+    <div class="tagline">La solution de gestion intelligente pour bureaux d'Ã©tudes</div>
+    <div class="bepilot-features">
+      <div class="bepilot-feature">
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+        Gestion de projets et affaires
+      </div>
+      <div class="bepilot-feature">
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+        Suivi financier automatisÃ©
+      </div>
+      <div class="bepilot-feature">
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+        Intelligence artificielle intÃ©grÃ©e
+      </div>
+      <div class="bepilot-feature">
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+        Tableaux de bord temps rÃ©el
+      </div>
+      <div class="bepilot-feature">
+        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
+        100% adaptÃ© Ã  votre structure
+      </div>
+    </div>
+  </div>
+  <div class="bepilot-content reveal-right">
+    <span class="section-label">Solution phare</span>
+    <h2 class="section-title">BE Pilot â L'outil conÃ§u pour les <span style="color:var(--accent)">bureaux d'Ã©tudes</span></h2>
+    <p class="section-desc">BE Pilot est notre solution de gestion intelligente, pensÃ©e exclusivement pour les bureaux d'Ã©tudes. Suivi de projets, gestion financiÃ¨re, pilotage d'Ã©quipe â le tout dopÃ© Ã  l'IA et personnalisÃ© pour votre structure.</p>
+    <p class="section-desc" style="margin-bottom:2rem">Fini les tableurs Excel et les outils gÃ©nÃ©riques qui freinent votre productivitÃ©. BE Pilot centralise tout ce dont vous avez besoin, dans une interface claire et intuitive.</p>
+    <a href="https://notitiacorp-design.github.io/be-pilot/" target="_blank" class="bepilot-link">
+      DÃ©couvrir BE Pilot
+      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </a>
+  </div>
+</div>
+</section>
+
+<!-- WHY US -->
+<section class="whyus" id="whyus">
+<div class="container">
+  <div class="whyus-header reveal">
+    <span class="section-label">Pourquoi nous choisir</span>
+    <h2 class="section-title">Des avantages <span style="color:var(--accent)">concrets</span></h2>
+    <p class="section-desc">Chaque engagement que nous prenons est mesurable. Pas de promesses vagues â des rÃ©sultats.</p>
+  </div>
+  <div class="advantages">
+    <div class="advantage reveal stagger-1">
+      <div class="advantage-icon">&#127919;</div>
+      <div>
+        <h4>100% personnalisable</h4>
+        <p>Chaque fonctionnalitÃ© est taillÃ©e pour votre mÃ©tier. Aucun compromis, aucune fonctionnalitÃ© inutile.</p>
+      </div>
+    </div>
+    <div class="advantage reveal stagger-2">
+      <div class="advantage-icon">&#9889;</div>
+      <div>
+        <h4>DÃ©ployÃ© en 2 semaines</h4>
+        <p>De l'audit Ã  la mise en production, votre solution est opÃ©rationnelle en 14 jours maximum.</p>
+      </div>
+    </div>
+    <div class="advantage reveal stagger-3">
+      <div class="advantage-icon">&#128176;</div>
+      <div>
+        <h4>CoÃ»t 5x infÃ©rieur aux ERP</h4>
+        <p>Une solution sur-mesure au prix d'un abonnement logiciel, sans les frais cachÃ©s des ERP traditionnels.</p>
+      </div>
+    </div>
+    <div class="advantage reveal stagger-1">
+      <div class="advantage-icon">&#128205;</div>
+      <div>
+        <h4>Support local &amp; rÃ©actif</h4>
+        <p>Un interlocuteur unique basÃ© Ã  BÃ©ziers. Disponible, rÃ©actif, impliquÃ© dans votre rÃ©ussite.</p>
+      </div>
+    </div>
+    <div class="advantage reveal stagger-2">
+      <div class="advantage-icon">&#128640;</div>
+      <div>
+        <h4>Ãvolutif selon vos besoins</h4>
+        <p>Votre activitÃ© Ã©volue ? Votre logiciel aussi. Ajoutez des modules, des fonctionnalitÃ©s, sans limite.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- PROCESS -->
+<section class="process" id="process">
+<div class="container">
+  <div class="process-header reveal">
+    <span class="section-label">Notre process</span>
+    <h2 class="section-title">De l'idÃ©e au logiciel en <span style="color:var(--accent)">4 Ã©tapes</span></h2>
+    <p class="section-desc">Un process rodÃ©, transparent et rapide. Vous savez exactement oÃ¹ en est votre projet Ã  chaque instant.</p>
+  </div>
+  <div class="steps">
+    <div class="step reveal stagger-1">
+      <div class="step-number">01</div>
+      <h4>Audit gratuit</h4>
+      <p>Nous analysons vos besoins, vos processus et vos objectifs sans engagement.</p>
+      <span class="step-badge">Gratuit</span>
+    </div>
+    <div class="step reveal stagger-2">
+      <div class="step-number">02</div>
+      <h4>Prototype en 48h</h4>
+      <p>Vous recevez un prototype fonctionnel pour valider la direction avant le dÃ©veloppement.</p>
+      <span class="step-badge">48 heures</span>
+    </div>
+    <div class="step reveal stagger-3">
+      <div class="step-number">03</div>
+      <h4>DÃ©veloppement</h4>
+      <p>Conception et dÃ©veloppement sur-mesure avec des points d'avancement rÃ©guliers.</p>
+      <span class="step-badge">2 semaines</span>
+    </div>
+    <div class="step reveal stagger-4">
+      <div class="step-number">04</div>
+      <h4>Suivi &amp; Ã©volution</h4>
+      <p>DÃ©ploiement, formation et accompagnement continu. Votre logiciel Ã©volue avec vous.</p>
+      <span class="step-badge">Continu</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+<div class="container cta-content">
+  <span class="section-label reveal" style="justify-content:center">Passez Ã  l'action</span>
+  <h2 class="section-title reveal stagger-1">Demandez votre<br><span style="color:var(--accent)">audit gratuit</span></h2>
+  <p class="section-desc reveal stagger-2">Discutons de votre projet. En 30 minutes, nous identifions comment un logiciel sur-mesure peut transformer votre activitÃ©.</p>
+  <div class="cta-buttons reveal stagger-3">
+    <a href="mailto:notitiacorp@gmail.com" class="btn btn-primary">Envoyer un email <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    <a href="tel:+33671902513" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.15)">Appeler maintenant</a>
+  </div>
+  <div class="cta-contact reveal stagger-4">
+    <div class="cta-contact-item">
+      <div class="cta-contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+      </div>
+      <span class="cta-contact-label">Email</span>
+      <span class="cta-contact-value"><a href="mailto:notitiacorp@gmail.com">notitiacorp@gmail.com</a></span>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      </div>
+      <span class="cta-contact-label">TÃ©lÃ©phone</span>
+      <span class="cta-contact-value"><a href="tel:+33671902513">06 71 90 25 13</a></span>
+    </div>
+    <div class="cta-contact-item">
+      <div class="cta-contact-icon">
+        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      </div>
+      <span class="cta-contact-label">Localisation</span>
+      <span class="cta-contact-value">BÃ©ziers, France</span>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+<div class="container footer-inner">
+  <a href="#" class="nav-logo"><span class="dot"></span> Notitia Corp</a>
+  <span>&copy; 2025 Notitia Corp. Tous droits rÃ©servÃ©s.</span>
+</div>
+</footer>
+
+<script>
+// Navbar scroll
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+
+// Mobile menu
+const hamburger=document.getElementById('hamburger');
+const navLinks=document.getElementById('navLinks');
+hamburger.addEventListener('click',()=>{navLinks.classList.toggle('open');hamburger.classList.toggle('active')});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+
+// Scroll reveal
+const revealElements=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
+const observer=new IntersectionObserver((entries)=>{
+  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('active');observer.unobserve(entry.target)}})
+},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
+revealElements.forEach(el=>observer.observe(el));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
+  anchor.addEventListener('click',function(e){
+    e.preventDefault();
+    const target=document.querySelector(this.getAttribute('href'));
+    if(target){target.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+
+// Counter animation for metrics
+function animateCounters(){
+  document.querySelectorAll('.metric-value').forEach(el=>{
+    const text=el.textContent;
+    const match=text.match(/(\d+)/);
+    if(!match)return;
+    const target=parseInt(match[1]);
+    const suffix=text.replace(match[1],'');
+    let current=0;
+    const increment=target/40;
+    const timer=setInterval(()=>{
+      current+=increment;
+      if(current>=target){current=target;clearInterval(timer)}
+      el.innerHTML=text.replace(match[1],Math.round(current).toString());
+      el.querySelector('.accent')||el.innerHTML;
+    },30);
+  });
+}
+
+// Trigger counter animation when hero card is visible
+const heroCard=document.querySelector('.hero-card');
+if(heroCard){
+  const counterObserver=new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){animateCounters();counterObserver.unobserve(entry.target)}
+    });
+  },{threshold:0.5});
+  counterObserver.observe(heroCard);
+}
+</script>
+</body>
+</html>
