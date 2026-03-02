@@ -3,301 +3,435 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notitia Corp &#8212; Nous r&#233;solvons vos probl&#232;mes. Concr&#232;tement.</title>
-<meta name="description" content="Notitia Corp con&#231;oit des solutions op&#233;rationnelles sur-mesure. Logiciels, automatisation, veille &#8212; livr&#233;s en 2 semaines. Audit gratuit.">
+<title>Notitia Corp â L'intelligence est un levier.</title>
+<meta name="description" content="Notitia Corp conÃ§oit et dÃ©ploie des systÃ¨mes opÃ©rationnels sur-mesure. Logiciels, automatisation, veille â livrÃ©s en 2 semaines. Audit gratuit.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#080808;--white:#ffffff;--border:#1a1a1a;--text:#ffffff;--text-dim:#888888;--accent:#10b981;--accent-hover:#12d490;--container:1100px}
+:root{
+--bg:#0B0F14;--bg-sec:#141920;--bg-tert:#1C2530;
+--text:#E8EDF2;--text-sec:#6B7A8D;--accent:#00D4FF;
+--sep:#1E2A35;--container:1200px;
+--font-title:'Bebas Neue',sans-serif;
+--font-body:'Space Grotesk',sans-serif;
+--font-mono:'IBM Plex Mono',monospace;
+}
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-::selection{background:var(--accent);color:#000}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);overflow-x:hidden;line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
+::selection{background:var(--accent);color:#0B0F14}
 a{color:inherit;text-decoration:none}
-.container{max-width:var(--container);margin:0 auto;padding:0 24px}
-a:hover,button:hover,.card:hover{cursor:pointer}
-nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(8,8,8,0.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--border)}
-.nav-inner{max-width:var(--container);margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-size:18px;font-weight:700;letter-spacing:-0.02em}
-.nav-logo .green{color:var(--accent)}
+img{max-width:100%;display:block}
+.container{max-width:var(--container);margin:0 auto;padding:0 40px}
+.section-sep{border:none;border-top:1px solid var(--sep);margin:0}
+
+/* NAV */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(11,15,20,0.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--sep)}
+.nav-inner{max-width:var(--container);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px}
+.nav-logo{font-family:var(--font-title);font-size:28px;letter-spacing:0.2em;color:#fff;font-weight:400}
 .nav-links{display:flex;align-items:center;gap:32px}
-.nav-links a{font-size:14px;font-weight:400;color:var(--text-dim);transition:color 0.2s ease}
-.nav-links a:hover{color:var(--text)}
-.btn-nav{display:inline-flex;align-items:center;padding:8px 16px;background:var(--accent);color:#000;font-size:13px;font-weight:600;border-radius:6px;border:none;transition:all 0.2s ease;cursor:pointer}
-.btn-nav:hover{background:var(--accent-hover);transform:scale(1.02)}
-.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:120px 24px 80px;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:40%;left:50%;transform:translate(-50%,-50%);width:600px;height:600px;background:radial-gradient(circle,rgba(16,185,129,0.05) 0%,transparent 70%);pointer-events:none}
-.hero-eyebrow{font-size:13px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.15em;margin-bottom:24px}
-.hero h1{font-size:72px;font-weight:800;line-height:1.05;letter-spacing:-0.03em;max-width:800px;margin-bottom:24px}
-.hero h1 .accent{color:var(--accent)}
-.hero-sub{font-size:20px;font-weight:400;color:var(--text-dim);max-width:600px;line-height:1.6;margin-bottom:40px}
-.hero-ctas{display:flex;gap:16px;align-items:center;flex-wrap:wrap;justify-content:center}
-.btn-primary{display:inline-flex;align-items:center;padding:14px 28px;background:var(--accent);color:#000;font-size:15px;font-weight:600;border-radius:8px;border:none;transition:all 0.3s ease;cursor:pointer}
-.btn-primary:hover{background:var(--accent-hover);transform:scale(1.02)}
-.btn-outline{display:inline-flex;align-items:center;padding:14px 28px;background:transparent;color:var(--text);font-size:15px;font-weight:500;border-radius:8px;border:1px solid rgba(255,255,255,0.2);transition:all 0.3s ease}
-.btn-outline:hover{border-color:rgba(255,255,255,0.5)}
-.hero-bottom{width:100%;max-width:var(--container);margin:0 auto;padding-top:60px}
-.hero-line{height:1px;background:var(--border);width:100%}
-.scroll-indicator{display:flex;flex-direction:column;align-items:center;gap:8px;padding-top:32px}
-.scroll-dot{width:6px;height:6px;background:var(--accent);border-radius:50%;animation:bounce 2s infinite}
-@keyframes bounce{0%,100%{transform:translateY(0);opacity:0.4}50%{transform:translateY(8px);opacity:1}}
-section{padding:120px 0}
-.section-sep{height:1px;background:var(--border);max-width:var(--container);margin:0 auto}
-.section-title{font-size:48px;font-weight:700;letter-spacing:-0.02em;margin-bottom:12px}
-.section-sub{font-size:18px;color:var(--text-dim);font-weight:400;margin-bottom:64px}
-.manifeste{background:var(--white);color:#000;text-align:center;padding:120px 24px}
-.manifeste blockquote{font-size:28px;font-weight:500;line-height:1.5;max-width:800px;margin:0 auto 32px;letter-spacing:-0.01em;color:#111}
-.manifeste .signature{font-size:15px;color:#666;font-weight:400}
-.manifeste .signature strong{font-weight:600;color:#333}
-.realisations{background:var(--bg)}
+.nav-links a{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-sec);transition:color 0.3s}
+.nav-links a:hover{color:var(--accent)}
+.nav-cta{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:10px 24px;background:transparent;cursor:pointer;transition:all 0.3s;border-radius:0;text-decoration:none}
+.nav-cta:hover{background:rgba(0,212,255,0.1);box-shadow:0 0 8px var(--accent)}
+.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
+.nav-mobile span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:0.3s}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding-top:72px;overflow:hidden}
+.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--sep) 1px,transparent 1px),linear-gradient(90deg,var(--sep) 1px,transparent 1px);background-size:80px 80px;opacity:0.3;pointer-events:none}
+.hero-scanline{position:absolute;top:0;left:0;width:100%;height:1px;background:var(--accent);box-shadow:0 0 12px var(--accent);opacity:0;pointer-events:none;z-index:2}
+.hero-content{position:relative;z-index:3}
+.hero-eyebrow{font-family:var(--font-mono);font-size:12px;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:32px}
+.hero-title{font-family:var(--font-title);font-size:clamp(48px,8vw,96px);line-height:1;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:32px}
+.hero-sub{font-family:var(--font-body);font-size:18px;color:var(--text);max-width:560px;line-height:1.7;margin-bottom:48px;font-weight:300}
+.btn-primary{display:inline-block;font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:16px 40px;background:transparent;cursor:pointer;transition:all 0.3s;border-radius:0;text-decoration:none}
+.btn-primary:hover{background:rgba(0,212,255,0.1);box-shadow:0 0 8px var(--accent)}
+.hero-metrics{display:flex;gap:0;margin-top:80px;border-top:1px solid var(--sep);padding-top:40px}
+.hero-metric{flex:1;text-align:center;position:relative}
+.hero-metric:not(:last-child){border-right:1px solid var(--sep)}
+.hero-metric .num{font-family:var(--font-mono);font-size:32px;color:#fff;font-weight:600;display:block;margin-bottom:8px}
+.hero-metric .label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--text-sec)}
+
+/* SECTIONS */
+.section{padding:120px 0;position:relative}
+.section-title{font-family:var(--font-title);font-size:clamp(32px,4vw,56px);letter-spacing:0.15em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.section-subtitle{font-family:var(--font-mono);font-size:12px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:64px}
+
+/* MANIFESTE */
+.manifeste-grid{display:grid;grid-template-columns:200px 1fr;gap:80px;align-items:start}
+.manifeste-num{font-family:var(--font-title);font-size:200px;line-height:0.8;color:rgba(232,237,242,0.06)}
+.manifeste-title{font-family:var(--font-title);font-size:clamp(24px,3vw,40px);letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:16px}
+.manifeste-line{width:60px;height:1px;background:var(--accent);margin-bottom:24px}
+.manifeste-text{font-size:17px;color:var(--text);line-height:1.8;max-width:600px;font-weight:300}
+
+/* PROJETS */
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
-.card{border:1px solid var(--border);border-radius:12px;padding:32px;transition:all 0.3s ease;position:relative;overflow:hidden}
-.card:hover{border-color:var(--accent);transform:translateY(-4px)}
-.card-tag{font-size:12px;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
-.card-title{font-size:22px;font-weight:700;margin-bottom:12px;letter-spacing:-0.01em}
-.card-problem{font-size:15px;color:var(--text-dim);margin-bottom:8px;line-height:1.5}
-.card-solution{font-size:15px;color:var(--text);margin-bottom:16px;line-height:1.5}
-.card-footer{display:flex;align-items:center;justify-content:space-between}
-.card-badge{display:inline-flex;padding:4px 12px;border:1px solid var(--accent);border-radius:20px;font-size:12px;font-weight:500;color:var(--accent)}
-.card-arrow{font-size:18px;color:var(--accent);opacity:0;transform:translateX(-8px);transition:all 0.3s ease}
-.card:hover .card-arrow{opacity:1;transform:translateX(0)}
-.approche{background:var(--white);color:#000}
-.approche .section-title{color:#000}
-.approche .section-sub{color:#666}
-.steps-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:48px}
-.step{position:relative}
-.step-number{font-size:80px;font-weight:800;color:rgba(16,185,129,0.1);line-height:1;margin-bottom:-20px;position:relative;z-index:0}
-.step-title{font-size:20px;font-weight:700;margin-bottom:12px;position:relative;z-index:1;color:#000}
-.step-text{font-size:15px;color:#555;line-height:1.6;position:relative;z-index:1}
-.pourquoi{background:var(--bg)}
-.check-list{display:flex;flex-direction:column;gap:20px;max-width:700px}
-.check-item{display:flex;align-items:flex-start;gap:16px;font-size:17px;font-weight:400;line-height:1.5}
-.check-icon{color:var(--accent);flex-shrink:0;margin-top:2px}
-.check-icon svg{width:20px;height:20px}
-.cta-final{background:var(--bg);text-align:center;padding:120px 24px}
-.cta-final h2{font-size:48px;font-weight:700;letter-spacing:-0.02em;margin-bottom:16px}
-.cta-final .sub{font-size:18px;color:var(--text-dim);margin-bottom:40px}
-.btn-large{display:inline-flex;align-items:center;padding:18px 40px;background:var(--accent);color:#000;font-size:17px;font-weight:700;border-radius:10px;border:none;transition:all 0.3s ease;cursor:pointer}
-.btn-large:hover{background:var(--accent-hover);transform:scale(1.02)}
-.cta-contact{margin-top:32px;font-size:14px;color:var(--text-dim);line-height:1.8}
-footer{background:#050505;border-top:1px solid var(--border);padding:40px 24px}
-.footer-inner{max-width:var(--container);margin:0 auto;display:flex;align-items:center;justify-content:space-between}
-.footer-logo{font-size:16px;font-weight:700}
-.footer-logo .green{color:var(--accent)}
-.footer-copy{font-size:13px;color:var(--text-dim)}
-.footer-links{display:flex;gap:24px}
-.footer-links a{font-size:13px;color:var(--text-dim);transition:color 0.2s ease}
-.footer-links a:hover{color:var(--text)}
-.reveal{opacity:0;transform:translateY(30px)}
-.nav-mobile-toggle{display:none;background:none;border:none;color:var(--text);font-size:24px;cursor:pointer;padding:4px;line-height:1}
+.project-card{background:var(--bg-sec);border:1px solid var(--sep);padding:40px;transition:all 0.3s;border-radius:0}
+.project-card:hover{border-color:var(--accent);transform:translateY(-2px)}
+.project-tag{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.project-num{font-family:var(--font-mono);font-size:12px;color:rgba(232,237,242,0.2);margin-bottom:16px}
+.project-title{font-family:var(--font-title);font-size:28px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:12px}
+.project-problem{font-size:14px;color:var(--text-sec);line-height:1.6;margin-bottom:16px}
+.project-sep{border:none;border-top:1px solid var(--sep);margin:16px 0}
+.project-solution{font-size:14px;color:var(--text);line-height:1.6;margin-bottom:20px;font-weight:300}
+.project-badge{display:inline-block;font-family:var(--font-mono);font-size:11px;letter-spacing:0.08em;text-transform:uppercase;color:var(--accent);border:1px solid var(--accent);padding:6px 16px;border-radius:0}
+
+/* PROTOCOLE */
+.protocol-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0}
+.protocol-phase{padding:40px 32px;position:relative}
+.protocol-phase:not(:last-child){border-right:1px solid var(--sep)}
+.protocol-bg-num{font-family:var(--font-title);font-size:120px;line-height:1;color:rgba(232,237,242,0.04);position:absolute;top:20px;left:20px;pointer-events:none}
+.protocol-label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--accent);margin-bottom:16px;position:relative}
+.protocol-name{font-family:var(--font-title);font-size:24px;letter-spacing:0.1em;text-transform:uppercase;color:#fff;margin-bottom:16px;position:relative}
+.protocol-desc{font-size:14px;color:var(--text-sec);line-height:1.7;position:relative;font-weight:300}
+
+/* AVANTAGES */
+.advantages-list{display:flex;flex-direction:column;gap:0}
+.advantage-item{display:flex;align-items:center;padding:24px 0;border-bottom:1px solid var(--sep)}
+.advantage-item:first-child{border-top:1px solid var(--sep)}
+.advantage-bar{width:3px;height:40px;background:var(--accent);margin-right:32px;flex-shrink:0}
+.advantage-text{font-size:17px;color:var(--text);font-weight:400}
+
+/* ACCES */
+.acces{text-align:center;padding:120px 0}
+.acces-title{font-family:var(--font-title);font-size:clamp(36px,5vw,64px);letter-spacing:0.12em;text-transform:uppercase;color:#fff;margin-bottom:20px}
+.acces-sub{font-size:17px;color:var(--text);margin-bottom:48px;font-weight:300}
+.acces-btn{margin-bottom:64px}
+.acces-info{font-family:var(--font-mono);font-size:13px;color:var(--text-sec);line-height:2.2;letter-spacing:0.05em}
+
+/* FOOTER */
+.footer{background:#080B0F;padding:48px 0;border-top:1px solid var(--sep)}
+.footer-inner{display:flex;align-items:center;justify-content:space-between}
+.footer-logo{font-family:var(--font-title);font-size:18px;letter-spacing:0.2em;color:rgba(232,237,242,0.3)}
+.footer-copy{font-family:var(--font-mono);font-size:11px;color:rgba(232,237,242,0.2);letter-spacing:0.05em}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(20px);transition:opacity 0.8s cubic-bezier(0.33,1,0.68,1),transform 0.8s cubic-bezier(0.33,1,0.68,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+
+/* RESPONSIVE */
+@media(max-width:1024px){
+.protocol-grid{grid-template-columns:repeat(2,1fr)}
+.protocol-phase:nth-child(2){border-right:none}
+.protocol-phase:nth-child(3),.protocol-phase:nth-child(4){border-top:1px solid var(--sep)}
+.protocol-phase:nth-child(4){border-right:none}
+}
 @media(max-width:768px){
-.hero h1{font-size:40px}
-.hero-sub{font-size:17px}
+.container{padding:0 24px}
+.nav-inner{padding:0 24px}
+.section{padding:80px 0}
+.manifeste-grid{grid-template-columns:1fr;gap:24px}
+.manifeste-num{font-size:120px}
 .projects-grid{grid-template-columns:1fr}
-.steps-grid{grid-template-columns:1fr;gap:40px}
-.nav-mobile-toggle{display:block}
-.nav-links{display:none;position:absolute;top:64px;left:0;right:0;background:rgba(8,8,8,0.95);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);flex-direction:column;padding:24px;gap:20px;border-bottom:1px solid var(--border)}
-.nav-links.open{display:flex}
-.section-title{font-size:36px}
-.manifeste blockquote{font-size:22px}
-.cta-final h2{font-size:36px}
-.step-number{font-size:60px}
-.hero{padding:100px 24px 60px}
+.protocol-grid{grid-template-columns:1fr}
+.protocol-phase{border-right:none !important;border-bottom:1px solid var(--sep)}
+.protocol-phase:last-child{border-bottom:none}
+.hero-metrics{flex-direction:column;gap:24px}
+.hero-metric{padding:16px 0}
+.hero-metric:not(:last-child){border-right:none;border-bottom:1px solid var(--sep);padding-bottom:24px}
+.nav-links{display:none;position:absolute;top:72px;left:0;width:100%;background:rgba(11,15,20,0.98);flex-direction:column;padding:24px;border-bottom:1px solid var(--sep)}
+.nav-links.active{display:flex}
+.nav-mobile{display:block}
 .footer-inner{flex-direction:column;gap:16px;text-align:center}
-.footer-links{justify-content:center}
+.hero-title{margin-bottom:24px}
+.hero-sub{font-size:16px}
+.acces{padding:80px 0}
 }
 @media(max-width:480px){
-.hero h1{font-size:32px}
-.hero-ctas{flex-direction:column;width:100%}
-.btn-primary,.btn-outline,.btn-large{width:100%;justify-content:center}
-.manifeste blockquote{font-size:19px}
-.card{padding:24px}
+.container{padding:0 16px}
+.nav-inner{padding:0 16px}
+.project-card{padding:28px 20px}
+.protocol-phase{padding:32px 20px}
+.hero{padding-top:72px;padding-bottom:40px}
 }
 </style>
 </head>
 <body>
-<nav>
+
+<!-- NAVIGATION -->
+<nav class="nav">
 <div class="nav-inner">
-<a href="#" class="nav-logo"><span class="green">N&#183;</span>otitia Corp</a>
-<button class="nav-mobile-toggle" aria-label="Menu" onclick="document.querySelector('.nav-links').classList.toggle('open');">&#9776;</button>
-<div class="nav-links">
-<a href="#realisations">Projets</a>
-<a href="#approche">Approche</a>
-<a href="#contact">Contact</a>
-<a href="#contact" class="btn-nav">Audit gratuit</a>
+<a href="#" class="nav-logo">NOTITIA</a>
+<div class="nav-links" id="navLinks">
+<a href="#systemes">SYSTÃMES</a>
+<a href="#projets">PROJETS</a>
+<a href="#approche">APPROCHE</a>
+<a href="#contact">CONTACT</a>
 </div>
+<a href="#contact" class="nav-cta">ACCÃS</a>
+<button class="nav-mobile" id="navToggle" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
 </div>
 </nav>
-<section class="hero" id="hero">
-<div class="reveal">
-<p class="hero-eyebrow">Cabinet de solutions op&#233;rationnelles</p>
-<h1>Nous r&#233;solvons vos<br><span class="accent">probl&#232;mes</span>. Concr&#232;tement.</h1>
-<p class="hero-sub">Chaque entreprise a ses blocages &#8212; processus lents, outils inadapt&#233;s, t&#226;ches r&#233;p&#233;titives. Nous les identifions et d&#233;ployons la solution en 2&#160;semaines.</p>
-<div class="hero-ctas">
-<a href="#realisations" class="btn-primary">Voir nos r&#233;alisations</a>
-<a href="#contact" class="btn-outline">Nous contacter</a>
+
+<!-- HERO -->
+<section class="hero" id="top">
+<div class="hero-grid"></div>
+<div class="hero-scanline" id="scanline"></div>
+<div class="container hero-content">
+<p class="hero-eyebrow">CABINET DE SOLUTIONS OPÃRATIONNELLES // BÃZIERS, FRANCE</p>
+<h1 class="hero-title">L'INTELLIGENCE<br>EST UN LEVIER.</h1>
+<p class="hero-sub">Notitia conÃ§oit et dÃ©ploie des systÃ¨mes opÃ©rationnels sur-mesure pour les entreprises qui refusent les compromis.</p>
+<a href="#contact" class="btn-primary">DEMANDER UN AUDIT</a>
+<div class="hero-metrics">
+<div class="hero-metric">
+<span class="num counter" data-target="6">0</span>
+<span class="label">SYSTÃMES DÃPLOYÃS</span>
+</div>
+<div class="hero-metric">
+<span class="num counter" data-target="2">0</span>
+<span class="label">SEMAINES DE LIVRAISON</span>
+</div>
+<div class="hero-metric">
+<span class="num">5Ã</span>
+<span class="label">MOINS CHER QU'UN ERP</span>
 </div>
 </div>
-<div style="flex-grow:1"></div>
-<div class="hero-bottom">
-<div class="hero-line"></div>
-<div class="scroll-indicator"><div class="scroll-dot"></div></div>
 </div>
 </section>
-<section class="manifeste">
-<div class="container reveal">
-<blockquote>&#171;Les logiciels g&#233;n&#233;riques co&#251;tent cher et ne r&#233;solvent rien de pr&#233;cis. Nous faisons l&#8217;inverse &#8212; nous comprenons votre m&#233;tier, puis nous construisons exactement ce qu&#8217;il vous faut.&#187;</blockquote>
-<p class="signature"><strong>Quentin CONVERT</strong> &#8212; Notitia Corp</p>
-</div>
-</section>
-<div class="section-sep"></div>
-<section class="realisations" id="realisations">
+
+<hr class="section-sep">
+
+<!-- MANIFESTE -->
+<section class="section" id="systemes">
 <div class="container">
-<div class="reveal">
-<h2 class="section-title">Ce que nous avons construit</h2>
-<p class="section-sub">6 solutions d&#233;ploy&#233;es. 6 probl&#232;mes r&#233;solus.</p>
+<div class="manifeste-grid reveal">
+<div class="manifeste-num">01</div>
+<div>
+<h2 class="manifeste-title">NOUS NE VENDONS PAS DE LOGICIELS.</h2>
+<div class="manifeste-line"></div>
+<p class="manifeste-text">Nous analysons vos processus, identifions ce qui vous coÃ»te du temps et de l'argent, et construisons exactement ce qu'il faut. Pas plus. Pas moins. En deux semaines.</p>
 </div>
+</div>
+</div>
+</section>
+
+<hr class="section-sep">
+
+<!-- PROJETS -->
+<section class="section" id="projets">
+<div class="container">
+<h2 class="section-title reveal">SYSTÃMES DÃPLOYÃS</h2>
+<p class="section-subtitle reveal">// 06 RÃALISATIONS OPÃRATIONNELLES</p>
 <div class="projects-grid">
-<div class="card reveal">
-<p class="card-tag">BTP &#183; Bureaux d&#8217;&#201;tudes</p>
-<h3 class="card-title">BE Pilot</h3>
-<p class="card-problem">Chantiers pilot&#233;s sur Excel, aucune vision consolid&#233;e budgets/d&#233;lais/&#233;quipes</p>
-<p class="card-solution">App de pilotage compl&#232;te : planning, financier, SAV, journal, documents</p>
-<div class="card-footer"><span class="card-badge">Logiciel sur-mesure</span><span class="card-arrow">&#8594;</span></div>
+
+<div class="project-card reveal">
+<p class="project-tag">BTP // BUREAUX D'ÃTUDES</p>
+<p class="project-num">SYS-001</p>
+<h3 class="project-title">BE PILOT</h3>
+<p class="project-problem">Chantiers pilotÃ©s sur Excel, aucune vision consolidÃ©e</p>
+<hr class="project-sep">
+<p class="project-solution">App pilotage complÃ¨te : planning, financier, SAV, documents</p>
+<span class="project-badge">LOGICIEL SUR-MESURE</span>
 </div>
-<div class="card reveal">
-<p class="card-tag">Paysagistes &#183; Artisans</p>
-<h3 class="card-title">TerraCore Pro</h3>
-<p class="card-problem">Devis papier, planning &#224; la main, facturation manuelle, z&#233;ro suivi client</p>
-<p class="card-solution">SaaS sectoriel complet : devis, planning m&#233;t&#233;o, facturation, contrats maintenance</p>
-<div class="card-footer"><span class="card-badge">SaaS sectoriel</span><span class="card-arrow">&#8594;</span></div>
+
+<div class="project-card reveal">
+<p class="project-tag">PAYSAGISTES // ARTISANS</p>
+<p class="project-num">SYS-002</p>
+<h3 class="project-title">TERRACORE PRO</h3>
+<p class="project-problem">Devis papier, planning manuel, facturation dispersÃ©e</p>
+<hr class="project-sep">
+<p class="project-solution">SaaS sectoriel : devis, planning mÃ©tÃ©o, facturation, maintenance</p>
+<span class="project-badge">SAAS SECTORIEL</span>
 </div>
-<div class="card reveal">
-<p class="card-tag">Collectivit&#233;s &#183; Mairies</p>
-<h3 class="card-title">Sites Mairie Conformes</h3>
-<p class="card-problem">Sites obsol&#232;tes, non-conformes RGAA, risque d&#8217;amende 50k&#8364;/an</p>
-<p class="card-solution">Sites modernes, accessibles, livr&#233;s en 2&#160;semaines, maintenance incluse</p>
-<div class="card-footer"><span class="card-badge">Web &amp; Conformit&#233;</span><span class="card-arrow">&#8594;</span></div>
+
+<div class="project-card reveal">
+<p class="project-tag">COLLECTIVITÃS // MAIRIES</p>
+<p class="project-num">SYS-003</p>
+<h3 class="project-title">SITES CONFORMES</h3>
+<p class="project-problem">Sites obsolÃ¨tes, non-conformes RGAA, risque amende 50kâ¬/an</p>
+<hr class="project-sep">
+<p class="project-solution">Sites modernes, accessibles, livrÃ©s en 2 semaines</p>
+<span class="project-badge">WEB & CONFORMITÃ</span>
 </div>
-<div class="card reveal">
-<p class="card-tag">PME &#183; Directions Juridiques</p>
-<h3 class="card-title">Agent de Veille</h3>
-<p class="card-problem">Veilleur salari&#233; 35k&#8364;/an pour surveiller des sources manuellement</p>
-<p class="card-solution">Surveillance 24/7, rapports automatiques, alertes temps r&#233;el &#8212; 500&#8364;/mois</p>
-<div class="card-footer"><span class="card-badge">Automatisation</span><span class="card-arrow">&#8594;</span></div>
+
+<div class="project-card reveal">
+<p class="project-tag">PME // DIRECTIONS JURIDIQUES</p>
+<p class="project-num">SYS-004</p>
+<h3 class="project-title">AGENT DE VEILLE</h3>
+<p class="project-problem">Veilleur salariÃ© 35kâ¬/an pour surveiller des sources manuellement</p>
+<hr class="project-sep">
+<p class="project-solution">Surveillance 24/7, rapports automatiques, alertes temps rÃ©el</p>
+<span class="project-badge">AUTOMATISATION</span>
 </div>
-<div class="card reveal">
-<p class="card-tag">Immobilier &#183; Investissement</p>
-<h3 class="card-title">D&#233;tection BODACC</h3>
-<p class="card-problem">Opportunit&#233;s SCI en liquidation manqu&#233;es faute de temps et de veille</p>
-<p class="card-solution">Scan quotidien automatis&#233;, alertes et emails personnalis&#233;s par d&#233;partement</p>
-<div class="card-footer"><span class="card-badge">Veille automatis&#233;e</span><span class="card-arrow">&#8594;</span></div>
+
+<div class="project-card reveal">
+<p class="project-tag">IMMOBILIER // INVESTISSEMENT</p>
+<p class="project-num">SYS-005</p>
+<h3 class="project-title">DÃTECTION BODACC</h3>
+<p class="project-problem">OpportunitÃ©s SCI en liquidation manquÃ©es faute de veille</p>
+<hr class="project-sep">
+<p class="project-solution">Scan quotidien automatisÃ© sur 13 dÃ©partements, alertes ciblÃ©es</p>
+<span class="project-badge">VEILLE AUTOMATISÃE</span>
 </div>
-<div class="card reveal">
-<p class="card-tag">Finance &#183; Gestion Patrimoniale</p>
-<h3 class="card-title">Dashboard Financier</h3>
-<p class="card-problem">Aucune visibilit&#233; consolid&#233;e sur finances, investissements et &#233;pargne</p>
-<p class="card-solution">App interactive avec conseiller IA, suivi temps r&#233;el, recommandations</p>
-<div class="card-footer"><span class="card-badge">Outil sur-mesure</span><span class="card-arrow">&#8594;</span></div>
+
+<div class="project-card reveal">
+<p class="project-tag">FINANCE // PATRIMOINE</p>
+<p class="project-num">SYS-006</p>
+<h3 class="project-title">DASHBOARD FINANCIER</h3>
+<p class="project-problem">Aucune visibilitÃ© consolidÃ©e sur finances et investissements</p>
+<hr class="project-sep">
+<p class="project-solution">App interactive avec analyse IA, suivi temps rÃ©el, recommandations</p>
+<span class="project-badge">OUTIL SUR-MESURE</span>
 </div>
+
 </div>
 </div>
 </section>
-<div class="section-sep"></div>
-<section class="approche" id="approche">
+
+<hr class="section-sep">
+
+<!-- PROTOCOLE -->
+<section class="section" id="approche">
 <div class="container">
-<div class="reveal">
-<h2 class="section-title">Notre m&#233;thode</h2>
-<p class="section-sub">Trois &#233;tapes. Pas de surprise.</p>
+<h2 class="section-title reveal">PROTOCOLE D'INTERVENTION</h2>
+<p class="section-subtitle reveal">// 04 PHASES</p>
+<div class="protocol-grid">
+
+<div class="protocol-phase reveal">
+<div class="protocol-bg-num">01</div>
+<p class="protocol-label">PHASE 01</p>
+<h3 class="protocol-name">AUDIT</h3>
+<p class="protocol-desc">Analyse de vos processus en 48h. Identification prÃ©cise des pertes opÃ©rationnelles.</p>
 </div>
-<div class="steps-grid">
-<div class="step reveal">
-<div class="step-number">01</div>
-<h3 class="step-title">Comprendre</h3>
-<p class="step-text">Audit gratuit de vos processus. On identifie pr&#233;cis&#233;ment o&#249; vous perdez du temps et de l&#8217;argent. 48h de r&#233;ponse.</p>
+
+<div class="protocol-phase reveal">
+<div class="protocol-bg-num">02</div>
+<p class="protocol-label">PHASE 02</p>
+<h3 class="protocol-name">CONCEPTION</h3>
+<p class="protocol-desc">Architecture de la solution. Validation avec vous avant dÃ©veloppement.</p>
 </div>
-<div class="step reveal">
-<div class="step-number">02</div>
-<h3 class="step-title">Construire</h3>
-<p class="step-text">Pas de logiciel g&#233;n&#233;rique. Une solution taill&#233;e pour votre m&#233;tier, votre &#233;quipe, vos contraintes r&#233;elles.</p>
+
+<div class="protocol-phase reveal">
+<div class="protocol-bg-num">03</div>
+<p class="protocol-label">PHASE 03</p>
+<h3 class="protocol-name">DÃPLOIEMENT</h3>
+<p class="protocol-desc">Livraison en 2 semaines. Formation Ã©quipe en 1 journÃ©e.</p>
 </div>
-<div class="step reveal">
-<div class="step-number">03</div>
-<h3 class="step-title">Livrer</h3>
-<p class="step-text">Prototype valid&#233; avec vous. Solution op&#233;rationnelle en 2&#160;semaines. Pas de projet fleuve de 6&#160;mois.</p>
+
+<div class="protocol-phase reveal">
+<div class="protocol-bg-num">04</div>
+<p class="protocol-label">PHASE 04</p>
+<h3 class="protocol-name">SUIVI</h3>
+<p class="protocol-desc">Support continu. Ãvolutions selon vos besoins terrain.</p>
 </div>
+
 </div>
 </div>
 </section>
-<div class="section-sep"></div>
-<section class="pourquoi" id="pourquoi">
+
+<hr class="section-sep">
+
+<!-- AVANTAGES -->
+<section class="section">
 <div class="container">
-<div class="reveal">
-<h2 class="section-title">Pourquoi nous choisir</h2>
-<p class="section-sub" style="margin-bottom:48px">Ce qui fait la diff&#233;rence.</p>
+<h2 class="section-title reveal">SUPÃRIORITÃ OPÃRATIONNELLE</h2>
+<div class="advantages-list">
+<div class="advantage-item reveal">
+<div class="advantage-bar"></div>
+<p class="advantage-text">5Ã moins cher qu'un ERP ou une agence traditionnelle</p>
 </div>
-<div class="check-list">
-<div class="check-item reveal">
-<span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-<span>5x moins cher qu&#8217;un ERP ou une agence traditionnelle</span>
+<div class="advantage-item reveal">
+<div class="advantage-bar"></div>
+<p class="advantage-text">DÃ©ploiement en 2 semaines â pas 6 mois</p>
 </div>
-<div class="check-item reveal">
-<span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-<span>D&#233;ploy&#233; en 2&#160;semaines &#8212; pas 6&#160;mois</span>
+<div class="advantage-item reveal">
+<div class="advantage-bar"></div>
+<p class="advantage-text">100% sur-mesure â aucun compromis sur votre mÃ©tier</p>
 </div>
-<div class="check-item reveal">
-<span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-<span>100% personnalis&#233; &#8212; aucun compromis sur votre m&#233;tier</span>
+<div class="advantage-item reveal">
+<div class="advantage-bar"></div>
+<p class="advantage-text">Interlocuteur unique de A Ã  Z</p>
 </div>
-<div class="check-item reveal">
-<span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-<span>Un interlocuteur unique de A &#224; Z</span>
-</div>
-<div class="check-item reveal">
-<span class="check-icon"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg></span>
-<span>Support local, r&#233;actif, humain &#8212; bas&#233; &#224; B&#233;ziers</span>
+<div class="advantage-item reveal">
+<div class="advantage-bar"></div>
+<p class="advantage-text">Support local, rÃ©actif, humain</p>
 </div>
 </div>
 </div>
 </section>
-<div class="section-sep"></div>
-<section class="cta-final" id="contact">
+
+<hr class="section-sep">
+
+<!-- ACCES -->
+<section class="acces" id="contact">
 <div class="container">
-<div class="reveal">
-<h2>Un probl&#232;me &#224; r&#233;soudre&#8239;?</h2>
-<p class="sub">D&#233;crivez-nous votre situation. L&#8217;audit est gratuit.</p>
-<a href="mailto:notitiacorp@gmail.com" class="btn-large">Prendre contact</a>
-<p class="cta-contact">notitiacorp@gmail.com &#183; 06 71 90 25 13 &#183; B&#233;ziers, Occitanie</p>
+<h2 class="acces-title reveal">UN PROBLÃME Ã RÃSOUDRE ?</h2>
+<p class="acces-sub reveal">L'audit initial est gratuit. RÃ©ponse sous 48h.</p>
+<div class="acces-btn reveal">
+<a href="mailto:notitiacorp@gmail.com?subject=Demande%20d'audit" class="btn-primary">DEMANDER L'ACCÃS</a>
+</div>
+<div class="acces-info reveal">
+QUENTIN CONVERT // NOTITIA CORP<br>
+notitiacorp@gmail.com // 06 71 90 25 13<br>
+BÃZIERS, OCCITANIE, FRANCE
 </div>
 </div>
 </section>
-<footer>
+
+<!-- FOOTER -->
+<footer class="footer">
+<div class="container">
 <div class="footer-inner">
-<div class="footer-logo"><span class="green">N&#183;</span>otitia Corp</div>
-<p class="footer-copy">&#169; 2026 Notitia Corp. Tous droits r&#233;serv&#233;s.</p>
-<div class="footer-links">
-<a href="#realisations">Projets</a>
-<a href="#approche">Approche</a>
-<a href="mailto:notitiacorp@gmail.com">Contact</a>
+<span class="footer-logo">NOTITIA</span>
+<span class="footer-copy">Â© 2026 NOTITIA CORP â TOUS DROITS RÃSERVÃS</span>
 </div>
 </div>
 </footer>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+
+<!-- GSAP -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-document.addEventListener('DOMContentLoaded',function(){
+(function(){
+"use strict";
+
+/* Mobile nav */
+var navToggle=document.getElementById("navToggle");
+var navLinks=document.getElementById("navLinks");
+if(navToggle){navToggle.addEventListener("click",function(){navLinks.classList.toggle("active")})}
+navLinks.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){navLinks.classList.remove("active")})});
+
+/* Scanline */
+var scanline=document.getElementById("scanline");
+if(scanline){
+gsap.fromTo(scanline,{opacity:1,top:"0%"},{top:"100%",duration:3,ease:"none",delay:0.5,onComplete:function(){gsap.to(scanline,{opacity:0,duration:0.5})}});
+}
+
+/* Scroll reveals */
 gsap.registerPlugin(ScrollTrigger);
-var reveals=document.querySelectorAll('.reveal');
-reveals.forEach(function(el){
-gsap.to(el,{opacity:1,y:0,duration:0.8,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 85%',once:true}});
+document.querySelectorAll(".reveal").forEach(function(el){
+gsap.fromTo(el,{opacity:0,y:20},{opacity:1,y:0,duration:0.8,ease:"power2.out",scrollTrigger:{trigger:el,start:"top 88%",once:true}});
 });
-var grids=document.querySelectorAll('.projects-grid,.steps-grid');
-grids.forEach(function(grid){
-var children=grid.querySelectorAll('.reveal');
-gsap.to(children,{opacity:1,y:0,duration:0.8,ease:'power3.out',stagger:0.1,scrollTrigger:{trigger:grid,start:'top 85%',once:true}});
+
+/* Counters */
+document.querySelectorAll(".counter").forEach(function(el){
+var target=parseInt(el.getAttribute("data-target"),10);
+if(isNaN(target))return;
+ScrollTrigger.create({trigger:el,start:"top 90%",once:true,onEnter:function(){
+var obj={val:0};
+gsap.to(obj,{val:target,duration:2,ease:"power2.out",onUpdate:function(){
+el.textContent=String(Math.round(obj.val)).padStart(2,"0");
+}});
+}});
 });
+
+/* Fallback: reveal all if JS loaded late */
+window.addEventListener("load",function(){
+setTimeout(function(){
+document.querySelectorAll(".reveal").forEach(function(el){
+if(!el.classList.contains("is-visible")){
+var rect=el.getBoundingClientRect();
+if(rect.top<window.innerHeight){el.style.opacity="1";el.style.transform="translateY(0)"}
+}
 });
+},100);
+});
+
+})();
 </script>
 </body>
 </html>
