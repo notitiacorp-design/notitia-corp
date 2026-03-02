@@ -5,605 +5,1343 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Notitia Corp â Nous construisons le logiciel que votre mÃ©tier mÃ©rite</title>
 <meta name="description" content="Notitia Corp conÃ§oit des logiciels sur-mesure dopÃ©s Ã  l'IA. Solution BE Pilot et outils personnalisÃ©s livrÃ©s en 2 semaines. Audit gratuit.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-:root{--bg:#fafafa;--black:#0a0a0a;--accent:#10b981;--accent-dark:#059669;--gray-100:#f3f4f6;--gray-200:#e5e7eb;--gray-400:#9ca3af;--gray-500:#6b7280;--gray-600:#4b5563;--gray-700:#374151;--gray-800:#1f2937;--radius:16px;--transition:0.4s cubic-bezier(0.25,0.46,0.45,0.94)}
+
+:root{
+--bg:#030308;
+--surface:#0a0a12;
+--border:#1a1a2e;
+--text:#e8e8f0;
+--text-dim:#8888a0;
+--blue:#00aaff;
+--green:#00e88a;
+--purple:#8844ff;
+--glow-blue:rgba(0,170,255,0.15);
+--glow-green:rgba(0,232,138,0.15);
+}
+
 html{scroll-behavior:smooth;font-size:16px}
-body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--black);overflow-x:hidden;line-height:1.6}
-::selection{background:var(--accent);color:#fff}
-a{color:inherit;text-decoration:none}
+body{
+font-family:'Inter',system-ui,-apple-system,sans-serif;
+background:var(--bg);
+color:var(--text);
+overflow-x:hidden;
+line-height:1.6;
+cursor:none;
+}
 
-/* Scrollbar */
-::-webkit-scrollbar{width:6px}
-::-webkit-scrollbar-track{background:var(--bg)}
-::-webkit-scrollbar-thumb{background:var(--accent);border-radius:3px}
+::selection{background:var(--blue);color:#fff}
 
-/* Utility */
-.container{max-width:1200px;margin:0 auto;padding:0 2rem}
-.section-label{display:inline-flex;align-items:center;gap:0.5rem;font-size:0.75rem;font-weight:700;letter-spacing:0.15em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
-.section-label::before{content:'';display:block;width:2rem;height:2px;background:var(--accent)}
-.section-title{font-size:clamp(2rem,5vw,3.5rem);font-weight:900;line-height:1.08;letter-spacing:-0.03em;color:var(--black);margin-bottom:1.5rem}
-.section-desc{font-size:1.125rem;line-height:1.7;color:var(--gray-600);max-width:600px}
-.btn{display:inline-flex;align-items:center;gap:0.5rem;padding:1rem 2rem;border-radius:100px;font-weight:700;font-size:0.95rem;transition:all var(--transition);cursor:pointer;border:none;font-family:inherit}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 4px 24px rgba(16,185,129,0.3)}
-.btn-primary:hover{background:var(--accent-dark);transform:translateY(-2px);box-shadow:0 8px 32px rgba(16,185,129,0.4)}
-.btn-dark{background:var(--black);color:#fff}
-.btn-dark:hover{background:#1a1a1a;transform:translateY(-2px)}
-.btn-outline{background:transparent;color:var(--black);border:2px solid var(--gray-200)}
-.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+/* Noise grain overlay */
+body::before{
+content:'';
+position:fixed;
+top:0;left:0;width:100%;height:100%;
+pointer-events:none;
+z-index:9999;
+opacity:0.035;
+background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+background-repeat:repeat;
+animation:grain 0.5s steps(6) infinite;
+}
 
-/* Animations */
-.reveal{opacity:0;transform:translateY(40px);transition:opacity 0.8s ease,transform 0.8s ease}
-.reveal.active{opacity:1;transform:translateY(0)}
-.reveal-left{opacity:0;transform:translateX(-40px);transition:opacity 0.8s ease,transform 0.8s ease}
-.reveal-left.active{opacity:1;transform:translateX(0)}
-.reveal-right{opacity:0;transform:translateX(40px);transition:opacity 0.8s ease,transform 0.8s ease}
-.reveal-right.active{opacity:1;transform:translateX(0)}
-.stagger-1{transition-delay:0.1s}
-.stagger-2{transition-delay:0.2s}
-.stagger-3{transition-delay:0.3s}
-.stagger-4{transition-delay:0.4s}
+@keyframes grain{
+0%,100%{transform:translate(0,0)}
+10%{transform:translate(-5%,-10%)}
+20%{transform:translate(-15%,5%)}
+30%{transform:translate(7%,-25%)}
+40%{transform:translate(-5%,25%)}
+50%{transform:translate(-15%,10%)}
+60%{transform:translate(15%,0%)}
+70%{transform:translate(0%,15%)}
+80%{transform:translate(3%,35%)}
+90%{transform:translate(-10%,10%)}
+}
 
-/* =========== NAV =========== */
-nav{position:fixed;top:0;left:0;width:100%;z-index:1000;padding:1.25rem 0;transition:all var(--transition)}
-nav.scrolled{background:rgba(250,250,250,0.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--gray-200);padding:0.75rem 0}
-.nav-inner{display:flex;align-items:center;justify-content:space-between}
-.nav-logo{font-size:1.25rem;font-weight:900;letter-spacing:-0.03em;display:flex;align-items:center;gap:0.5rem}
-.nav-logo .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);display:inline-block}
-.nav-links{display:flex;align-items:center;gap:2rem}
-.nav-links a{font-size:0.875rem;font-weight:500;color:var(--gray-600);transition:color var(--transition)}
-.nav-links a:hover{color:var(--accent)}
-.nav-cta{display:inline-flex}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.hamburger span{display:block;width:24px;height:2px;background:var(--black);transition:all 0.3s}
+/* Custom cursor */
+.cursor-dot{
+position:fixed;
+width:8px;height:8px;
+background:var(--blue);
+border-radius:50%;
+pointer-events:none;
+z-index:99999;
+transition:transform 0.1s;
+mix-blend-mode:screen;
+}
+.cursor-ring{
+position:fixed;
+width:40px;height:40px;
+border:1.5px solid rgba(0,170,255,0.5);
+border-radius:50%;
+pointer-events:none;
+z-index:99998;
+transition:transform 0.15s ease-out, width 0.3s, height 0.3s, border-color 0.3s;
+}
+.cursor-ring.hover{
+width:60px;height:60px;
+border-color:var(--green);
+}
 
-/* Mobile nav */
+/* Navigation */
+nav{
+position:fixed;
+top:0;left:0;right:0;
+z-index:1000;
+padding:16px 40px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+backdrop-filter:blur(20px);
+-webkit-backdrop-filter:blur(20px);
+background:rgba(3,3,8,0.7);
+border-bottom:1px solid rgba(255,255,255,0.06);
+transition:all 0.4s;
+}
+nav.scrolled{
+padding:12px 40px;
+background:rgba(3,3,8,0.9);
+border-bottom:1px solid rgba(0,170,255,0.15);
+}
+.nav-logo{
+font-size:20px;
+font-weight:800;
+letter-spacing:-0.5px;
+background:linear-gradient(135deg,var(--blue),var(--green));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+}
+.nav-links{display:flex;gap:32px;align-items:center}
+.nav-links a{
+color:var(--text-dim);
+text-decoration:none;
+font-size:14px;
+font-weight:500;
+transition:color 0.3s;
+position:relative;
+}
+.nav-links a:hover{color:var(--text)}
+.nav-links a::after{
+content:'';
+position:absolute;
+bottom:-4px;left:0;
+width:0;height:1.5px;
+background:var(--blue);
+transition:width 0.3s;
+}
+.nav-links a:hover::after{width:100%}
+.nav-cta{
+padding:8px 20px;
+background:linear-gradient(135deg,var(--blue),var(--green));
+color:#000;
+font-weight:600;
+font-size:13px;
+border:none;
+border-radius:8px;
+cursor:none;
+text-decoration:none;
+transition:transform 0.3s,box-shadow 0.3s;
+}
+.nav-cta:hover{
+transform:translateY(-1px);
+box-shadow:0 4px 20px rgba(0,170,255,0.4);
+}
+
+/* Sections common */
+section{
+position:relative;
+padding:120px 40px;
+max-width:1200px;
+margin:0 auto;
+}
+.section-tag{
+display:inline-block;
+font-size:12px;
+font-weight:600;
+letter-spacing:3px;
+text-transform:uppercase;
+color:var(--blue);
+margin-bottom:16px;
+}
+.section-title{
+font-size:clamp(32px,5vw,56px);
+font-weight:800;
+letter-spacing:-1.5px;
+line-height:1.1;
+margin-bottom:24px;
+}
+.section-desc{
+font-size:18px;
+color:var(--text-dim);
+max-width:600px;
+line-height:1.7;
+}
+
+/* Hero section */
+#hero{
+min-height:100vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+text-align:center;
+position:relative;
+padding-top:100px;
+}
+#three-canvas{
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+z-index:0;
+}
+.hero-content{
+position:relative;
+z-index:2;
+max-width:900px;
+}
+.hero-badge{
+display:inline-flex;
+align-items:center;
+gap:8px;
+padding:6px 16px;
+border:1px solid var(--border);
+border-radius:100px;
+font-size:13px;
+color:var(--text-dim);
+margin-bottom:32px;
+background:rgba(10,10,18,0.6);
+backdrop-filter:blur(10px);
+}
+.hero-badge .dot{
+width:6px;height:6px;
+background:var(--green);
+border-radius:50%;
+animation:pulse-dot 2s infinite;
+}
+@keyframes pulse-dot{
+0%,100%{opacity:1;transform:scale(1)}
+50%{opacity:0.5;transform:scale(1.5)}
+}
+
+.hero-title{
+font-size:clamp(42px,8vw,88px);
+font-weight:900;
+letter-spacing:-3px;
+line-height:1.05;
+margin-bottom:24px;
+background:linear-gradient(90deg,var(--blue),var(--green),var(--purple),var(--blue));
+background-size:300% 100%;
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+animation:gradient-shift 6s ease infinite;
+}
+@keyframes gradient-shift{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+
+/* Glitch effect */
+.glitch{
+position:relative;
+display:inline-block;
+}
+.glitch::before,.glitch::after{
+content:attr(data-text);
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+background:var(--bg);
+overflow:hidden;
+}
+.glitch::before{
+left:2px;
+text-shadow:-2px 0 var(--blue);
+clip-path:inset(0 0 65% 0);
+animation:glitch-top 3s infinite linear alternate-reverse;
+}
+.glitch::after{
+left:-2px;
+text-shadow:2px 0 var(--green);
+clip-path:inset(65% 0 0 0);
+animation:glitch-bottom 2.5s infinite linear alternate-reverse;
+}
+@keyframes glitch-top{
+0%{clip-path:inset(0 0 85% 0);transform:translate(0)}
+5%{clip-path:inset(15% 0 65% 0);transform:translate(-3px,0)}
+10%{clip-path:inset(0 0 85% 0);transform:translate(0)}
+100%{clip-path:inset(0 0 85% 0);transform:translate(0)}
+}
+@keyframes glitch-bottom{
+0%{clip-path:inset(85% 0 0 0);transform:translate(0)}
+5%{clip-path:inset(50% 0 20% 0);transform:translate(3px,0)}
+10%{clip-path:inset(85% 0 0 0);transform:translate(0)}
+100%{clip-path:inset(85% 0 0 0);transform:translate(0)}
+}
+
+.hero-sub{
+font-size:clamp(16px,2vw,20px);
+color:var(--text-dim);
+margin-bottom:40px;
+min-height:30px;
+}
+.typewriter-cursor{
+display:inline-block;
+width:2px;
+height:1.1em;
+background:var(--blue);
+margin-left:2px;
+vertical-align:text-bottom;
+animation:blink 1s infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.hero-buttons{display:flex;gap:16px;justify-content:center;flex-wrap:wrap}
+.btn-primary{
+padding:14px 32px;
+background:linear-gradient(135deg,var(--blue),var(--green));
+color:#000;
+font-weight:700;
+font-size:15px;
+border:none;
+border-radius:12px;
+cursor:none;
+text-decoration:none;
+transition:transform 0.3s,box-shadow 0.3s;
+position:relative;
+overflow:hidden;
+}
+.btn-primary:hover{
+transform:translateY(-2px);
+box-shadow:0 8px 30px rgba(0,170,255,0.4);
+}
+.btn-primary .ripple{
+position:absolute;
+border-radius:50%;
+background:rgba(255,255,255,0.3);
+transform:scale(0);
+animation:ripple-anim 0.6s linear;
+pointer-events:none;
+}
+@keyframes ripple-anim{to{transform:scale(4);opacity:0}}
+
+.btn-secondary{
+padding:14px 32px;
+background:transparent;
+color:var(--text);
+font-weight:600;
+font-size:15px;
+border:1px solid var(--border);
+border-radius:12px;
+cursor:none;
+text-decoration:none;
+transition:all 0.3s;
+}
+.btn-secondary:hover{
+border-color:var(--blue);
+box-shadow:0 0 20px rgba(0,170,255,0.15);
+}
+
+.scroll-indicator{
+position:absolute;
+bottom:40px;
+left:50%;
+transform:translateX(-50%);
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:8px;
+color:var(--text-dim);
+font-size:12px;
+letter-spacing:2px;
+animation:float-down 2s ease-in-out infinite;
+}
+@keyframes float-down{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--blue),transparent)}
+
+/* Manifeste */
+#manifeste{
+min-height:80vh;
+display:flex;
+flex-direction:column;
+justify-content:center;
+}
+.manifeste-text{
+font-size:clamp(28px,4.5vw,52px);
+font-weight:700;
+letter-spacing:-1.5px;
+line-height:1.2;
+max-width:900px;
+}
+.manifeste-text .highlight{
+background:linear-gradient(135deg,var(--blue),var(--green));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+}
+
+/* Approach cards */
+.cards-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:24px;
+margin-top:48px;
+}
+.holo-card{
+position:relative;
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:16px;
+padding:40px 32px;
+overflow:hidden;
+transition:transform 0.4s,border-color 0.4s;
+}
+.holo-card:hover{
+transform:translateY(-4px);
+border-color:rgba(0,170,255,0.3);
+}
+.holo-card .holo-shine{
+position:absolute;
+top:0;left:0;
+width:100%;height:100%;
+pointer-events:none;
+opacity:0;
+transition:opacity 0.3s;
+background:radial-gradient(circle at var(--mx) var(--my),rgba(0,170,255,0.12) 0%,transparent 60%);
+}
+.holo-card:hover .holo-shine{opacity:1}
+.holo-card .card-icon{
+width:48px;height:48px;
+margin-bottom:20px;
+border-radius:12px;
+display:flex;align-items:center;justify-content:center;
+background:linear-gradient(135deg,rgba(0,170,255,0.1),rgba(0,232,138,0.1));
+color:var(--blue);
+}
+.holo-card h3{
+font-size:22px;
+font-weight:700;
+margin-bottom:12px;
+letter-spacing:-0.5px;
+}
+.holo-card p{
+color:var(--text-dim);
+font-size:15px;
+line-height:1.6;
+}
+
+/* BE Pilot showcase */
+#bepilot{padding:120px 40px}
+.bepilot-wrapper{
+max-width:1200px;
+margin:0 auto;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:60px;
+align-items:center;
+}
+.bepilot-text{max-width:500px}
+.bepilot-text h2{
+font-size:clamp(28px,4vw,48px);
+font-weight:800;
+letter-spacing:-1.5px;
+line-height:1.1;
+margin-bottom:20px;
+}
+.bepilot-text p{
+color:var(--text-dim);
+font-size:16px;
+line-height:1.7;
+margin-bottom:24px;
+}
+.bepilot-link{
+display:inline-flex;align-items:center;gap:8px;
+color:var(--blue);
+font-weight:600;
+text-decoration:none;
+transition:gap 0.3s;
+}
+.bepilot-link:hover{gap:14px}
+
+/* Dashboard mockup */
+.dashboard-mock{
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:16px;
+padding:24px;
+position:relative;
+overflow:hidden;
+}
+.dash-top{
+display:flex;gap:6px;
+margin-bottom:20px;
+}
+.dash-dot{width:10px;height:10px;border-radius:50%;background:#333}
+.dash-dot:nth-child(1){background:#ff5f57}
+.dash-dot:nth-child(2){background:#febc2e}
+.dash-dot:nth-child(3){background:#28c840}
+.dash-bars{display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.dash-bar{
+height:10px;
+border-radius:4px;
+background:linear-gradient(90deg,rgba(0,170,255,0.3),rgba(0,232,138,0.3));
+animation:bar-fill 2s ease-in-out infinite alternate;
+}
+.dash-bar:nth-child(1){width:80%}
+.dash-bar:nth-child(2){width:60%;animation-delay:0.3s}
+.dash-bar:nth-child(3){width:90%;animation-delay:0.6s}
+.dash-bar:nth-child(4){width:45%;animation-delay:0.9s}
+@keyframes bar-fill{0%{opacity:0.4}100%{opacity:1}}
+.dash-chart{
+display:flex;align-items:flex-end;gap:8px;
+height:100px;
+padding-top:10px;
+}
+.chart-bar{
+flex:1;
+border-radius:4px 4px 0 0;
+background:linear-gradient(to top,var(--blue),var(--green));
+animation:chart-grow 1.5s ease-out forwards;
+transform-origin:bottom;
+}
+@keyframes chart-grow{from{transform:scaleY(0)}to{transform:scaleY(1)}}
+.chart-bar:nth-child(1){height:40%}
+.chart-bar:nth-child(2){height:65%}
+.chart-bar:nth-child(3){height:50%}
+.chart-bar:nth-child(4){height:80%}
+.chart-bar:nth-child(5){height:70%}
+.chart-bar:nth-child(6){height:95%}
+.chart-bar:nth-child(7){height:60%}
+.chart-bar:nth-child(8){height:85%}
+
+/* Stats */
+.stats-section{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:32px;
+margin-top:48px;
+}
+.stat-item{
+text-align:center;
+padding:40px 24px;
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:16px;
+transition:border-color 0.3s;
+}
+.stat-item:hover{border-color:rgba(0,170,255,0.3)}
+.stat-number{
+font-size:clamp(36px,5vw,56px);
+font-weight:900;
+letter-spacing:-2px;
+background:linear-gradient(135deg,var(--blue),var(--green));
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+background-clip:text;
+margin-bottom:8px;
+}
+.stat-label{
+font-size:14px;
+color:var(--text-dim);
+font-weight:500;
+}
+
+/* Timeline */
+.timeline{
+position:relative;
+margin-top:60px;
+padding-left:40px;
+}
+.timeline::before{
+content:'';
+position:absolute;
+top:0;left:15px;
+width:2px;height:100%;
+background:var(--border);
+}
+.timeline-line-fill{
+position:absolute;
+top:0;left:15px;
+width:2px;height:0;
+background:linear-gradient(to bottom,var(--blue),var(--green));
+transition:height 0.1s;
+}
+.timeline-item{
+position:relative;
+padding:32px 0;
+padding-left:40px;
+opacity:0;
+transform:translateX(-20px);
+}
+.timeline-item.visible{
+opacity:1;
+transform:translateX(0);
+transition:all 0.6s cubic-bezier(0.16,1,0.3,1);
+}
+.timeline-item::before{
+content:'';
+position:absolute;
+left:-29px;top:38px;
+width:12px;height:12px;
+border-radius:50%;
+background:var(--bg);
+border:2px solid var(--border);
+transition:border-color 0.3s,background 0.3s;
+z-index:1;
+}
+.timeline-item.visible::before{
+border-color:var(--blue);
+background:var(--blue);
+box-shadow:0 0 12px rgba(0,170,255,0.4);
+}
+.timeline-step{
+font-size:12px;
+font-weight:700;
+color:var(--blue);
+letter-spacing:2px;
+text-transform:uppercase;
+margin-bottom:8px;
+}
+.timeline-item h3{
+font-size:22px;
+font-weight:700;
+margin-bottom:8px;
+letter-spacing:-0.5px;
+}
+.timeline-item p{
+color:var(--text-dim);
+font-size:15px;
+max-width:500px;
+}
+
+/* Why us grid */
+.why-grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:24px;
+margin-top:48px;
+}
+.why-item{
+padding:32px;
+background:var(--surface);
+border:1px solid var(--border);
+border-radius:16px;
+transition:border-color 0.3s,transform 0.3s;
+}
+.why-item:hover{
+border-color:rgba(0,170,255,0.3);
+transform:translateY(-2px);
+}
+.why-icon{
+width:40px;height:40px;
+margin-bottom:16px;
+color:var(--blue);
+}
+.why-item h4{
+font-size:17px;
+font-weight:700;
+margin-bottom:8px;
+}
+.why-item p{
+color:var(--text-dim);
+font-size:14px;
+line-height:1.6;
+}
+
+/* CTA */
+#cta{
+text-align:center;
+position:relative;
+overflow:hidden;
+}
+.cta-glow{
+position:absolute;
+top:50%;left:50%;
+transform:translate(-50%,-50%);
+width:600px;height:600px;
+background:radial-gradient(circle,rgba(0,170,255,0.08) 0%,rgba(0,232,138,0.04) 40%,transparent 70%);
+pointer-events:none;
+animation:cta-pulse 4s ease-in-out infinite;
+}
+@keyframes cta-pulse{0%,100%{transform:translate(-50%,-50%) scale(1)}50%{transform:translate(-50%,-50%) scale(1.2)}}
+.cta-content{position:relative;z-index:1}
+.cta-title{
+font-size:clamp(32px,5vw,56px);
+font-weight:800;
+letter-spacing:-2px;
+margin-bottom:20px;
+}
+.cta-desc{
+font-size:18px;
+color:var(--text-dim);
+margin-bottom:40px;
+max-width:500px;
+margin-left:auto;
+margin-right:auto;
+}
+.cta-contact{
+display:flex;
+flex-direction:column;
+gap:12px;
+align-items:center;
+margin-top:32px;
+}
+.cta-contact a,.cta-contact span{
+color:var(--text-dim);
+text-decoration:none;
+font-size:15px;
+transition:color 0.3s;
+}
+.cta-contact a:hover{color:var(--text)}
+.cta-contact .name{
+font-size:18px;
+font-weight:600;
+color:var(--text);
+}
+
+/* Footer */
+footer{
+position:relative;
+padding:60px 40px;
+text-align:center;
+overflow:hidden;
+border-top:1px solid var(--border);
+}
+footer::before{
+content:'';
+position:absolute;
+bottom:0;left:0;
+width:100%;height:200px;
+background:linear-gradient(135deg,rgba(0,170,255,0.05),rgba(0,232,138,0.05),rgba(136,68,255,0.05));
+background-size:400% 400%;
+animation:mesh-move 8s ease infinite;
+pointer-events:none;
+}
+@keyframes mesh-move{
+0%{background-position:0% 50%}
+50%{background-position:100% 50%}
+100%{background-position:0% 50%}
+}
+footer p{
+color:var(--text-dim);
+font-size:13px;
+position:relative;
+z-index:1;
+}
+
+/* Mobile hamburger */
+.hamburger{
+display:none;
+flex-direction:column;
+gap:5px;
+cursor:none;
+background:none;
+border:none;
+padding:4px;
+}
+.hamburger span{
+width:22px;height:2px;
+background:var(--text);
+transition:all 0.3s;
+}
+
+/* Responsive */
 @media(max-width:768px){
-.nav-links{position:fixed;top:0;right:-100%;width:75%;max-width:320px;height:100vh;background:var(--bg);flex-direction:column;justify-content:center;align-items:flex-start;padding:3rem;gap:1.5rem;transition:right 0.4s ease;box-shadow:-4px 0 40px rgba(0,0,0,0.1)}
-.nav-links.open{right:0}
-.nav-links a{font-size:1.25rem}
-.hamburger{display:flex;z-index:1001}
+nav{padding:12px 20px}
+.nav-links{
+display:none;
+position:absolute;
+top:100%;left:0;right:0;
+flex-direction:column;
+background:rgba(3,3,8,0.95);
+backdrop-filter:blur(20px);
+padding:24px;
+gap:20px;
+border-bottom:1px solid var(--border);
+}
+.nav-links.open{display:flex}
+.hamburger{display:flex}
+section{padding:80px 20px}
+#bepilot{padding:80px 20px}
+.bepilot-wrapper{grid-template-columns:1fr;gap:40px}
+.timeline{padding-left:20px}
+.timeline-item{padding-left:30px}
+.hero-title{letter-spacing:-1.5px}
+body{cursor:auto}
+.cursor-dot,.cursor-ring{display:none}
 }
 
-/* =========== HERO =========== */
-.hero{min-height:100vh;display:flex;align-items:center;padding:8rem 0 6rem;position:relative;overflow:hidden}
-.hero::before{content:'';position:absolute;top:-200px;right:-200px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.08) 0%,transparent 70%);pointer-events:none}
-.hero::after{content:'';position:absolute;bottom:-100px;left:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.05) 0%,transparent 70%);pointer-events:none}
-.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:4rem;align-items:center}
-.hero-content{position:relative;z-index:2}
-.hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2);border-radius:100px;padding:0.5rem 1rem;font-size:0.8rem;font-weight:600;color:var(--accent);margin-bottom:2rem}
-.hero-badge .pulse{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(1.5)}}
-.hero h1{font-size:clamp(2.5rem,5.5vw,4.2rem);font-weight:900;line-height:1.05;letter-spacing:-0.04em;margin-bottom:1.5rem}
-.hero h1 .highlight{color:var(--accent);position:relative}
-.hero p{font-size:1.2rem;line-height:1.7;color:var(--gray-600);max-width:520px;margin-bottom:2.5rem}
-.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap}
-.hero-visual{position:relative;z-index:1}
-.hero-card{background:#fff;border-radius:24px;padding:2.5rem;box-shadow:0 20px 60px rgba(0,0,0,0.06);border:1px solid var(--gray-200);position:relative;overflow:hidden}
-.hero-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--accent),#34d399)}
-.hero-card-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem}
-.hero-card-title{font-size:0.85rem;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-400)}
-.hero-card-status{display:flex;align-items:center;gap:0.4rem;font-size:0.8rem;font-weight:600;color:var(--accent)}
-.hero-card-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--accent)}
-.metric-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
-.metric{text-align:center;padding:1.5rem;background:var(--gray-100);border-radius:16px}
-.metric-value{font-size:2rem;font-weight:900;color:var(--black);letter-spacing:-0.03em}
-.metric-value .accent{color:var(--accent)}
-.metric-label{font-size:0.75rem;font-weight:500;color:var(--gray-500);margin-top:0.25rem}
-.floating-tag{position:absolute;background:#fff;border-radius:12px;padding:0.75rem 1.25rem;box-shadow:0 8px 32px rgba(0,0,0,0.08);font-size:0.8rem;font-weight:600;display:flex;align-items:center;gap:0.5rem;animation:float 4s ease-in-out infinite}
-.floating-tag.tag-1{top:-20px;right:-10px;animation-delay:0s}
-.floating-tag.tag-2{bottom:30px;left:-30px;animation-delay:1s}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
-.tag-icon{width:28px;height:28px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:0.85rem}
-.tag-icon.green{background:rgba(16,185,129,0.1);color:var(--accent)}
-.tag-icon.dark{background:rgba(10,10,10,0.08);color:var(--black)}
-
-@media(max-width:968px){
-.hero-grid{grid-template-columns:1fr;text-align:center}
-.hero p{margin-left:auto;margin-right:auto}
-.hero-buttons{justify-content:center}
-.hero-visual{max-width:480px;margin:0 auto}
-.floating-tag.tag-2{left:0}
+/* Clip path transitions */
+.clip-reveal{
+clip-path:inset(100% 0 0 0);
+transition:clip-path 0.8s cubic-bezier(0.16,1,0.3,1);
 }
-
-/* =========== ABOUT =========== */
-.about{padding:8rem 0;position:relative}
-.about-grid{display:grid;grid-template-columns:0.8fr 1.2fr;gap:5rem;align-items:center}
-.about-image{position:relative}
-.about-card{background:var(--black);border-radius:24px;padding:3rem;color:#fff;position:relative;overflow:hidden}
-.about-card::after{content:'';position:absolute;top:-50%;right:-50%;width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.15),transparent);pointer-events:none}
-.about-card .initials{font-size:4rem;font-weight:900;letter-spacing:-0.05em;color:var(--accent);margin-bottom:1rem;line-height:1}
-.about-card .name{font-size:1.5rem;font-weight:800;margin-bottom:0.25rem}
-.about-card .role{font-size:0.9rem;color:var(--gray-400);margin-bottom:1.5rem}
-.about-card .location{display:flex;align-items:center;gap:0.5rem;font-size:0.85rem;color:var(--gray-400)}
-.about-card .location svg{width:16px;height:16px;stroke:var(--accent)}
-.about-detail{display:flex;gap:1rem;margin-top:2rem}
-.about-detail-item{flex:1;background:rgba(255,255,255,0.05);border-radius:12px;padding:1rem;text-align:center}
-.about-detail-item .num{font-size:1.5rem;font-weight:800;color:var(--accent)}
-.about-detail-item .label{font-size:0.7rem;color:var(--gray-400);margin-top:0.25rem;text-transform:uppercase;letter-spacing:0.05em}
-.about-text p{margin-bottom:1.25rem}
-.about-tags{display:flex;flex-wrap:wrap;gap:0.5rem;margin-top:2rem}
-.about-tag{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.15);color:var(--accent);padding:0.4rem 1rem;border-radius:100px;font-size:0.8rem;font-weight:600}
-
-@media(max-width:968px){
-.about-grid{grid-template-columns:1fr;gap:3rem}
-.about-image{max-width:400px;margin:0 auto}
-}
-
-/* =========== DIFFERENCE =========== */
-.difference{padding:8rem 0;background:var(--black);color:#fff;position:relative;overflow:hidden}
-.difference::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.06) 0%,transparent 60%);pointer-events:none}
-.diff-header{text-align:center;max-width:800px;margin:0 auto 5rem}
-.diff-header .section-title{color:#fff}
-.diff-header .section-desc{color:var(--gray-400);margin:0 auto}
-.diff-quote{font-size:clamp(1.1rem,2.5vw,1.4rem);font-weight:400;line-height:1.8;color:var(--gray-400);text-align:center;max-width:750px;margin:0 auto 4rem;font-style:italic;position:relative;padding:0 2rem}
-.diff-quote::before,.diff-quote::after{content:'\201C';position:absolute;font-size:4rem;color:var(--accent);font-style:normal;font-weight:900;line-height:1;opacity:0.3}
-.diff-quote::before{top:-1rem;left:0}
-.diff-quote::after{content:'\201D';bottom:-2rem;right:0}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
-.pillar{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:24px;padding:2.5rem;transition:all var(--transition);position:relative;overflow:hidden}
-.pillar:hover{background:rgba(255,255,255,0.06);border-color:rgba(16,185,129,0.3);transform:translateY(-4px)}
-.pillar-icon{width:56px;height:56px;border-radius:16px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center;margin-bottom:1.5rem;font-size:1.5rem}
-.pillar h3{font-size:1.25rem;font-weight:800;margin-bottom:0.75rem}
-.pillar p{font-size:0.95rem;line-height:1.7;color:var(--gray-400)}
-
-@media(max-width:768px){
-.pillars{grid-template-columns:1fr}
-}
-
-/* =========== BE PILOT =========== */
-.bepilot{padding:8rem 0;position:relative;overflow:hidden}
-.bepilot-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
-.bepilot-visual{background:linear-gradient(135deg,var(--black) 0%,#1a1a2e 100%);border-radius:24px;padding:3rem;position:relative;overflow:hidden;min-height:400px;display:flex;flex-direction:column;justify-content:center}
-.bepilot-visual::before{content:'';position:absolute;top:-30%;right:-30%;width:60%;height:60%;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.2),transparent);pointer-events:none}
-.bepilot-visual .logo-text{font-size:3rem;font-weight:900;color:#fff;letter-spacing:-0.04em;margin-bottom:0.5rem;position:relative;z-index:1}
-.bepilot-visual .logo-text span{color:var(--accent)}
-.bepilot-visual .tagline{font-size:1rem;color:var(--gray-400);position:relative;z-index:1;margin-bottom:2rem}
-.bepilot-features{display:flex;flex-direction:column;gap:1rem;position:relative;z-index:1}
-.bepilot-feature{display:flex;align-items:center;gap:0.75rem;color:rgba(255,255,255,0.8);font-size:0.9rem}
-.bepilot-feature .check{width:24px;height:24px;border-radius:50%;background:rgba(16,185,129,0.2);display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.bepilot-feature .check svg{width:14px;height:14px;stroke:var(--accent);fill:none;stroke-width:2.5}
-.bepilot-content .section-desc{margin-bottom:2rem}
-.bepilot-link{display:inline-flex;align-items:center;gap:0.5rem;color:var(--accent);font-weight:700;font-size:1rem;transition:gap var(--transition)}
-.bepilot-link:hover{gap:1rem}
-.bepilot-link svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:2}
-
-@media(max-width:968px){
-.bepilot-grid{grid-template-columns:1fr}
-}
-
-/* =========== WHY US =========== */
-.whyus{padding:8rem 0;background:var(--gray-100)}
-.whyus-header{text-align:center;max-width:600px;margin:0 auto 4rem}
-.whyus-header .section-desc{margin:0 auto}
-.advantages{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.5rem}
-.advantage{background:#fff;border-radius:20px;padding:2rem;display:flex;align-items:flex-start;gap:1.25rem;transition:all var(--transition);border:1px solid transparent}
-.advantage:hover{border-color:var(--accent);box-shadow:0 8px 32px rgba(16,185,129,0.08);transform:translateY(-2px)}
-.advantage-icon{width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1.2rem}
-.advantage h4{font-size:1rem;font-weight:800;margin-bottom:0.35rem}
-.advantage p{font-size:0.9rem;color:var(--gray-500);line-height:1.6}
-
-/* =========== PROCESS =========== */
-.process{padding:8rem 0}
-.process-header{text-align:center;max-width:600px;margin:0 auto 5rem}
-.process-header .section-desc{margin:0 auto}
-.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;position:relative}
-.steps::before{content:'';position:absolute;top:44px;left:calc(12.5% + 1rem);right:calc(12.5% + 1rem);height:2px;background:linear-gradient(90deg,var(--accent),var(--gray-200),var(--gray-200),var(--accent));z-index:0}
-.step{text-align:center;position:relative;z-index:1}
-.step-number{width:88px;height:88px;border-radius:50%;background:#fff;border:2px solid var(--gray-200);display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:1.5rem;font-weight:900;color:var(--accent);transition:all var(--transition);box-shadow:0 4px 20px rgba(0,0,0,0.04)}
-.step:hover .step-number{border-color:var(--accent);background:var(--accent);color:#fff;transform:scale(1.1);box-shadow:0 8px 32px rgba(16,185,129,0.3)}
-.step h4{font-size:1.05rem;font-weight:800;margin-bottom:0.5rem}
-.step p{font-size:0.85rem;color:var(--gray-500);line-height:1.6;max-width:200px;margin:0 auto}
-.step-badge{display:inline-block;margin-top:0.75rem;font-size:0.7rem;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;color:var(--accent);background:rgba(16,185,129,0.08);padding:0.3rem 0.8rem;border-radius:100px}
-
-@media(max-width:768px){
-.steps{grid-template-columns:1fr 1fr;gap:3rem 2rem}
-.steps::before{display:none}
-}
-@media(max-width:480px){
-.steps{grid-template-columns:1fr}
-}
-
-/* =========== CTA =========== */
-.cta-section{padding:8rem 0;background:var(--black);color:#fff;text-align:center;position:relative;overflow:hidden}
-.cta-section::before{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:800px;height:800px;border-radius:50%;background:radial-gradient(circle,rgba(16,185,129,0.08) 0%,transparent 60%);pointer-events:none}
-.cta-content{position:relative;z-index:1;max-width:700px;margin:0 auto}
-.cta-content .section-title{color:#fff;margin-bottom:1rem}
-.cta-content .section-desc{color:var(--gray-400);margin:0 auto 3rem;text-align:center}
-.cta-buttons{display:flex;justify-content:center;gap:1rem;margin-bottom:4rem;flex-wrap:wrap}
-.cta-contact{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:700px;margin:0 auto;padding-top:3rem;border-top:1px solid rgba(255,255,255,0.08)}
-.cta-contact-item{display:flex;flex-direction:column;align-items:center;gap:0.75rem}
-.cta-contact-icon{width:48px;height:48px;border-radius:14px;background:rgba(16,185,129,0.1);display:flex;align-items:center;justify-content:center}
-.cta-contact-icon svg{width:22px;height:22px;stroke:var(--accent);fill:none;stroke-width:1.5}
-.cta-contact-label{font-size:0.7rem;text-transform:uppercase;letter-spacing:0.1em;color:var(--gray-500);font-weight:600}
-.cta-contact-value{font-size:0.95rem;font-weight:600}
-.cta-contact-value a{color:#fff;transition:color var(--transition)}
-.cta-contact-value a:hover{color:var(--accent)}
-
-@media(max-width:600px){
-.cta-contact{grid-template-columns:1fr;gap:2rem}
-}
-
-/* =========== FOOTER =========== */
-footer{padding:2rem 0;background:var(--black);border-top:1px solid rgba(255,255,255,0.05)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;font-size:0.8rem;color:var(--gray-500)}
-.footer-inner .nav-logo{color:#fff;font-size:1rem}
-
-@media(max-width:600px){
-.footer-inner{flex-direction:column;gap:1rem;text-align:center}
+.clip-reveal.visible{
+clip-path:inset(0 0 0 0);
 }
 </style>
 </head>
 <body>
 
-<!-- NAV -->
+<!-- Custom Cursor -->
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Navigation -->
 <nav id="navbar">
-<div class="container nav-inner">
-  <a href="#" class="nav-logo"><span class="dot"></span> Notitia Corp</a>
-  <div class="nav-links" id="navLinks">
-    <a href="#about">Qui sommes-nous</a>
-    <a href="#difference">Notre diffÃ©rence</a>
-    <a href="#bepilot">BE Pilot</a>
-    <a href="#process">Process</a>
-    <a href="#contact" class="btn btn-primary btn-sm nav-cta">Audit gratuit</a>
-  </div>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+<div class="nav-logo">Notitia Corp</div>
+<button class="hamburger" id="hamburger" aria-label="Menu">
+<span></span><span></span><span></span>
+</button>
+<div class="nav-links" id="navLinks">
+<a href="#manifeste">Manifeste</a>
+<a href="#approche">Approche</a>
+<a href="#bepilot">BE Pilot</a>
+<a href="#process">Process</a>
+<a href="#pourquoi">Pourquoi nous</a>
+<a href="#cta" class="nav-cta">Audit gratuit</a>
 </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="hero">
-<div class="container hero-grid">
-  <div class="hero-content">
-    <div class="hero-badge reveal"><span class="pulse"></span> Logiciels sur-mesure dopÃ©s Ã  l'IA</div>
-    <h1 class="reveal stagger-1">Notitia Corp â<br>Nous construisons <span class="highlight">le logiciel</span> que votre mÃ©tier mÃ©rite</h1>
-    <p class="reveal stagger-2">Intelligence artificielle, automatisation et personnalisation totale. Nous crÃ©ons des outils qui s'adaptent Ã  vos processus â pas l'inverse.</p>
-    <div class="hero-buttons reveal stagger-3">
-      <a href="#contact" class="btn btn-primary">Demander un audit gratuit <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-      <a href="#difference" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.15)">DÃ©couvrir notre approche</a>
-    </div>
-  </div>
-  <div class="hero-visual reveal-right">
-    <div class="hero-card">
-      <div class="hero-card-header">
-        <span class="hero-card-title">Dashboard client</span>
-        <span class="hero-card-status">En production</span>
-      </div>
-      <div class="metric-grid">
-        <div class="metric">
-          <div class="metric-value"><span class="accent">2</span> sem</div>
-          <div class="metric-label">DÃ©lai de livraison</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value"><span class="accent">5</span>x</div>
-          <div class="metric-label">Moins cher qu'un ERP</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value"><span class="accent">100</span>%</div>
-          <div class="metric-label">Personnalisable</div>
-        </div>
-        <div class="metric">
-          <div class="metric-value"><span class="accent">48</span>h</div>
-          <div class="metric-label">Prototype livrÃ©</div>
-        </div>
-      </div>
-      <div class="floating-tag tag-1">
-        <span class="tag-icon green">&#9889;</span> IA intÃ©grÃ©e
-      </div>
-      <div class="floating-tag tag-2">
-        <span class="tag-icon dark">&#9881;</span> Sur-mesure
-      </div>
-    </div>
-  </div>
+<!-- Hero -->
+<section id="hero">
+<canvas id="three-canvas"></canvas>
+<div class="hero-content">
+<div class="hero-badge">
+<span class="dot"></span>
+Logiciels sur-mesure propulsÃ©s par l'IA
+</div>
+<h1 class="hero-title glitch" data-text="Nous construisons le logiciel que votre mÃ©tier mÃ©rite">Nous construisons le logiciel que votre mÃ©tier mÃ©rite</h1>
+<p class="hero-sub" id="typewriter"></p>
+<div class="hero-buttons">
+<a href="#cta" class="btn-primary" id="heroCta">Demander un audit gratuit</a>
+<a href="#approche" class="btn-secondary">DÃ©couvrir notre approche</a>
+</div>
+</div>
+<div class="scroll-indicator">
+<span>SCROLL</span>
+<div class="scroll-line"></div>
 </div>
 </section>
 
-<!-- ABOUT -->
-<section class="about" id="about">
-<div class="container about-grid">
-  <div class="about-image reveal-left">
-    <div class="about-card">
-      <div class="initials">QC</div>
-      <div class="name">Quentin CONVERT</div>
-      <div class="role">Fondateur &amp; DÃ©veloppeur IA</div>
-      <div class="location">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        BÃ©ziers, France
-      </div>
-      <div class="about-detail">
-        <div class="about-detail-item">
-          <div class="num">IA</div>
-          <div class="label">Expertise</div>
-        </div>
-        <div class="about-detail-item">
-          <div class="num">Auto</div>
-          <div class="label">Automation</div>
-        </div>
-        <div class="about-detail-item">
-          <div class="num">100%</div>
-          <div class="label">Sur-mesure</div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="about-text reveal-right">
-    <span class="section-label">Qui sommes-nous</span>
-    <h2 class="section-title">Un dÃ©veloppeur,<br>une obsession : <span style="color:var(--accent)">votre mÃ©tier</span></h2>
-    <p class="section-desc">Notitia Corp est nÃ©e d'un constat simple : les logiciels du marchÃ© ne comprennent pas votre mÃ©tier. Ils vous imposent leur logique au lieu de s'adapter Ã  la vÃ´tre.</p>
-    <p class="section-desc">FondÃ©e par Quentin CONVERT Ã  BÃ©ziers, Notitia Corp combine expertise en intelligence artificielle, automatisation avancÃ©e et une approche 100% personnalisÃ©e pour concevoir des outils logiciels qui Ã©pousent parfaitement vos processus.</p>
-    <p class="section-desc">Chaque solution est pensÃ©e, dÃ©veloppÃ©e et dÃ©ployÃ©e sur-mesure. Pas de template. Pas de compromis. Votre logiciel, pour votre mÃ©tier.</p>
-    <div class="about-tags">
-      <span class="about-tag">Intelligence Artificielle</span>
-      <span class="about-tag">Automatisation</span>
-      <span class="about-tag">Sur-mesure</span>
-      <span class="about-tag">Accompagnement local</span>
-    </div>
-  </div>
+<!-- Manifeste -->
+<section id="manifeste">
+<span class="section-tag">Manifeste</span>
+<div class="manifeste-text clip-reveal">
+Les logiciels gÃ©nÃ©riques coÃ»tent cher et ne rÃ©solvent rien. Ils imposent des compromis Ã  votre mÃ©tier, pas l'inverse. <span class="highlight">Nous faisons exactement l'inverse.</span> Nous crÃ©ons des outils taillÃ©s pour votre rÃ©alitÃ©, livrÃ©s en un temps record, Ã  un coÃ»t qui a du sens.
 </div>
 </section>
 
-<!-- DIFFERENCE -->
-<section class="difference" id="difference">
-<div class="container">
-  <div class="diff-header reveal">
-    <span class="section-label">Notre diffÃ©rence</span>
-    <h2 class="section-title">Pas un logiciel de plus.<br>Le <span style="color:var(--accent)">vÃ´tre.</span></h2>
-  </div>
-  <div class="diff-quote reveal stagger-1">
-    Contrairement aux logiciels gÃ©nÃ©riques, nous analysons votre mÃ©tier en profondeur et livrons une solution taillÃ©e sur-mesure en 2 semaines.
-  </div>
-  <div class="pillars">
-    <div class="pillar reveal stagger-1">
-      <div class="pillar-icon">&#128269;</div>
-      <h3>Analyse mÃ©tier</h3>
-      <p>Nous plongeons dans vos processus, vos contraintes et vos objectifs. Chaque dÃ©tail compte pour construire l'outil idÃ©al.</p>
-    </div>
-    <div class="pillar reveal stagger-2">
-      <div class="pillar-icon">&#128187;</div>
-      <h3>DÃ©veloppement sur-mesure</h3>
-      <p>ZÃ©ro template, zÃ©ro compromis. Chaque ligne de code est Ã©crite pour rÃ©pondre Ã  votre rÃ©alitÃ© terrain, avec l'IA au coeur du systÃ¨me.</p>
-    </div>
-    <div class="pillar reveal stagger-3">
-      <div class="pillar-icon">&#129309;</div>
-      <h3>Accompagnement local</h3>
-      <p>BasÃ©s Ã  BÃ©ziers, nous restons Ã  vos cÃ´tÃ©s aprÃ¨s la livraison. Un interlocuteur unique, rÃ©actif, qui connaÃ®t votre mÃ©tier.</p>
-    </div>
-  </div>
+<!-- Approche -->
+<section id="approche">
+<span class="section-tag">Notre approche</span>
+<h2 class="section-title">Trois piliers.<br>ZÃ©ro compromis.</h2>
+<p class="section-desc">Chaque projet suit une mÃ©thodologie Ã©prouvÃ©e qui garantit pertinence, rapiditÃ© et qualitÃ©.</p>
+<div class="cards-grid">
+<div class="holo-card">
+<div class="holo-shine"></div>
+<div class="card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+</div>
+<h3>Analyse mÃ©tier profonde</h3>
+<p>Nous plongeons dans votre quotidien pour comprendre chaque friction, chaque besoin cachÃ©, chaque opportunitÃ© d'automatisation.</p>
+</div>
+<div class="holo-card">
+<div class="holo-shine"></div>
+<div class="card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 16 4-4-4-4"/><path d="m6 8-4 4 4 4"/><path d="m14.5 4-5 16"/></svg>
+</div>
+<h3>DÃ©veloppement sur-mesure</h3>
+<p>Code propre, architecture moderne, IA intÃ©grÃ©e nativement. Chaque fonctionnalitÃ© est pensÃ©e pour votre usage exact.</p>
+</div>
+<div class="holo-card">
+<div class="holo-shine"></div>
+<div class="card-icon">
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+</div>
+<h3>DÃ©ployÃ© en 2 semaines</h3>
+<p>Pas de mois d'attente. Prototype fonctionnel en jours, solution complÃ¨te en deux semaines. Vous utilisez, on itÃ¨re.</p>
+</div>
 </div>
 </section>
 
-<!-- BE PILOT -->
-<section class="bepilot" id="bepilot">
-<div class="container bepilot-grid">
-  <div class="bepilot-visual reveal-left">
-    <div class="logo-text">BE <span>Pilot</span></div>
-    <div class="tagline">La solution de gestion intelligente pour bureaux d'Ã©tudes</div>
-    <div class="bepilot-features">
-      <div class="bepilot-feature">
-        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        Gestion de projets et affaires
-      </div>
-      <div class="bepilot-feature">
-        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        Suivi financier automatisÃ©
-      </div>
-      <div class="bepilot-feature">
-        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        Intelligence artificielle intÃ©grÃ©e
-      </div>
-      <div class="bepilot-feature">
-        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        Tableaux de bord temps rÃ©el
-      </div>
-      <div class="bepilot-feature">
-        <span class="check"><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg></span>
-        100% adaptÃ© Ã  votre structure
-      </div>
-    </div>
-  </div>
-  <div class="bepilot-content reveal-right">
-    <span class="section-label">Solution phare</span>
-    <h2 class="section-title">BE Pilot â L'outil conÃ§u pour les <span style="color:var(--accent)">bureaux d'Ã©tudes</span></h2>
-    <p class="section-desc">BE Pilot est notre solution de gestion intelligente, pensÃ©e exclusivement pour les bureaux d'Ã©tudes. Suivi de projets, gestion financiÃ¨re, pilotage d'Ã©quipe â le tout dopÃ© Ã  l'IA et personnalisÃ© pour votre structure.</p>
-    <p class="section-desc" style="margin-bottom:2rem">Fini les tableurs Excel et les outils gÃ©nÃ©riques qui freinent votre productivitÃ©. BE Pilot centralise tout ce dont vous avez besoin, dans une interface claire et intuitive.</p>
-    <a href="https://notitiacorp-design.github.io/be-pilot/" target="_blank" class="bepilot-link">
-      DÃ©couvrir BE Pilot
-      <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </a>
-  </div>
+<!-- BE Pilot -->
+<section id="bepilot">
+<div class="bepilot-wrapper">
+<div class="bepilot-text">
+<span class="section-tag">Solution phare</span>
+<h2>BE Pilot</h2>
+<p>Notre plateforme de gestion intelligente pour bureaux d'Ã©tudes. Suivi de projets, gestion documentaire, tableaux de bord en temps rÃ©el â le tout dopÃ© Ã  l'IA pour anticiper les dÃ©rapages avant qu'ils n'arrivent.</p>
+<a href="https://notitiacorp-design.github.io/be-pilot" class="bepilot-link" target="_blank" rel="noopener">
+DÃ©couvrir BE Pilot
+<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+</a>
+</div>
+<div class="dashboard-mock">
+<div class="dash-top">
+<span class="dash-dot"></span>
+<span class="dash-dot"></span>
+<span class="dash-dot"></span>
+</div>
+<div class="dash-bars">
+<div class="dash-bar"></div>
+<div class="dash-bar"></div>
+<div class="dash-bar"></div>
+<div class="dash-bar"></div>
+</div>
+<div class="dash-chart">
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+<div class="chart-bar"></div>
+</div>
+</div>
 </div>
 </section>
 
-<!-- WHY US -->
-<section class="whyus" id="whyus">
-<div class="container">
-  <div class="whyus-header reveal">
-    <span class="section-label">Pourquoi nous choisir</span>
-    <h2 class="section-title">Des avantages <span style="color:var(--accent)">concrets</span></h2>
-    <p class="section-desc">Chaque engagement que nous prenons est mesurable. Pas de promesses vagues â des rÃ©sultats.</p>
-  </div>
-  <div class="advantages">
-    <div class="advantage reveal stagger-1">
-      <div class="advantage-icon">&#127919;</div>
-      <div>
-        <h4>100% personnalisable</h4>
-        <p>Chaque fonctionnalitÃ© est taillÃ©e pour votre mÃ©tier. Aucun compromis, aucune fonctionnalitÃ© inutile.</p>
-      </div>
-    </div>
-    <div class="advantage reveal stagger-2">
-      <div class="advantage-icon">&#9889;</div>
-      <div>
-        <h4>DÃ©ployÃ© en 2 semaines</h4>
-        <p>De l'audit Ã  la mise en production, votre solution est opÃ©rationnelle en 14 jours maximum.</p>
-      </div>
-    </div>
-    <div class="advantage reveal stagger-3">
-      <div class="advantage-icon">&#128176;</div>
-      <div>
-        <h4>CoÃ»t 5x infÃ©rieur aux ERP</h4>
-        <p>Une solution sur-mesure au prix d'un abonnement logiciel, sans les frais cachÃ©s des ERP traditionnels.</p>
-      </div>
-    </div>
-    <div class="advantage reveal stagger-1">
-      <div class="advantage-icon">&#128205;</div>
-      <div>
-        <h4>Support local &amp; rÃ©actif</h4>
-        <p>Un interlocuteur unique basÃ© Ã  BÃ©ziers. Disponible, rÃ©actif, impliquÃ© dans votre rÃ©ussite.</p>
-      </div>
-    </div>
-    <div class="advantage reveal stagger-2">
-      <div class="advantage-icon">&#128640;</div>
-      <div>
-        <h4>Ãvolutif selon vos besoins</h4>
-        <p>Votre activitÃ© Ã©volue ? Votre logiciel aussi. Ajoutez des modules, des fonctionnalitÃ©s, sans limite.</p>
-      </div>
-    </div>
-  </div>
+<!-- Stats -->
+<section id="stats">
+<span class="section-tag">En chiffres</span>
+<h2 class="section-title">Des rÃ©sultats, pas des promesses.</h2>
+<div class="stats-section">
+<div class="stat-item">
+<div class="stat-number" data-target="2" data-suffix=" sem.">0</div>
+<div class="stat-label">DÃ©lai de livraison</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" data-target="5" data-suffix="x moins cher">0</div>
+<div class="stat-label">Qu'un ERP traditionnel</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" data-target="100" data-suffix="%">0</div>
+<div class="stat-label">PersonnalisÃ© Ã  votre mÃ©tier</div>
+</div>
+<div class="stat-item">
+<div class="stat-number" data-target="0" data-suffix=" compromis" data-is-zero="true">0</div>
+<div class="stat-label">Sur vos besoins essentiels</div>
+</div>
 </div>
 </section>
 
-<!-- PROCESS -->
-<section class="process" id="process">
-<div class="container">
-  <div class="process-header reveal">
-    <span class="section-label">Notre process</span>
-    <h2 class="section-title">De l'idÃ©e au logiciel en <span style="color:var(--accent)">4 Ã©tapes</span></h2>
-    <p class="section-desc">Un process rodÃ©, transparent et rapide. Vous savez exactement oÃ¹ en est votre projet Ã  chaque instant.</p>
-  </div>
-  <div class="steps">
-    <div class="step reveal stagger-1">
-      <div class="step-number">01</div>
-      <h4>Audit gratuit</h4>
-      <p>Nous analysons vos besoins, vos processus et vos objectifs sans engagement.</p>
-      <span class="step-badge">Gratuit</span>
-    </div>
-    <div class="step reveal stagger-2">
-      <div class="step-number">02</div>
-      <h4>Prototype en 48h</h4>
-      <p>Vous recevez un prototype fonctionnel pour valider la direction avant le dÃ©veloppement.</p>
-      <span class="step-badge">48 heures</span>
-    </div>
-    <div class="step reveal stagger-3">
-      <div class="step-number">03</div>
-      <h4>DÃ©veloppement</h4>
-      <p>Conception et dÃ©veloppement sur-mesure avec des points d'avancement rÃ©guliers.</p>
-      <span class="step-badge">2 semaines</span>
-    </div>
-    <div class="step reveal stagger-4">
-      <div class="step-number">04</div>
-      <h4>Suivi &amp; Ã©volution</h4>
-      <p>DÃ©ploiement, formation et accompagnement continu. Votre logiciel Ã©volue avec vous.</p>
-      <span class="step-badge">Continu</span>
-    </div>
-  </div>
+<!-- Process Timeline -->
+<section id="process">
+<span class="section-tag">Notre process</span>
+<h2 class="section-title">De l'idÃ©e au dÃ©ploiement.</h2>
+<p class="section-desc">Un process clair, rapide, sans zone d'ombre. Vous savez exactement oÃ¹ vous en Ãªtes Ã  chaque Ã©tape.</p>
+<div class="timeline">
+<div class="timeline-line-fill" id="timelineFill"></div>
+<div class="timeline-item">
+<div class="timeline-step">Ãtape 01</div>
+<h3>Audit gratuit â 48h</h3>
+<p>Nous analysons votre mÃ©tier, vos outils actuels, vos points de friction. Vous recevez un diagnostic complet avec des recommandations concrÃ¨tes. Sans engagement.</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-step">Ãtape 02</div>
+<h3>Prototype rapide</h3>
+<p>En quelques jours, vous visualisez une premiÃ¨re version fonctionnelle. On valide ensemble l'ergonomie, les flux, les prioritÃ©s.</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-step">Ãtape 03</div>
+<h3>DÃ©veloppement intensif</h3>
+<p>Notre Ã©quipe construit votre solution avec les technologies les plus modernes. Vous suivez l'avancement en temps rÃ©el.</p>
+</div>
+<div class="timeline-item">
+<div class="timeline-step">Ãtape 04</div>
+<h3>DÃ©ploiement et suivi continu</h3>
+<p>Mise en production, formation de vos Ã©quipes, et suivi continu. Nous restons Ã  vos cÃ´tÃ©s pour faire Ã©voluer l'outil avec votre activitÃ©.</p>
+</div>
+</div>
+</section>
+
+<!-- Pourquoi nous -->
+<section id="pourquoi">
+<span class="section-tag">Pourquoi nous</span>
+<h2 class="section-title">Ce qui nous rend diffÃ©rents.</h2>
+<div class="why-grid">
+<div class="why-item">
+<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z"/><path d="M12 6v6l4 2"/></svg>
+<h4>RapiditÃ© extrÃªme</h4>
+<p>2 semaines, pas 6 mois. Nous livrons vite parce que nous comprenons vite.</p>
+</div>
+<div class="why-item">
+<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+<h4>Sur-mesure intÃ©gral</h4>
+<p>Aucun template, aucun compromis. Chaque ligne de code est Ã©crite pour vous.</p>
+</div>
+<div class="why-item">
+<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+<h4>IA native</h4>
+<p>L'intelligence artificielle n'est pas un gadget. Elle est intÃ©grÃ©e au cÅur de chaque solution.</p>
+</div>
+<div class="why-item">
+<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></svg>
+<h4>Ãcoute rÃ©elle</h4>
+<p>Nous ne vendons pas une solution toute faite. Nous Ã©coutons, puis nous construisons.</p>
+</div>
+<div class="why-item">
+<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+<h4>CoÃ»t maÃ®trisÃ©</h4>
+<p>5 fois moins cher qu'un ERP. Pas de licence, pas de coÃ»ts cachÃ©s, pas de mauvaise surprise.</p>
+</div>
+<div class="why-item">
+<svg class="why-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+<h4>Accompagnement continu</h4>
+<p>Le dÃ©ploiement n'est pas la fin. Nous Ã©voluons avec vous, chaque semaine.</p>
+</div>
 </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-section" id="contact">
-<div class="container cta-content">
-  <span class="section-label reveal" style="justify-content:center">Passez Ã  l'action</span>
-  <h2 class="section-title reveal stagger-1">Demandez votre<br><span style="color:var(--accent)">audit gratuit</span></h2>
-  <p class="section-desc reveal stagger-2">Discutons de votre projet. En 30 minutes, nous identifions comment un logiciel sur-mesure peut transformer votre activitÃ©.</p>
-  <div class="cta-buttons reveal stagger-3">
-    <a href="mailto:notitiacorp@gmail.com" class="btn btn-primary">Envoyer un email <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
-    <a href="tel:+33671902513" class="btn btn-outline" style="color:#fff;border-color:rgba(255,255,255,0.15)">Appeler maintenant</a>
-  </div>
-  <div class="cta-contact reveal stagger-4">
-    <div class="cta-contact-item">
-      <div class="cta-contact-icon">
-        <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-      </div>
-      <span class="cta-contact-label">Email</span>
-      <span class="cta-contact-value"><a href="mailto:notitiacorp@gmail.com">notitiacorp@gmail.com</a></span>
-    </div>
-    <div class="cta-contact-item">
-      <div class="cta-contact-icon">
-        <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-      </div>
-      <span class="cta-contact-label">TÃ©lÃ©phone</span>
-      <span class="cta-contact-value"><a href="tel:+33671902513">06 71 90 25 13</a></span>
-    </div>
-    <div class="cta-contact-item">
-      <div class="cta-contact-icon">
-        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-      </div>
-      <span class="cta-contact-label">Localisation</span>
-      <span class="cta-contact-value">BÃ©ziers, France</span>
-    </div>
-  </div>
+<section id="cta">
+<div class="cta-glow"></div>
+<div class="cta-content">
+<span class="section-tag">Passez Ã  l'action</span>
+<h2 class="cta-title">Demandez votre<br>audit gratuit</h2>
+<p class="cta-desc">48 heures pour comprendre votre mÃ©tier et vous proposer une solution concrÃ¨te. Sans engagement, sans bullshit.</p>
+<a href="mailto:notitiacorp@gmail.com?subject=Demande d'audit gratuit" class="btn-primary" id="ctaBtn">Demander mon audit gratuit</a>
+<div class="cta-contact">
+<span class="name">Quentin CONVERT</span>
+<a href="mailto:notitiacorp@gmail.com">notitiacorp@gmail.com</a>
+<a href="tel:+33671902513">06 71 90 25 13</a>
+<span>BÃ©ziers, France</span>
+</div>
 </div>
 </section>
 
-<!-- FOOTER -->
+<!-- Footer -->
 <footer>
-<div class="container footer-inner">
-  <a href="#" class="nav-logo"><span class="dot"></span> Notitia Corp</a>
-  <span>&copy; 2025 Notitia Corp. Tous droits rÃ©servÃ©s.</span>
-</div>
+<p>&copy; 2025 Notitia Corp. Tous droits rÃ©servÃ©s.</p>
 </footer>
 
+<!-- Three.js & GSAP CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
 <script>
-// Navbar scroll
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>50)});
+(function(){
+'use strict';
 
-// Mobile menu
-const hamburger=document.getElementById('hamburger');
-const navLinks=document.getElementById('navLinks');
-hamburger.addEventListener('click',()=>{navLinks.classList.toggle('open');hamburger.classList.toggle('active')});
-navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>navLinks.classList.remove('open')));
+// ====== CUSTOM CURSOR ======
+const dot = document.getElementById('cursorDot');
+const ring = document.getElementById('cursorRing');
+let mouseX = 0, mouseY = 0;
+let ringX = 0, ringY = 0;
 
-// Scroll reveal
-const revealElements=document.querySelectorAll('.reveal,.reveal-left,.reveal-right');
-const observer=new IntersectionObserver((entries)=>{
-  entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('active');observer.unobserve(entry.target)}})
-},{threshold:0.1,rootMargin:'0px 0px -60px 0px'});
-revealElements.forEach(el=>observer.observe(el));
-
-// Smooth scroll for anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor=>{
-  anchor.addEventListener('click',function(e){
-    e.preventDefault();
-    const target=document.querySelector(this.getAttribute('href'));
-    if(target){target.scrollIntoView({behavior:'smooth',block:'start'})}
-  });
+document.addEventListener('mousemove', e => {
+mouseX = e.clientX;
+mouseY = e.clientY;
+dot.style.left = mouseX - 4 + 'px';
+dot.style.top = mouseY - 4 + 'px';
 });
 
-// Counter animation for metrics
-function animateCounters(){
-  document.querySelectorAll('.metric-value').forEach(el=>{
-    const text=el.textContent;
-    const match=text.match(/(\d+)/);
-    if(!match)return;
-    const target=parseInt(match[1]);
-    const suffix=text.replace(match[1],'');
-    let current=0;
-    const increment=target/40;
-    const timer=setInterval(()=>{
-      current+=increment;
-      if(current>=target){current=target;clearInterval(timer)}
-      el.innerHTML=text.replace(match[1],Math.round(current).toString());
-      el.querySelector('.accent')||el.innerHTML;
-    },30);
-  });
+function animateCursor() {
+ringX += (mouseX - ringX) * 0.15;
+ringY += (mouseY - ringY) * 0.15;
+ring.style.left = ringX - 20 + 'px';
+ring.style.top = ringY - 20 + 'px';
+requestAnimationFrame(animateCursor);
 }
+animateCursor();
 
-// Trigger counter animation when hero card is visible
-const heroCard=document.querySelector('.hero-card');
-if(heroCard){
-  const counterObserver=new IntersectionObserver((entries)=>{
-    entries.forEach(entry=>{
-      if(entry.isIntersecting){animateCounters();counterObserver.unobserve(entry.target)}
-    });
-  },{threshold:0.5});
-  counterObserver.observe(heroCard);
+document.querySelectorAll('a, button, .holo-card, .why-item, .stat-item').forEach(el => {
+el.addEventListener('mouseenter', () => ring.classList.add('hover'));
+el.addEventListener('mouseleave', () => ring.classList.remove('hover'));
+});
+
+// ====== HAMBURGER ======
+const hamburger = document.getElementById('hamburger');
+const navLinks = document.getElementById('navLinks');
+hamburger.addEventListener('click', () => {
+navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => {
+a.addEventListener('click', () => navLinks.classList.remove('open'));
+});
+
+// ====== NAV SCROLL ======
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+navbar.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// ====== THREE.JS SCENE ======
+const canvas = document.getElementById('three-canvas');
+const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+renderer.setSize(window.innerWidth, window.innerHeight);
+renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+camera.position.z = 5;
+
+// Wireframe sphere
+const sphereGeo = new THREE.IcosahedronGeometry(1.8, 2);
+const sphereMat = new THREE.MeshBasicMaterial({ color: 0x00aaff, wireframe: true, transparent: true, opacity: 0.15 });
+const sphere = new THREE.Mesh(sphereGeo, sphereMat);
+scene.add(sphere);
+
+// Inner sphere
+const innerGeo = new THREE.IcosahedronGeometry(1.2, 1);
+const innerMat = new THREE.MeshBasicMaterial({ color: 0x00e88a, wireframe: true, transparent: true, opacity: 0.08 });
+const innerSphere = new THREE.Mesh(innerGeo, innerMat);
+scene.add(innerSphere);
+
+// Particles
+const particlesCount = 200;
+const particlesGeo = new THREE.BufferGeometry();
+const positions = new Float32Array(particlesCount * 3);
+for (let i = 0; i < particlesCount; i++) {
+const theta = Math.random() * Math.PI * 2;
+const phi = Math.acos(2 * Math.random() - 1);
+const r = 2.2 + Math.random() * 1.5;
+positions[i * 3] = r * Math.sin(phi) * Math.cos(theta);
+positions[i * 3 + 1] = r * Math.sin(phi) * Math.sin(theta);
+positions[i * 3 + 2] = r * Math.cos(phi);
 }
+particlesGeo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+const particlesMat = new THREE.PointsMaterial({ color: 0x00aaff, size: 0.02, transparent: true, opacity: 0.6 });
+const particles = new THREE.Points(particlesGeo, particlesMat);
+scene.add(particles);
+
+// Lights
+const light1 = new THREE.PointLight(0x00aaff, 2, 10);
+light1.position.set(3, 2, 3);
+scene.add(light1);
+const light2 = new THREE.PointLight(0x00e88a, 2, 10);
+light2.position.set(-3, -2, 2);
+scene.add(light2);
+
+let scrollY = 0;
+window.addEventListener('scroll', () => { scrollY = window.scrollY; });
+
+function animateThree() {
+requestAnimationFrame(animateThree);
+const t = Date.now() * 0.001;
+sphere.rotation.x = t * 0.1 + scrollY * 0.0002;
+sphere.rotation.y = t * 0.15;
+innerSphere.rotation.x = -t * 0.12;
+innerSphere.rotation.y = t * 0.08;
+particles.rotation.y = t * 0.05;
+particles.rotation.x = t * 0.02;
+light1.position.x = Math.sin(t * 0.5) * 4;
+light1.position.y = Math.cos(t * 0.3) * 3;
+light2.position.x = Math.cos(t * 0.4) * 4;
+light2.position.y = Math.sin(t * 0.6) * 3;
+// Fade out on scroll
+const heroH = window.innerHeight;
+const opacity = Math.max(0, 1 - scrollY / heroH);
+sphere.material.opacity = 0.15 * opacity;
+innerSphere.material.opacity = 0.08 * opacity;
+particles.material.opacity = 0.6 * opacity;
+renderer.render(scene, camera);
+}
+animateThree();
+
+window.addEventListener('resize', () => {
+camera.aspect = window.innerWidth / window.innerHeight;
+camera.updateProjectionMatrix();
+renderer.setSize(window.innerWidth, window.innerHeight);
+});
+
+// ====== TYPEWRITER ======
+const phrases = [
+"Intelligence artificielle intÃ©grÃ©e Ã  chaque solution.",
+"Personnalisation totale, zÃ©ro compromis.",
+"LivrÃ© en 2 semaines, pas en 6 mois.",
+"Votre mÃ©tier, notre obsession."
+];
+const typewriterEl = document.getElementById('typewriter');
+let phraseIndex = 0, charIndex = 0, isDeleting = false;
+
+function typewriter() {
+const currentPhrase = phrases[phraseIndex];
+if (!isDeleting) {
+typewriterEl.innerHTML = currentPhrase.substring(0, charIndex) + '<span class="typewriter-cursor"></span>';
+charIndex++;
+if (charIndex > currentPhrase.length) {
+isDeleting = true;
+setTimeout(typewriter, 2000);
+return;
+}
+setTimeout(typewriter, 40 + Math.random() * 30);
+} else {
+typewriterEl.innerHTML = currentPhrase.substring(0, charIndex) + '<span class="typewriter-cursor"></span>';
+charIndex--;
+if (charIndex < 0) {
+isDeleting = false;
+phraseIndex = (phraseIndex + 1) % phrases.length;
+setTimeout(typewriter, 500);
+return;
+}
+setTimeout(typewriter, 20);
+}
+}
+typewriter();
+
+// ====== GSAP SCROLL ANIMATIONS ======
+gsap.registerPlugin(ScrollTrigger);
+
+// Manifeste clip reveal
+gsap.utils.toArray('.clip-reveal').forEach(el => {
+ScrollTrigger.create({
+trigger: el,
+start: 'top 80%',
+onEnter: () => el.classList.add('visible'),
+once: true
+});
+});
+
+// Section tags and titles
+gsap.utils.toArray('.section-tag, .section-title, .section-desc').forEach(el => {
+gsap.from(el, {
+scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+y: 30, opacity: 0, duration: 0.8, ease: 'power3.out'
+});
+});
+
+// Holo cards
+gsap.utils.toArray('.holo-card').forEach((card, i) => {
+gsap.from(card, {
+scrollTrigger: { trigger: card, start: 'top 85%', once: true },
+y: 40, opacity: 0, duration: 0.7, delay: i * 0.15, ease: 'power3.out'
+});
+});
+
+// Stats
+gsap.utils.toArray('.stat-item').forEach((item, i) => {
+gsap.from(item, {
+scrollTrigger: { trigger: item, start: 'top 85%', once: true },
+y: 30, opacity: 0, duration: 0.6, delay: i * 0.1, ease: 'power3.out'
+});
+});
+
+// Why items
+gsap.utils.toArray('.why-item').forEach((item, i) => {
+gsap.from(item, {
+scrollTrigger: { trigger: item, start: 'top 85%', once: true },
+y: 30, opacity: 0, duration: 0.6, delay: i * 0.08, ease: 'power3.out'
+});
+});
+
+// BE Pilot
+gsap.from('.bepilot-text', {
+scrollTrigger: { trigger: '.bepilot-wrapper', start: 'top 75%', once: true },
+x: -40, opacity: 0, duration: 0.8, ease: 'power3.out'
+});
+gsap.from('.dashboard-mock', {
+scrollTrigger: { trigger: '.bepilot-wrapper', start: 'top 75%', once: true },
+x: 40, opacity: 0, duration: 0.8, delay: 0.2, ease: 'power3.out'
+});
+
+// CTA
+gsap.from('.cta-content', {
+scrollTrigger: { trigger: '#cta', start: 'top 75%', once: true },
+y: 40, opacity: 0, duration: 0.8, ease: 'power3.out'
+});
+
+// ====== HOLOGRAPHIC CARD EFFECT ======
+document.querySelectorAll('.holo-card').forEach(card => {
+card.addEventListener('mousemove', e => {
+const rect = card.getBoundingClientRect();
+const x = ((e.clientX - rect.left) / rect.width * 100).toFixed(1);
+const y = ((e.clientY - rect.top) / rect.height * 100).toFixed(1);
+card.style.setProperty('--mx', x + '%');
+card.style.setProperty('--my', y + '%');
+});
+});
+
+// ====== STAT COUNTERS ======
+const statNumbers = document.querySelectorAll('.stat-number');
+const observerStats = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+const el = entry.target;
+const target = parseInt(el.dataset.target);
+const suffix = el.dataset.suffix || '';
+const isZero = el.dataset.isZero === 'true';
+if (isZero) {
+el.textContent = '0' + suffix;
+observerStats.unobserve(el);
+return;
+}
+let current = 0;
+const increment = target / 60;
+const timer = setInterval(() => {
+current += increment;
+if (current >= target) {
+current = target;
+clearInterval(timer);
+}
+el.textContent = Math.floor(current) + suffix;
+}, 16);
+observerStats.unobserve(el);
+}
+});
+}, { threshold: 0.5 });
+statNumbers.forEach(el => observerStats.observe(el));
+
+// ====== TIMELINE ANIMATION ======
+const timelineItems = document.querySelectorAll('.timeline-item');
+const timelineFill = document.getElementById('timelineFill');
+const timeline = document.querySelector('.timeline');
+
+const observerTimeline = new IntersectionObserver(entries => {
+entries.forEach(entry => {
+if (entry.isIntersecting) {
+entry.target.classList.add('visible');
+}
+});
+}, { threshold: 0.3 });
+timelineItems.forEach(item => observerTimeline.observe(item));
+
+window.addEventListener('scroll', () => {
+if (!timeline) return;
+const rect = timeline.getBoundingClientRect();
+const timelineTop = rect.top;
+const timelineHeight = rect.height;
+const windowHeight = window.innerHeight;
+if (timelineTop < windowHeight && timelineTop + timelineHeight > 0) {
+const progress = Math.min(1, Math.max(0, (windowHeight - timelineTop) / (windowHeight + timelineHeight)));
+timelineFill.style.height = (progress * 100) + '%';
+}
+});
+
+// ====== BUTTON RIPPLE ======
+document.querySelectorAll('.btn-primary').forEach(btn => {
+btn.addEventListener('click', function(e) {
+const ripple = document.createElement('span');
+ripple.classList.add('ripple');
+const rect = this.getBoundingClientRect();
+const size = Math.max(rect.width, rect.height);
+ripple.style.width = ripple.style.height = size + 'px';
+ripple.style.left = (e.clientX - rect.left - size / 2) + 'px';
+ripple.style.top = (e.clientY - rect.top - size / 2) + 'px';
+this.appendChild(ripple);
+setTimeout(() => ripple.remove(), 600);
+});
+});
+
+// ====== HERO PARALLAX ======
+window.addEventListener('scroll', () => {
+const heroContent = document.querySelector('.hero-content');
+if (heroContent) {
+const scroll = window.scrollY;
+heroContent.style.transform = 'translateY(' + scroll * 0.3 + 'px)';
+heroContent.style.opacity = Math.max(0, 1 - scroll / 600);
+}
+});
+
+})();
 </script>
 </body>
 </html>
