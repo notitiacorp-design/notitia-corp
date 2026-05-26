@@ -3,439 +3,687 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Notitia Corp — L'intelligence est un levier.</title>
-<meta name="description" content="Notitia Corp conçoit et déploie des systèmes opérationnels sur-mesure. Logiciels, automatisation, veille — livrés en 2 semaines. Audit gratuit.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Space+Grotesk:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
-<style>
+<title>L'ARRIVAGE — Poissons & Fruits de Mer</title>
 
-*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+<style>
 :root{
---bg:#0B0F14;--bg-sec:#111923;--bg-tert:#172230;
---text:#E5EDF4;--text-sec:#7D8D9E;--accent:#58C7F6;
---sep:#223140;--container:1240px;
---font-title:'Bebas Neue',sans-serif;
---font-body:'Space Grotesk',sans-serif;
---font-mono:'IBM Plex Mono',monospace;
+  --bg:#f7f2ea;
+  --navy:#1a1a2e;
+  --gold:#c89b3c;
+  --wood:#5a4634;
+  --light:#fffdf9;
+  --soft:#ece5d8;
 }
-html{scroll-behavior:smooth;font-size:16px}
-body{font-family:var(--font-body);background:radial-gradient(circle at 82% -18%,rgba(88,199,246,.1),transparent 44%),var(--bg);color:var(--text);overflow-x:hidden;line-height:1.65;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
-body::before{content:"";position:fixed;inset:0;pointer-events:none;background-image:linear-gradient(rgba(34,49,64,.35) 1px,transparent 1px),linear-gradient(90deg,rgba(34,49,64,.35) 1px,transparent 1px);background-size:96px 96px;opacity:.22;z-index:-2}
-body::after{content:"";position:fixed;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(11,15,20,.12),rgba(11,15,20,.72));z-index:-1}
-::selection{background:var(--accent);color:#081017}
-a{color:inherit;text-decoration:none}
-img{max-width:100%;display:block}
-.container{max-width:var(--container);margin:0 auto;padding:0 40px}
-.section-sep{border:none;border-top:1px solid var(--sep);margin:0}
-.nav{position:fixed;top:0;left:0;width:100%;z-index:1000;background:rgba(10,14,20,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sep)}
-.nav-inner{max-width:var(--container);margin:0 auto;padding:0 40px;display:flex;align-items:center;justify-content:space-between;height:72px}
-.nav-logo{font-family:var(--font-title);font-size:30px;letter-spacing:.24em;color:#F3F8FC;font-weight:400}
-.nav-links{display:flex;align-items:center;gap:30px}
-.nav-links a{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-sec);transition:color .25s ease,text-shadow .25s ease}
-.nav-links a:hover{color:var(--accent);text-shadow:0 0 10px rgba(88,199,246,.35)}
-.nav-cta{font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:#DDF2FF;border:1px solid var(--sep);padding:10px 22px;background:transparent;cursor:pointer;transition:all .25s ease;border-radius:0;text-decoration:none}
-.nav-cta:hover{border-color:var(--accent);box-shadow:0 0 0 1px rgba(88,199,246,.25) inset}
-.nav-mobile{display:none;background:none;border:none;cursor:pointer;padding:8px}
-.nav-mobile span{display:block;width:24px;height:2px;background:var(--text);margin:5px 0;transition:.3s}
-.hero{position:relative;min-height:82vh;display:flex;flex-direction:column;justify-content:center;padding:104px 0 56px;overflow:hidden}
-.hero-grid{position:absolute;inset:0;background-image:linear-gradient(var(--sep) 1px,transparent 1px),linear-gradient(90deg,var(--sep) 1px,transparent 1px);background-size:84px 84px;opacity:.26;pointer-events:none}
-.hero-scanline{position:absolute;top:0;left:0;width:100%;height:1px;background:linear-gradient(90deg,transparent,var(--accent),transparent);box-shadow:0 0 10px rgba(88,199,246,.65);opacity:0;pointer-events:none;z-index:2}
-.hero-content{position:relative;z-index:3}
-.hero-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:26px}
-.hero-title{font-family:var(--font-title);font-size:clamp(48px,7vw,88px);line-height:.94;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:20px}
-.hero-sub{font-family:var(--font-body);font-size:17px;color:#CFDAE3;max-width:620px;line-height:1.75;margin-bottom:30px;font-weight:300}
-.btn-primary{display:inline-block;font-family:var(--font-mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:#E4F6FF;border:1px solid var(--sep);padding:15px 36px;background:transparent;cursor:pointer;transition:all .25s ease;border-radius:0;text-decoration:none}
-.btn-primary:hover{border-color:var(--accent);box-shadow:0 0 0 1px rgba(88,199,246,.25) inset;background:rgba(88,199,246,.04)}
-.hero-metrics{display:flex;gap:0;margin-top:42px;border-top:1px solid var(--sep);padding-top:24px}
-.hero-metric{flex:1;text-align:center;position:relative;padding:6px 14px}
-.hero-metric:not(:last-child){border-right:1px solid var(--sep)}
-.hero-metric .num{font-family:var(--font-mono);font-size:34px;color:#fff;font-weight:500;display:block;margin-bottom:7px}
-.hero-metric .label{font-family:var(--font-mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--text-sec)}
-.section{padding:82px 0;position:relative}
-.section-title{font-family:var(--font-title);font-size:clamp(36px,4vw,60px);letter-spacing:.16em;text-transform:uppercase;color:#F6FAFF;margin-bottom:14px}
-.section-subtitle{font-family:var(--font-mono);font-size:11px;letter-spacing:.13em;text-transform:uppercase;color:var(--accent);margin-bottom:34px}
-.manifeste-grid{display:grid;grid-template-columns:170px 1fr;gap:52px;align-items:start}
-.manifeste-num{font-family:var(--font-title);font-size:152px;line-height:.8;color:rgba(229,237,244,.07)}
-.manifeste-title{font-family:var(--font-title);font-size:clamp(26px,3vw,42px);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:14px}
-.manifeste-line{width:72px;height:1px;background:var(--accent);margin-bottom:22px}
-.manifeste-text{font-size:17px;color:#D0DAE3;line-height:1.9;max-width:680px;font-weight:300}
-.projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
-.project-card{background:linear-gradient(180deg,rgba(17,25,35,.88),rgba(13,18,26,.92));border:1px solid var(--sep);padding:26px;transition:all .3s;border-radius:0;position:relative}
-.project-card::before{content:"";position:absolute;top:0;left:0;width:38px;height:1px;background:var(--accent);opacity:.65}
-.project-card:hover{border-color:rgba(88,199,246,.78);transform:translateY(-2px);box-shadow:0 0 0 1px rgba(88,199,246,.15) inset}
-.project-tag{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
-.project-num{font-family:var(--font-mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:rgba(229,237,244,.45);margin-bottom:20px}
-.project-title{font-family:var(--font-title);font-size:30px;letter-spacing:.1em;text-transform:uppercase;color:#fff;margin-bottom:12px}
-.project-problem,.project-solution{font-size:15px;line-height:1.8;color:#BFCCD8;font-weight:300}
-.project-sep{border:none;border-top:1px solid var(--sep);margin:18px 0}
-.project-badge{display:inline-block;margin-top:20px;padding:7px 14px;border:1px solid var(--sep);font-family:var(--font-mono);font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:#E3F5FF;background:rgba(88,199,246,.05)}
-.protocol-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--sep);background:linear-gradient(180deg,rgba(17,25,35,.66),rgba(13,18,26,.74))}
-.protocol-phase{padding:30px 24px;position:relative;min-height:205px}
-.protocol-phase:not(:last-child){border-right:1px solid var(--sep)}
-.protocol-bg-num{font-family:var(--font-title);font-size:120px;line-height:1;color:rgba(229,237,244,.04);position:absolute;top:20px;left:20px;pointer-events:none}
-.protocol-label{font-family:var(--font-mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:14px;position:relative}
-.protocol-name{font-family:var(--font-title);font-size:26px;letter-spacing:.12em;text-transform:uppercase;color:#fff;margin-bottom:14px;position:relative}
-.protocol-desc{font-size:14px;color:#BFCCD8;line-height:1.8;position:relative;font-weight:300;max-width:240px}
-.advantages-list{display:flex;flex-direction:column;gap:0;border:1px solid var(--sep);background:rgba(17,25,35,.4)}
-.advantage-item{display:flex;align-items:center;padding:24px 28px;border-bottom:1px solid var(--sep)}
-.advantage-item:last-child{border-bottom:none}
-.advantage-bar{width:2px;height:40px;background:var(--accent);margin-right:28px;flex-shrink:0;box-shadow:0 0 8px rgba(88,199,246,.35)}
-.advantage-text{font-size:17px;color:#D6E1EA;font-weight:400}
-.acces{text-align:center;padding:84px 0}
-.acces-title{font-family:var(--font-title);font-size:clamp(38px,5vw,68px);letter-spacing:.14em;text-transform:uppercase;color:#fff;margin-bottom:16px}
-.acces-sub{font-size:17px;color:#D3DEE8;margin-bottom:40px;font-weight:300}
-.acces-btn{margin-bottom:36px}
-.acces-info{font-family:var(--font-mono);font-size:12px;color:var(--text-sec);line-height:2.1;letter-spacing:.08em;text-transform:uppercase}
-.footer{background:#080B0F;padding:42px 0;border-top:1px solid var(--sep)}
-.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap}
-.footer-logo{font-family:var(--font-title);font-size:18px;letter-spacing:.24em;color:rgba(229,237,244,.42)}
-.footer-copy{font-family:var(--font-mono);font-size:10px;color:rgba(229,237,244,.26);letter-spacing:.09em;text-transform:uppercase}.footer-copy a{color:rgba(229,237,244,.7)}.footer-copy a:hover{color:var(--accent)}
-.reveal{opacity:1;transform:none}
-.reveal.is-visible{opacity:1;transform:none}
-@media(max-width:1024px){
-.protocol-grid{grid-template-columns:repeat(2,1fr)}
-.protocol-phase:nth-child(2){border-right:none}
-.protocol-phase:nth-child(3),.protocol-phase:nth-child(4){border-top:1px solid var(--sep)}
-.protocol-phase:nth-child(4){border-right:none}
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
-@media(max-width:768px){
-.container{padding:0 24px}
-.nav-inner{padding:0 24px}
-.section{padding:64px 0}
-.manifeste-grid{grid-template-columns:1fr;gap:24px}
-.manifeste-num{font-size:120px}
-.projects-grid{grid-template-columns:1fr}
-.protocol-grid{grid-template-columns:1fr}
-.protocol-phase{border-right:none!important;border-bottom:1px solid var(--sep)}
-.protocol-phase:last-child{border-bottom:none}
-.hero-metrics{flex-direction:column;gap:18px}
-.hero-metric{padding:12px 0}
-.hero-metric:not(:last-child){border-right:none;border-bottom:1px solid var(--sep);padding-bottom:20px}
-.nav-links{display:none;position:absolute;top:72px;left:0;width:100%;background:rgba(11,15,20,.98);flex-direction:column;padding:24px;border-bottom:1px solid var(--sep)}
-.nav-links.active{display:flex}
-.nav-mobile{display:block}
-.footer-inner{flex-direction:column;gap:16px;text-align:center}
-.hero-title{margin-bottom:18px}
-.hero-sub{font-size:15px;margin-bottom:24px}
-.acces{padding:64px 0}
+
+html{
+  scroll-behavior:smooth;
 }
-@media(max-width:480px){
-.container{padding:0 16px}
-.nav-inner{padding:0 16px}
-.project-card{padding:28px 20px}
-.protocol-phase{padding:32px 20px}
-.hero{min-height:auto;padding-top:92px;padding-bottom:28px}
+
+body{
+  background:var(--bg);
+  color:var(--navy);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+  line-height:1.7;
+}
+
+img{
+  width:100%;
+  display:block;
+}
+
+.container{
+  width:min(1180px,92%);
+  margin:auto;
+}
+
+h1,h2,h3{
+  font-family:Georgia,serif;
+  font-weight:400;
+}
+
+/* NAV */
+
+nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(247,242,234,.96);
+  border-bottom:1px solid rgba(0,0,0,.06);
+  backdrop-filter:blur(10px);
+}
+
+.nav-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:18px 0;
+}
+
+.logo{
+  font-family:Georgia,serif;
+  font-size:1.5rem;
+  letter-spacing:2px;
+}
+
+.nav-links{
+  display:flex;
+  gap:30px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  color:var(--navy);
+  font-size:.95rem;
+}
+
+.nav-links a:hover{
+  color:var(--gold);
+}
+
+/* HERO */
+
+.hero{
+  min-height:100vh;
+  position:relative;
+  display:flex;
+  align-items:center;
+  background:
+  linear-gradient(rgba(12,14,26,.55),rgba(12,14,26,.55)),
+  url('Capture d’écran 2026-05-26 à 12.41.00(1).png') center/cover no-repeat;
+  color:white;
+}
+
+.hero-content{
+  max-width:760px;
+  padding-top:90px;
+}
+
+.hero-tag{
+  text-transform:uppercase;
+  letter-spacing:3px;
+  color:#e7c776;
+  margin-bottom:20px;
+  font-size:.95rem;
+}
+
+.hero h1{
+  font-size:5.4rem;
+  line-height:1;
+  margin-bottom:28px;
+}
+
+.hero p{
+  font-size:1.15rem;
+  max-width:650px;
+  color:rgba(255,255,255,.9);
+  margin-bottom:34px;
+}
+
+.rating{
+  display:inline-flex;
+  align-items:center;
+  gap:14px;
+  background:rgba(255,255,255,.12);
+  border:1px solid rgba(255,255,255,.15);
+  padding:14px 18px;
+  border-radius:50px;
+  backdrop-filter:blur(6px);
+}
+
+.rating strong{
+  color:#ffd87a;
+}
+
+/* SECTIONS */
+
+section{
+  padding:110px 0;
+}
+
+.section-title{
+  font-size:3rem;
+  margin-bottom:24px;
+}
+
+.section-text{
+  max-width:760px;
+  color:#4d4d5c;
+}
+
+/* STORY */
+
+.story-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:60px;
+  align-items:center;
+}
+
+.story-image{
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 20px 50px rgba(0,0,0,.12);
+}
+
+.story-content p{
+  margin-bottom:22px;
+}
+
+/* MENU */
+
+.menu-section{
+  background:var(--soft);
+}
+
+.menu-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:32px;
+  margin-top:50px;
+}
+
+.menu-card{
+  background:var(--light);
+  border-radius:18px;
+  padding:36px;
+  box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.menu-card h3{
+  font-size:1.7rem;
+  color:var(--gold);
+  margin-bottom:28px;
+}
+
+.menu-item{
+  padding:18px 0;
+  border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+.menu-item:last-child{
+  border-bottom:none;
+}
+
+.menu-top{
+  display:flex;
+  justify-content:space-between;
+  gap:20px;
+  margin-bottom:8px;
+}
+
+.menu-name{
+  font-weight:600;
+}
+
+.price{
+  color:var(--gold);
+  font-weight:700;
+}
+
+.menu-desc{
+  color:#666;
+  font-size:.95rem;
+}
+
+/* GALLERY */
+
+.gallery{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:20px;
+  margin-top:50px;
+}
+
+.gallery img{
+  border-radius:16px;
+  height:420px;
+  object-fit:cover;
+}
+
+/* REVIEWS */
+
+.reviews-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:28px;
+  margin-top:50px;
+}
+
+.review{
+  background:white;
+  padding:34px;
+  border-radius:18px;
+  box-shadow:0 8px 30px rgba(0,0,0,.05);
+}
+
+.stars{
+  color:var(--gold);
+  margin-bottom:16px;
+}
+
+.review p{
+  color:#555;
+  margin-bottom:18px;
+}
+
+/* INFOS */
+
+.info-box{
+  background:var(--navy);
+  color:white;
+  border-radius:24px;
+  padding:60px;
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:40px;
+}
+
+.info-box h3{
+  color:#e2bb68;
+  margin-bottom:14px;
+}
+
+.info-box a{
+  color:#f3d78d;
+  text-decoration:none;
+}
+
+/* RESA */
+
+.resa-bar{
+  position:fixed;
+  bottom:0;
+  width:100%;
+  background:rgba(20,20,35,.97);
+  border-top:1px solid rgba(255,255,255,.08);
+  z-index:1000;
+}
+
+.resa-inner{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:16px 0;
+  color:white;
+}
+
+.resa-btn{
+  background:var(--gold);
+  color:var(--navy);
+  text-decoration:none;
+  padding:13px 22px;
+  border-radius:50px;
+  font-weight:700;
+}
+
+footer{
+  text-align:center;
+  padding:50px 20px 120px;
+  color:#6b6b75;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:900px){
+
+  .hero h1{
+    font-size:3.8rem;
+  }
+
+  .story-grid,
+  .gallery{
+    grid-template-columns:1fr;
+  }
+
+}
+
+@media(max-width:640px){
+
+  .nav-inner{
+    flex-direction:column;
+    gap:14px;
+  }
+
+  .nav-links{
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:16px;
+  }
+
+  .hero{
+    text-align:center;
+  }
+
+  .hero h1{
+    font-size:2.8rem;
+  }
+
+  .section-title{
+    font-size:2.2rem;
+  }
+
+  .gallery img{
+    height:280px;
+  }
+
+  .resa-inner{
+    flex-direction:column;
+    gap:14px;
+    text-align:center;
+  }
+
 }
 
 </style>
 </head>
+
 <body>
 
-<!-- NAVIGATION -->
-<nav class="nav">
-<div class="nav-inner">
-<a href="#" class="nav-logo">NOTITIA</a>
-<div class="nav-links" id="navLinks">
-<a href="#systemes">SYSTÈMES</a>
-<a href="#projets">PROJETS</a>
-<a href="#approche">APPROCHE</a>
-<a href="cas.html">CAS</a>
-<a href="#contact">CONTACT</a>
-</div>
-<a href="https://calendly.com/notitia-corp/audit-gratuit" class="nav-cta" target="_blank" rel="noopener">RÉSERVER UN AUDIT GRATUIT</a>
-<button class="nav-mobile" id="navToggle" aria-label="Menu">
-<span></span><span></span><span></span>
-</button>
-</div>
+<nav>
+  <div class="container nav-inner">
+
+    <div class="logo">L'ARRIVAGE</div>
+
+    <div class="nav-links">
+      <a href="#about">À propos</a>
+      <a href="#menu">La carte</a>
+      <a href="#reviews">Avis</a>
+      <a href="#infos">Infos</a>
+    </div>
+
+  </div>
 </nav>
 
-<!-- HERO -->
-<section class="hero" id="top">
-<div class="hero-grid"></div>
-<div class="hero-scanline" id="scanline"></div>
-<div class="container hero-content">
-<p class="hero-eyebrow">CABINET DE SOLUTIONS OPÉRATIONNELLES // BÉZIERS, FRANCE</p>
-<h1 class="hero-title">L'INTELLIGENCE<br>EST UN LEVIER.</h1>
-<p class="hero-sub">Notitia conçoit et déploie des systèmes opérationnels sur-mesure pour les entreprises qui refusent les compromis.</p>
-<a href="https://calendly.com/notitia-corp/audit-gratuit" class="btn-primary" target="_blank" rel="noopener">RÉSERVER UN AUDIT GRATUIT</a>
-<div class="hero-metrics">
-<div class="hero-metric">
-<span class="num">06</span>
-<span class="label">SYSTÈMES DÉPLOYÉS</span>
-</div>
-<div class="hero-metric">
-<span class="num">02</span>
-<span class="label">SEMAINES (EN MOYENNE)</span>
-</div>
-<div class="hero-metric">
-<span class="num">5×</span>
-<span class="label">JUSQU'À 5× PLUS EFFICIENT</span>
-</div>
-</div>
-</div>
+<header class="hero">
+  <div class="container hero-content">
+
+    <div class="hero-tag">
+      Poissons frais & fruits de mer
+    </div>
+
+    <h1>L'ARRIVAGE</h1>
+
+    <p>
+      Restaurant emblématique du Cap d'Agde situé Place Terrisse,
+      L'Arrivage propose une cuisine méditerranéenne tournée vers les produits frais
+      de la criée d'Agde : poissons entiers grillés, crustacés, huîtres,
+      parilladas et spécialités de la mer.
+    </p>
+
+    <div class="rating">
+      <strong>★★★★★ 4.7</strong>
+      <span>1473 avis Google</span>
+    </div>
+
+  </div>
+</header>
+
+<section id="about">
+  <div class="container story-grid">
+
+    <div class="story-content">
+
+      <h2 class="section-title">L'esprit du port</h2>
+
+      <p>
+        Inspiré par l'univers marin du Cap d'Agde, L'Arrivage possède une identité forte,
+        reconnaissable immédiatement avec sa façade bateau devenue emblématique sur Place Terrisse.
+      </p>
+
+      <p>
+        Chaque matin, les produits de la mer arrivent directement de la criée d'Agde.
+        La cuisine met à l'honneur les poissons méditerranéens, les crustacés
+        et les recettes traditionnelles du littoral.
+      </p>
+
+      <p>
+        Terrasse boisée, ambiance portuaire élégante, salle climatisée et service chaleureux :
+        le restaurant attire aussi bien les habitués du Cap que les visiteurs de passage.
+      </p>
+
+    </div>
+
+    <div class="story-image">
+      <img src="Capture d’écran 2026-05-26 à 12.41.11(1).png" alt="Restaurant L'Arrivage">
+    </div>
+
+  </div>
 </section>
 
-<hr class="section-sep">
+<section id="menu" class="menu-section">
+  <div class="container">
 
-<!-- MANIFESTE -->
-<section class="section" id="systemes">
-<div class="container">
-<div class="manifeste-grid reveal">
-<div class="manifeste-num">01</div>
-<div>
-<h2 class="manifeste-title">NOUS NE VENDONS PAS DE LOGICIELS.</h2>
-<div class="manifeste-line"></div>
-<p class="manifeste-text">Nous analysons vos processus, identifions ce qui vous coûte du temps et de l'argent, et construisons exactement ce qu'il faut. Pas plus. Pas moins. En 2 semaines en moyenne.</p>
-</div>
-</div>
-</div>
+    <h2 class="section-title">La carte</h2>
+
+    <p class="section-text">
+      Une cuisine marine généreuse inspirée des arrivages du jour et des saveurs méditerranéennes.
+    </p>
+
+    <div class="menu-grid">
+
+      <div class="menu-card">
+
+        <h3>Entrées</h3>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Huîtres de Bouzigues x6</div>
+            <div class="price">13,50€</div>
+          </div>
+          <div class="menu-desc">
+            Servies fraîches avec citron et vinaigre à l'échalote.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Soupe de poisson maison</div>
+            <div class="price">13,50€</div>
+          </div>
+          <div class="menu-desc">
+            Rouille, croûtons dorés et fromage râpé.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Petit tartare de thon</div>
+            <div class="price">16,90€</div>
+          </div>
+          <div class="menu-desc">
+            Thon frais, agrumes et coriandre fraîche.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-card">
+
+        <h3>Plats</h3>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Parillada de la mer</div>
+            <div class="price">36€</div>
+          </div>
+          <div class="menu-desc">
+            Assortiment de poissons et crustacés grillés selon arrivage.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Langouste grillée</div>
+            <div class="price">70€</div>
+          </div>
+          <div class="menu-desc">
+            Langouste grillée et légumes méditerranéens.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Poisson entier à l'ardoise</div>
+            <div class="price">Selon arrivage</div>
+          </div>
+          <div class="menu-desc">
+            Loup, daurade, sole ou turbot selon la pêche du jour.
+          </div>
+        </div>
+
+      </div>
+
+      <div class="menu-card">
+
+        <h3>Spécialités</h3>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Bouillabaisse provençale</div>
+            <div class="price">Sur commande</div>
+          </div>
+          <div class="menu-desc">
+            À réserver 48h à l'avance.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Tourteau entier</div>
+            <div class="price">32€</div>
+          </div>
+          <div class="menu-desc">
+            Servi froid avec mayonnaise maison.
+          </div>
+        </div>
+
+        <div class="menu-item">
+          <div class="menu-top">
+            <div class="menu-name">Profiteroles maison</div>
+            <div class="price">10€</div>
+          </div>
+          <div class="menu-desc">
+            Chocolat chaud intense et glace vanille.
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="gallery">
+      <img src="Capture d’écran 2026-05-26 à 12.41.00(1).png" alt="Terrasse restaurant">
+      <img src="Capture d’écran 2026-05-26 à 12.41.11(1).png" alt="Façade restaurant">
+    </div>
+
+  </div>
 </section>
 
-<hr class="section-sep">
+<section id="reviews">
+  <div class="container">
 
-<!-- PROJETS -->
-<section class="section" id="projets">
-<div class="container">
-<h2 class="section-title reveal">SYSTÈMES DÉPLOYÉS</h2>
-<p class="section-subtitle reveal">// 06 RÉALISATIONS OPÉRATIONNELLES</p>
-<div class="projects-grid">
+    <h2 class="section-title">Avis clients</h2>
 
-<div class="project-card reveal">
-<p class="project-tag">BTP // BUREAUX D'ÉTUDES</p>
-<p class="project-num">SYS-001</p>
-<h3 class="project-title">BE PILOT</h3>
-<p class="project-problem">Chantiers pilotés sur Excel, aucune vision consolidée</p>
-<hr class="project-sep">
-<p class="project-solution">App pilotage complète : planning, financier, SAV, documents</p>
-<span class="project-badge">LOGICIEL SUR-MESURE</span>
-</div>
+    <div class="reviews-grid">
 
-<div class="project-card reveal">
-<p class="project-tag">PAYSAGISTES // ARTISANS</p>
-<p class="project-num">SYS-002</p>
-<h3 class="project-title">TERRACORE PRO</h3>
-<p class="project-problem">Devis papier, planning manuel, facturation dispersée</p>
-<hr class="project-sep">
-<p class="project-solution">SaaS sectoriel : devis, planning météo, facturation, maintenance</p>
-<span class="project-badge">SAAS SECTORIEL</span>
-</div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          “Très belle adresse au Cap d'Agde. Produits ultra frais,
+          service efficace et excellente parillada.”
+        </p>
+        <strong>— Camille R.</strong>
+      </div>
 
-<div class="project-card reveal">
-<p class="project-tag">COLLECTIVITÉS // MAIRIES</p>
-<p class="project-num">SYS-003</p>
-<h3 class="project-title">SITES CONFORMES</h3>
-<p class="project-problem">Sites obsolètes, non-conformes RGAA, risque amende jusqu'à 50k€/an</p>
-<hr class="project-sep">
-<p class="project-solution">Sites modernes, accessibles, livrés en 2 semaines en moyenne</p>
-<span class="project-badge">WEB & CONFORMITÉ</span>
-</div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          “L'ambiance du restaurant est unique avec sa façade bateau.
+          Les poissons sont parfaitement cuits.”
+        </p>
+        <strong>— Julien M.</strong>
+      </div>
 
-<div class="project-card reveal">
-<p class="project-tag">PME // DIRECTIONS JURIDIQUES</p>
-<p class="project-num">SYS-004</p>
-<h3 class="project-title">AGENT DE VEILLE</h3>
-<p class="project-problem">Veilleur salarié 35k€/an pour surveiller des sources manuellement</p>
-<hr class="project-sep">
-<p class="project-solution">Surveillance 24/7, rapports automatiques, alertes temps réel</p>
-<span class="project-badge">AUTOMATISATION</span>
-</div>
+      <div class="review">
+        <div class="stars">★★★★★</div>
+        <p>
+          “Très bon accueil, terrasse agréable et cuisine généreuse.
+          Une des meilleures tables poissons du Cap.”
+        </p>
+        <strong>— Sophie L.</strong>
+      </div>
 
-<div class="project-card reveal">
-<p class="project-tag">IMMOBILIER // INVESTISSEMENT</p>
-<p class="project-num">SYS-005</p>
-<h3 class="project-title">DÉTECTION BODACC</h3>
-<p class="project-problem">Opportunités SCI en liquidation manquées faute de veille</p>
-<hr class="project-sep">
-<p class="project-solution">Scan quotidien automatisé sur 13 départements, alertes ciblées</p>
-<span class="project-badge">VEILLE AUTOMATISÉE</span>
-</div>
+    </div>
 
-<div class="project-card reveal">
-<p class="project-tag">FINANCE // PATRIMOINE</p>
-<p class="project-num">SYS-006</p>
-<h3 class="project-title">DASHBOARD FINANCIER</h3>
-<p class="project-problem">Aucune visibilité consolidée sur finances et investissements</p>
-<hr class="project-sep">
-<p class="project-solution">App interactive avec analyse IA, suivi temps réel, recommandations</p>
-<span class="project-badge">OUTIL SUR-MESURE</span>
-</div>
-
-</div>
-</div>
+  </div>
 </section>
 
-<hr class="section-sep">
+<section id="infos">
+  <div class="container">
 
-<!-- PREUVES -->
-<section class="section" id="preuves">
-<div class="container">
-<h2 class="section-title reveal">PREUVES TERRAIN</h2>
-<p class="section-subtitle reveal">// 02 RÉSULTATS CLIENTS (ANONYMISÉS)</p>
-<div class="projects-grid">
-<div class="project-card reveal">
-<p class="project-tag">CAS A // ARTISANAT</p>
-<p class="project-num">RÉSULTAT</p>
-<h3 class="project-title">DEVIS ACCÉLÉRÉS</h3>
-<p class="project-problem">Avant : devis en 20 minutes, relances manuelles, visibilité faible.</p>
-<hr class="project-sep">
-<p class="project-solution">Après déploiement Notitia : devis en 3 minutes, suivi pipeline centralisé, relances automatiques.</p>
-<span class="project-badge">-17 MIN / DEVIS</span>
-</div>
-<div class="project-card reveal">
-<p class="project-tag">CAS B // DIRECTION OPÉRATIONNELLE</p>
-<p class="project-num">RÉSULTAT</p>
-<h3 class="project-title">PILOTAGE UNIFIÉ</h3>
-<p class="project-problem">Avant : reporting éclaté sur 4 fichiers, consolidation hebdomadaire lente.</p>
-<hr class="project-sep">
-<p class="project-solution">Après déploiement Notitia : reporting unifié, alertes automatiques, arbitrage quotidien.</p>
-<span class="project-badge">-6H / SEMAINE</span>
-</div>
-</div>
-</div>
+    <div class="info-box">
+
+      <div>
+        <h3>Adresse</h3>
+        <p>
+          4 Place Terrisse<br>
+          34300 Agde — Cap d'Agde
+        </p>
+      </div>
+
+      <div>
+        <h3>Téléphone</h3>
+        <p>
+          <a href="tel:+33467313534">04 67 31 35 34</a>
+        </p>
+      </div>
+
+      <div>
+        <h3>Horaires</h3>
+        <p>
+          Midi : 12h00 — 14h00<br>
+          Soir : 19h00 — 22h30
+        </p>
+      </div>
+
+      <div>
+        <h3>Le restaurant</h3>
+        <p>
+          Terrasse ombragée<br>
+          Salle climatisée<br>
+          Produits frais de la criée
+        </p>
+      </div>
+
+    </div>
+
+  </div>
 </section>
 
-<hr class="section-sep">
-
-<!-- PROTOCOLE -->
-<section class="section" id="approche">
-<div class="container">
-<h2 class="section-title reveal">PROTOCOLE D'INTERVENTION</h2>
-<p class="section-subtitle reveal">// 04 PHASES</p>
-<div class="protocol-grid">
-
-<div class="protocol-phase reveal">
-<div class="protocol-bg-num">01</div>
-<p class="protocol-label">PHASE 01</p>
-<h3 class="protocol-name">AUDIT</h3>
-<p class="protocol-desc">Analyse de vos processus en 48h. Identification précise des pertes opérationnelles.</p>
-</div>
-
-<div class="protocol-phase reveal">
-<div class="protocol-bg-num">02</div>
-<p class="protocol-label">PHASE 02</p>
-<h3 class="protocol-name">CONCEPTION</h3>
-<p class="protocol-desc">Architecture de la solution. Validation avec vous avant développement.</p>
-</div>
-
-<div class="protocol-phase reveal">
-<div class="protocol-bg-num">03</div>
-<p class="protocol-label">PHASE 03</p>
-<h3 class="protocol-name">DÉPLOIEMENT</h3>
-<p class="protocol-desc">Livraison en 2 semaines. Formation équipe en 1 journée.</p>
-</div>
-
-<div class="protocol-phase reveal">
-<div class="protocol-bg-num">04</div>
-<p class="protocol-label">PHASE 04</p>
-<h3 class="protocol-name">SUIVI</h3>
-<p class="protocol-desc">Support continu. Évolutions selon vos besoins terrain.</p>
-</div>
-
-</div>
-</div>
-</section>
-
-<hr class="section-sep">
-
-<!-- AVANTAGES -->
-<section class="section">
-<div class="container">
-<h2 class="section-title reveal">SUPÉRIORITÉ OPÉRATIONNELLE</h2>
-<div class="advantages-list">
-<div class="advantage-item reveal">
-<div class="advantage-bar"></div>
-<p class="advantage-text">Jusqu'à 5× plus efficient qu'un ERP ou une agence traditionnelle</p>
-</div>
-<div class="advantage-item reveal">
-<div class="advantage-bar"></div>
-<p class="advantage-text">Déploiement en 2 semaines en moyenne — pas 6 mois</p>
-</div>
-<div class="advantage-item reveal">
-<div class="advantage-bar"></div>
-<p class="advantage-text">100% sur-mesure — aucun compromis sur votre métier</p>
-</div>
-<div class="advantage-item reveal">
-<div class="advantage-bar"></div>
-<p class="advantage-text">Interlocuteur unique de A à Z</p>
-</div>
-<div class="advantage-item reveal">
-<div class="advantage-bar"></div>
-<p class="advantage-text">Support local, réactif, humain avec suivi continu</p>
-</div>
-</div>
-</div>
-</section>
-
-<hr class="section-sep">
-
-<!-- ACCES -->
-<section class="acces" id="contact">
-<div class="container">
-<h2 class="acces-title reveal">UN PROBLÈME À RÉSOUDRE ?</h2>
-<p class="acces-sub reveal">Audit gratuit de 30 minutes. Créneau confirmé sous 48h ouvrées.</p>
-<div class="acces-btn reveal">
-<a href="https://calendly.com/notitia-corp/audit-gratuit" class="btn-primary" target="_blank" rel="noopener">RÉSERVER UN AUDIT GRATUIT</a>
-</div>
-<div class="acces-info reveal">
-QUENTIN CONVERT // NOTITIA CORP<br>
-notitiacorp@gmail.com // 06 71 90 25 13<br>
-BÉZIERS, OCCITANIE, FRANCE
-</div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer class="footer">
-<div class="container">
-<div class="footer-inner">
-<span class="footer-logo">NOTITIA</span>
-<span class="footer-copy">© 2026 NOTITIA CORP — TOUS DROITS RÉSERVÉS</span>
-<span class="footer-copy"><a href="cas.html">CAS</a> // <a href="https://calendly.com/notitia-corp/audit-gratuit" target="_blank" rel="noopener">PRENDRE RDV</a> // <a href="mentions-legales.html">MENTIONS LÉGALES</a> // <a href="politique-confidentialite.html">POLITIQUE DE CONFIDENTIALITÉ</a></span>
-</div>
-</div>
+<footer>
+  L'ARRIVAGE — Restaurant de poissons & fruits de mer au Cap d'Agde
 </footer>
 
-<!-- GSAP -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-<script>
-(function(){
-"use strict";
+<div class="resa-bar">
+  <div class="container resa-inner">
 
-/* Mobile nav */
-var navToggle=document.getElementById("navToggle");
-var navLinks=document.getElementById("navLinks");
-if(navToggle){navToggle.addEventListener("click",function(){navLinks.classList.toggle("active")})}
-navLinks.querySelectorAll("a").forEach(function(a){a.addEventListener("click",function(){navLinks.classList.remove("active")})});
+    <div>
+      Réservation conseillée — Service midi & soir
+    </div>
 
-/* Scanline */
-var scanline=document.getElementById("scanline");
-if(scanline){
-gsap.fromTo(scanline,{opacity:1,top:"0%"},{top:"100%",duration:3,ease:"none",delay:0.5,onComplete:function(){gsap.to(scanline,{opacity:0,duration:0.5})}});
-}
+    <a href="tel:+33467313534" class="resa-btn">
+      Réserver • 04 67 31 35 34
+    </a>
 
-/* Scroll behavior: never hide content; animate counters when possible */
-if(window.gsap&&window.ScrollTrigger){
-gsap.registerPlugin(ScrollTrigger);
-document.querySelectorAll(".counter").forEach(function(el){
-var target=parseInt(el.getAttribute("data-target"),10);
-if(isNaN(target))return;
-ScrollTrigger.create({trigger:el,start:"top 90%",once:true,onEnter:function(){
-var obj={val:0};
-gsap.to(obj,{val:target,duration:2,ease:"power2.out",onUpdate:function(){
-el.textContent=String(Math.round(obj.val)).padStart(2,"0");
-}});
-}});
-});
-}else{
-document.querySelectorAll(".counter").forEach(function(el){
-var target=parseInt(el.getAttribute("data-target"),10);
-if(!isNaN(target)){el.textContent=String(target).padStart(2,"0");}
-});
-}
+  </div>
+</div>
 
-})();
-</script>
 </body>
 </html>
